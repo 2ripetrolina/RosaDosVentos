@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-style="classico" data-mode="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orientação Cardeal · Intuity</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=DM+Mono:wght@300;400&family=UnifrakturMaguntia&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Cinzel:wght@400;600&family=Metamorphous&family=MedievalSharp&family=Comfortaa:wght@400;600&family=Quicksand:wght@400;500&family=Marcellus&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ease:   cubic-bezier(0.4, 0, 0.2, 1);
+  --spring: cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
+/* ═══════════════ TEMA CLÁSSICO ═══════════════ */
+[data-style="classico"] {
+  --f-display:'Cormorant Garamond',serif; --f-body:'Cormorant Garamond',serif;
+  --f-label:'Cormorant Garamond',serif;   --f-cap:'DM Mono',monospace;
+}
+[data-style="classico"][data-mode="dark"] {
+  --bg:#0b0b0c; --bg-deep:#0b0b0c; --surface:#111112; --surface-2:#1a1a1b;
+  --ink:#e9e8e2; --muted:rgba(233,232,226,.4);
+  --line:rgba(255,255,255,.07); --line2:rgba(255,255,255,.14);
+  --accent:#c9b981; --gold:#c9b981;
+  --accent-soft:rgba(201,185,129,.1); --accent-glow:rgba(201,185,129,.28);
+  --n:#e05555; --s:#5580e0; --e:#55a870; --w:#d4b840;
+  --rose-dark:#0b0b0c; --rose-lite:#e9e8e2;
+  --logo-filter:brightness(0) invert(1) sepia(1) saturate(.4) brightness(.92);
+  --shadow:0 24px 60px -30px rgba(0,0,0,.8); --vignette:none;
+}
+[data-style="classico"][data-mode="light"] {
+  --bg:#f7f6f2; --bg-deep:#f2f0ea; --surface:#efece6; --surface-2:#e9e5dd;
+  --ink:#1b1a16; --muted:rgba(27,26,22,.44);
+  --line:rgba(20,18,12,.07); --line2:rgba(20,18,12,.13);
+  --accent:#8a6e2a; --gold:#8a6e2a;
+  --accent-soft:rgba(138,110,42,.08); --accent-glow:rgba(138,110,42,.22);
+  --n:#c03030; --s:#2848c0; --e:#287848; --w:#8c5e10;
+  --rose-dark:#1b1a16; --rose-lite:#f7f6f2;
+  --logo-filter:brightness(0) saturate(1);
+  --shadow:0 24px 60px -34px rgba(60,50,20,.35); --vignette:none;
+}
+
+/* ═══════════════ TEMA CARAVELA ═══════════════ */
+[data-style="caravela"] {
+  --f-display:'UnifrakturMaguntia',serif; --f-body:'IM Fell English',serif;
+  --f-label:'Cinzel',serif;               --f-cap:'IM Fell English SC',serif;
+}
+[data-style="caravela"][data-mode="light"] {
+  --bg:#e7d9b6; --bg-deep:#dcc99c; --surface:#eee1c0; --surface-2:#e2d2a8;
+  --ink:#3b2a17; --muted:rgba(59,42,23,.52);
+  --line:rgba(59,42,23,.14); --line2:rgba(59,42,23,.3);
+  --accent:#7d1f1a; --gold:#8a6414;
+  --accent-soft:rgba(125,31,26,.07); --accent-glow:rgba(125,31,26,.3);
+  --n:#8c1c1c; --s:#24406e; --e:#2d5c3c; --w:#8a6414;
+  --rose-dark:#3b2a17; --rose-lite:#f2e6c6;
+  --logo-filter:brightness(0) saturate(1) opacity(.85);
+  --shadow:0 26px 60px -30px rgba(59,42,23,.55);
+  --vignette:radial-gradient(ellipse at center, transparent 55%, rgba(90,64,30,.22) 100%);
+}
+[data-style="caravela"][data-mode="dark"] {
+  --bg:#171209; --bg-deep:#100c06; --surface:#201810; --surface-2:#281e13;
+  --ink:#e4d1a2; --muted:rgba(228,209,162,.45);
+  --line:rgba(228,209,162,.1); --line2:rgba(228,209,162,.24);
+  --accent:#c9a04e; --gold:#c9a04e;
+  --accent-soft:rgba(201,160,78,.09); --accent-glow:rgba(201,160,78,.3);
+  --n:#d4544a; --s:#6d8fd0; --e:#63a577; --w:#cfa640;
+  --rose-dark:#0f0b06; --rose-lite:#e4d1a2;
+  --logo-filter:brightness(0) invert(1) sepia(1) saturate(.5) brightness(.95);
+  --shadow:0 26px 70px -28px rgba(0,0,0,.85);
+  --vignette:radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,.5) 100%);
+}
+
+/* ═══════════════ TEMA VIKING ═══════════════ */
+[data-style="viking"] {
+  --f-display:'Metamorphous',serif; --f-body:'MedievalSharp',serif;
+  --f-label:'MedievalSharp',serif;  --f-cap:'MedievalSharp',serif;
+}
+[data-style="viking"][data-mode="dark"] {
+  --bg:#0e1114; --bg-deep:#090b0d; --surface:#151a1e; --surface-2:#1c2227;
+  --ink:#d8d3c4; --muted:rgba(216,211,196,.45);
+  --line:rgba(216,211,196,.09); --line2:rgba(216,211,196,.22);
+  --accent:#c23b2a; --gold:#a9884a;
+  --accent-soft:rgba(194,59,42,.1); --accent-glow:rgba(194,59,42,.32);
+  --n:#c23b2a; --s:#4f7d8c; --e:#5d7d4a; --w:#a9884a;
+  --rose-dark:#090b0d; --rose-lite:#d8d3c4;
+  --logo-filter:brightness(0) invert(1) sepia(.4) saturate(.3) brightness(.95);
+  --shadow:0 26px 70px -28px rgba(0,0,0,.85);
+  --vignette:radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,.45) 100%);
+}
+[data-style="viking"][data-mode="light"] {
+  --bg:#e2e3dd; --bg-deep:#d6d8d0; --surface:#ecece6; --surface-2:#e0e1d9;
+  --ink:#23282b; --muted:rgba(35,40,43,.5);
+  --line:rgba(35,40,43,.1); --line2:rgba(35,40,43,.22);
+  --accent:#8c2318; --gold:#7a6230;
+  --accent-soft:rgba(140,35,24,.08); --accent-glow:rgba(140,35,24,.28);
+  --n:#8c2318; --s:#345e6e; --e:#44603a; --w:#7a6230;
+  --rose-dark:#23282b; --rose-lite:#f2f2ec;
+  --logo-filter:brightness(0) saturate(1) opacity(.85);
+  --shadow:0 26px 60px -32px rgba(35,40,43,.45);
+  --vignette:radial-gradient(ellipse at center, transparent 55%, rgba(60,70,75,.18) 100%);
+}
+
+/* ═══════════════ TEMA ORCA ═══════════════ */
+[data-style="orca"] {
+  --f-display:'Comfortaa',sans-serif; --f-body:'Quicksand',sans-serif;
+  --f-label:'Quicksand',sans-serif;   --f-cap:'Quicksand',sans-serif;
+}
+[data-style="orca"][data-mode="dark"] {
+  --bg:#06121a; --bg-deep:#030a10; --surface:#0b1c26; --surface-2:#11242f;
+  --ink:#e8f2f5; --muted:rgba(232,242,245,.45);
+  --line:rgba(232,242,245,.09); --line2:rgba(232,242,245,.2);
+  --accent:#6ec6d8; --gold:#8ecbd8;
+  --accent-soft:rgba(110,198,216,.1); --accent-glow:rgba(110,198,216,.3);
+  --n:#e8f2f5; --s:#3a7d94; --e:#4a9ba8; --w:#8fb8c4;
+  --rose-dark:#04090d; --rose-lite:#eef5f7;
+  --logo-filter:brightness(0) invert(1) opacity(.9);
+  --shadow:0 26px 70px -28px rgba(0,0,0,.8);
+  --vignette:radial-gradient(ellipse at center, transparent 50%, rgba(0,10,18,.55) 100%);
+}
+[data-style="orca"][data-mode="light"] {
+  --bg:#e2edf1; --bg-deep:#d3e2e8; --surface:#eef5f7; --surface-2:#e0ebef;
+  --ink:#10222c; --muted:rgba(16,34,44,.48);
+  --line:rgba(16,34,44,.09); --line2:rgba(16,34,44,.2);
+  --accent:#17708a; --gold:#3a8ca0;
+  --accent-soft:rgba(23,112,138,.08); --accent-glow:rgba(23,112,138,.26);
+  --n:#10222c; --s:#2d6a80; --e:#3a8ca0; --w:#6fa3b2;
+  --rose-dark:#10222c; --rose-lite:#fbfdfe;
+  --logo-filter:brightness(0) saturate(1) opacity(.85);
+  --shadow:0 26px 60px -32px rgba(16,50,66,.4);
+  --vignette:radial-gradient(ellipse at center, transparent 58%, rgba(60,110,130,.16) 100%);
+}
+
+/* ═══════════════ TEMA GRÉCIA ANTIGA ═══════════════ */
+[data-style="grego"] {
+  --f-display:'Cinzel',serif; --f-body:'Marcellus',serif;
+  --f-label:'Marcellus',serif; --f-cap:'Marcellus',serif;
+}
+[data-style="grego"][data-mode="light"] {
+  --bg:#ece7db; --bg-deep:#e0d9c8; --surface:#f2eee4; --surface-2:#e7e1d3;
+  --ink:#2b2620; --muted:rgba(43,38,32,.5);
+  --line:rgba(43,38,32,.1); --line2:rgba(43,38,32,.22);
+  --accent:#a3502e; --gold:#9c7c3c;
+  --accent-soft:rgba(163,80,46,.08); --accent-glow:rgba(163,80,46,.28);
+  --n:#a3502e; --s:#1f5e8c; --e:#4a6b4f; --w:#9c7c3c;
+  --rose-dark:#2b2620; --rose-lite:#f6f2e8;
+  --logo-filter:brightness(0) saturate(1) opacity(.85);
+  --shadow:0 26px 60px -32px rgba(70,55,35,.45);
+  --vignette:radial-gradient(ellipse at center, transparent 55%, rgba(90,70,45,.16) 100%);
+}
+[data-style="grego"][data-mode="dark"] {
+  --bg:#1a120c; --bg-deep:#120c08; --surface:#221812; --surface-2:#2a1e16;
+  --ink:#d8a05e; --muted:rgba(216,160,94,.5);
+  --line:rgba(216,160,94,.12); --line2:rgba(216,160,94,.26);
+  --accent:#cf7a3c; --gold:#cf9a4c;
+  --accent-soft:rgba(207,122,60,.1); --accent-glow:rgba(207,122,60,.3);
+  --n:#cf7a3c; --s:#7ea0be; --e:#8fa878; --w:#cf9a4c;
+  --rose-dark:#0f0a06; --rose-lite:#e6c290;
+  --logo-filter:brightness(0) invert(1) sepia(1) saturate(.6) brightness(.9);
+  --shadow:0 26px 70px -28px rgba(0,0,0,.85);
+  --vignette:radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,.5) 100%);
+}
+
+/* ═══════════════ TEMA SONAR ═══════════════ */
+[data-style="sonar"] {
+  --f-display:'Share Tech Mono',monospace; --f-body:'Share Tech Mono',monospace;
+  --f-label:'Share Tech Mono',monospace;   --f-cap:'Share Tech Mono',monospace;
+}
+[data-style="sonar"][data-mode="dark"] {
+  --bg:#03140d; --bg-deep:#010a06; --surface:#052015; --surface-2:#08301f;
+  --ink:#7dffc0; --muted:rgba(125,255,192,.42);
+  --line:rgba(80,255,180,.12); --line2:rgba(80,255,180,.28);
+  --accent:#3dffa0; --gold:#9dffb0;
+  --accent-soft:rgba(61,255,160,.09); --accent-glow:rgba(61,255,160,.35);
+  --n:#5fffb8; --s:#2aa876; --e:#8affd4; --w:#1e8a60;
+  --rose-dark:#02120b; --rose-lite:#b8ffdf;
+  --logo-filter:brightness(0) invert(1) sepia(1) saturate(3) hue-rotate(90deg) brightness(1.05);
+  --shadow:0 0 40px -8px rgba(61,255,160,.22), 0 26px 70px -28px rgba(0,0,0,.85);
+  --vignette:radial-gradient(ellipse at center, transparent 42%, rgba(0,10,5,.6) 100%);
+}
+[data-style="sonar"][data-mode="light"] {
+  --bg:#e0efe6; --bg-deep:#d0e4d8; --surface:#ecf6f0; --surface-2:#dcede2;
+  --ink:#083825; --muted:rgba(8,56,37,.5);
+  --line:rgba(8,56,37,.12); --line2:rgba(8,56,37,.26);
+  --accent:#0b7a4e; --gold:#2a8a5c;
+  --accent-soft:rgba(11,122,78,.08); --accent-glow:rgba(11,122,78,.28);
+  --n:#0b7a4e; --s:#1a5c40; --e:#2f9a68; --w:#4a7a60;
+  --rose-dark:#083825; --rose-lite:#f2fbf6;
+  --logo-filter:brightness(0) saturate(1) opacity(.85);
+  --shadow:0 26px 60px -32px rgba(8,56,37,.4);
+  --vignette:radial-gradient(ellipse at center, transparent 55%, rgba(8,56,37,.14) 100%);
+}
+
+/* ═══════════════ BASE ═══════════════ */
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+body {
+  background:
+    var(--vignette),
+    radial-gradient(ellipse at 20% 15%, rgba(255,255,255,.06), transparent 50%),
+    radial-gradient(ellipse at 80% 85%, rgba(0,0,0,.05), transparent 55%),
+    linear-gradient(var(--bg), var(--bg-deep));
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: var(--f-body);
+  min-height: 100svh;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  transition:color .5s var(--ease);
+  padding:48px 24px;
+  overflow-x:hidden;
+}
+#chart-bg { position:fixed; inset:0; width:100%; height:100%; pointer-events:none; z-index:0; opacity:.8; }
+#chart-bg > g, #chart-bg > .parch { display:none; }
+[data-style="caravela"] #chart-bg .parch, [data-style="caravela"] #rumos   { display:block; }
+[data-style="viking"]   #chart-bg .parch, [data-style="viking"]   #vikingbg{ display:block; }
+[data-style="orca"]     #orcabg  { display:block; }
+[data-style="grego"]    #chart-bg .parch, [data-style="grego"]    #gregobg { display:block; }
+[data-style="sonar"]    #sonarbg { display:block; }
+canvas#bg { position:fixed; inset:0; width:100%; height:100%; pointer-events:none; z-index:0; }
+.app {
+  position:relative; z-index:1;
+  display:flex; flex-direction:column; align-items:center;
+  gap:26px; width:100%; max-width:580px; margin:auto;
+}
+
+/* ── Cabeçalho ── */
+.header { display:flex; flex-direction:column; align-items:center; gap:10px; width:100%; }
+.logo-wrap img { height:46px; width:auto; display:block; filter:var(--logo-filter); transition:filter .5s var(--ease); }
+.title { display:flex; flex-direction:column; align-items:center; gap:8px; text-align:center; }
+.title h1 { font-family:var(--f-display); font-weight:400; color:var(--accent); transition:color .5s var(--ease); }
+[data-style="classico"] .title h1 { font-size:1.5rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink); }
+[data-style="caravela"] .title h1 { font-size:clamp(1.9rem,6vw,2.6rem); letter-spacing:.02em; }
+[data-style="viking"]   .title h1 { font-size:clamp(1.5rem,5vw,2rem); letter-spacing:.06em; }
+[data-style="orca"]     .title h1 { font-size:clamp(1.3rem,4.5vw,1.7rem); letter-spacing:.2em; text-transform:uppercase; font-weight:600; }
+[data-style="grego"]    .title h1 { font-size:clamp(1.5rem,5vw,2rem); letter-spacing:.16em; text-transform:uppercase; font-weight:600; }
+[data-style="sonar"]    .title h1 { font-size:clamp(1.2rem,4.5vw,1.6rem); letter-spacing:.3em; text-transform:uppercase; text-shadow:0 0 12px var(--accent-glow); }
+.title .sub { font-family:var(--f-cap); color:var(--muted); }
+[data-style="classico"] .sub { font-size:.52rem; letter-spacing:.32em; text-transform:uppercase; }
+[data-style="caravela"] .sub { font-size:.82rem; letter-spacing:.3em; }
+[data-style="viking"] .sub, [data-style="orca"] .sub, [data-style="grego"] .sub { font-size:.76rem; letter-spacing:.28em; }
+[data-style="orca"] .sub { text-transform:uppercase; font-size:.6rem; }
+[data-style="sonar"] .sub { text-transform:uppercase; font-size:.58rem; letter-spacing:.34em; }
+
+/* Ornamento do cabeçalho */
+.ornament { display:flex; align-items:center; gap:12px; width:min(340px,82%); }
+.ornament .line { flex:1; height:1px; background:linear-gradient(90deg, transparent, var(--line2)); }
+.ornament .line:last-child { background:linear-gradient(90deg, var(--line2), transparent); }
+.ornament svg { height:32px; width:auto; flex-shrink:0; }
+.ornament .orn { display:none; }
+[data-style="classico"] .orn-classico { display:block; }
+[data-style="caravela"] .orn-caravela { display:block; }
+[data-style="viking"]   .orn-viking   { display:block; }
+[data-style="orca"]     .orn-orca     { display:block; }
+[data-style="grego"]    .orn-grego    { display:block; }
+[data-style="sonar"]    .orn-sonar    { display:block; }
+
+/* Seletor de tema */
+.style-picker { display:flex; gap:6px; margin-top:4px; flex-wrap:wrap; justify-content:center; }
+.style-btn {
+  padding:7px 14px; background:transparent;
+  border:1px solid var(--line2); color:var(--muted);
+  font-family:var(--f-cap); font-size:.6rem; letter-spacing:.18em; text-transform:uppercase;
+  cursor:pointer; transition:all .25s var(--ease);
+}
+.style-btn:hover { border-color:var(--accent); color:var(--accent); }
+.style-btn.active { border-color:var(--accent); background:var(--accent-soft); color:var(--accent); }
+.style-btn:focus-visible { outline:1.5px solid var(--accent-glow); outline-offset:2px; }
+
+/* ── Estágio ── */
+.stage { position:relative; width:min(480px,100%); display:grid; place-items:center; padding:30px 0; }
+.compass-frame {
+  width:min(352px,76vw); height:min(352px,76vw);
+  position:relative; display:grid; place-items:center;
+  background:
+    radial-gradient(ellipse at 30% 25%, rgba(255,255,255,.08), transparent 60%),
+    var(--surface);
+  cursor:pointer;
+  border:1px solid var(--line2);
+  box-shadow:var(--shadow);
+  transition:background .5s var(--ease), box-shadow .4s var(--ease), outline-color .3s var(--ease), border-radius .5s var(--ease);
+  outline:3px double transparent; outline-offset:5px;
+}
+[data-style="caravela"] .compass-frame,
+[data-style="viking"]   .compass-frame,
+[data-style="grego"]    .compass-frame { outline-color:var(--line2); }
+[data-style="orca"]     .compass-frame { border-radius:32px; }
+[data-style="sonar"]    .compass-frame { border-color:var(--accent); outline-color:var(--line2); }
+[data-style="sonar"][data-mode="dark"] .compass-frame::after {
+  content:''; position:absolute; inset:0; pointer-events:none; z-index:4;
+  background:repeating-linear-gradient(0deg, rgba(0,0,0,.14) 0 1px, transparent 1px 3px);
+  mix-blend-mode:multiply; border-radius:inherit;
+}
+.compass-frame:focus-visible { outline-color:var(--accent) !important; }
+
+.compass-frame .bracket { position:absolute; width:11px; height:11px; border-color:var(--accent); border-style:solid; opacity:.55; transition:width .3s var(--ease), height .3s var(--ease); display:none; }
+.bracket.tl { top:-1px; left:-1px; border-width:1.5px 0 0 1.5px; }
+.bracket.br { bottom:-1px; right:-1px; border-width:0 1.5px 1.5px 0; }
+[data-style="classico"] .bracket { display:block; }
+[data-style="classico"] .compass-frame:hover .bracket { width:18px; height:18px; }
+
+.compass-frame .corner {
+  position:absolute; font-size:1rem; line-height:1;
+  color:var(--accent); opacity:.65;
+  transition:transform .35s var(--ease), opacity .3s var(--ease);
+  pointer-events:none; user-select:none; display:none;
+}
+[data-style="caravela"] .corner, [data-style="viking"] .corner,
+[data-style="orca"] .corner, [data-style="grego"] .corner,
+[data-style="sonar"] .corner { display:block; }
+.corner.tl { top:5px; left:8px; } .corner.tr { top:5px; right:8px; }
+.corner.bl { bottom:5px; left:8px; } .corner.br2 { bottom:5px; right:8px; }
+.corner::before { content:'❧'; }
+[data-style="viking"] .corner::before { content:'ᛟ'; font-size:.85em; }
+[data-style="orca"]   .corner::before { content:'≋'; font-size:.8em; }
+[data-style="grego"]  .corner::before { content:'✦'; font-size:.8em; }
+[data-style="sonar"]  .corner::before { content:'+'; font-size:.9em; font-family:'Share Tech Mono',monospace; }
+[data-style="orca"] .corner.tl { top:12px; left:15px; } [data-style="orca"] .corner.tr { top:12px; right:15px; }
+[data-style="orca"] .corner.bl { bottom:12px; left:15px; } [data-style="orca"] .corner.br2 { bottom:12px; right:15px; }
+.compass-frame:hover .corner { opacity:1; transform:scale(1.2); }
+
+#compass-clip { position:absolute; inset:0; overflow:hidden; display:grid; place-items:center; border-radius:inherit; }
+#compass-container {
+  width:84%; height:84%;
+  transform-origin:center;
+  transition:transform .85s var(--spring), scale .45s var(--ease);
+  scale:1; will-change:transform;
+}
+.compass-frame:hover #compass-container { scale:1.05; }
+
+/* Camadas da rosa por tema */
+svg .ly { display:none; }
+[data-style="classico"] svg .ly-classico { display:inline; }
+[data-style="caravela"] svg .ly-caravela { display:inline; }
+[data-style="viking"]   svg .ly-viking   { display:inline; }
+[data-style="orca"]     svg .ly-orca     { display:inline; }
+[data-style="grego"]    svg .ly-grego    { display:inline; }
+[data-style="sonar"]    svg .ly-sonar    { display:inline; }
+svg text { font-family: var(--f-label); }
+
+/* Rótulo sob o cursor */
+#hint {
+  position:absolute; pointer-events:none;
+  font-family:var(--f-cap); font-size:.7rem; letter-spacing:.12em;
+  color:var(--accent);
+  background:var(--surface-2); border:1px solid var(--line2);
+  padding:3px 10px; opacity:0; transform:translate(-50%,-150%);
+  transition:opacity .2s var(--ease);
+  white-space:nowrap; z-index:5;
+  box-shadow:0 3px 10px -4px rgba(0,0,0,.35);
+}
+[data-style="classico"] #hint { font-size:.55rem; letter-spacing:.18em; text-transform:uppercase; }
+[data-style="orca"] #hint { border-radius:999px; }
+[data-style="sonar"] #hint { font-size:.58rem; letter-spacing:.2em; text-transform:uppercase; border-color:var(--accent); box-shadow:0 0 10px -2px var(--accent-glow); }
+#hint.on { opacity:1; }
+
+/* Rótulos laterais */
+.side { position:absolute; display:flex; flex-direction:column; align-items:center; gap:1px; pointer-events:none; }
+.side .role { font-family:var(--f-cap); color:var(--muted); }
+[data-style="classico"] .side .role { font-size:.5rem; letter-spacing:.24em; text-transform:uppercase; }
+[data-style="caravela"] .side .role { font-family:var(--f-body); font-style:italic; font-size:.72rem; letter-spacing:.08em; }
+[data-style="viking"] .side .role, [data-style="grego"] .side .role { font-size:.68rem; letter-spacing:.14em; }
+[data-style="orca"] .side .role { font-size:.55rem; letter-spacing:.24em; text-transform:uppercase; }
+[data-style="sonar"] .side .role { font-size:.52rem; letter-spacing:.26em; text-transform:uppercase; }
+.side .dir { font-family:var(--f-label); text-transform:uppercase; line-height:1.15; color:var(--ink); transition:color .3s var(--ease); }
+[data-style="classico"] .side .dir { font-size:1.2rem; font-weight:600; letter-spacing:.08em; }
+[data-style="caravela"] .side .dir { font-size:1.02rem; font-weight:600; letter-spacing:.14em; }
+[data-style="viking"] .side .dir  { font-size:1.05rem; letter-spacing:.1em; }
+[data-style="orca"] .side .dir    { font-size:.95rem; font-weight:500; letter-spacing:.18em; }
+[data-style="grego"] .side .dir   { font-size:1rem; letter-spacing:.14em; }
+[data-style="sonar"] .side .dir   { font-size:.95rem; letter-spacing:.2em; }
+.side.front .dir { color:var(--accent); }
+.top    { top:-52px;    left:50%; transform:translateX(-50%); flex-direction:column-reverse; }
+.bottom { bottom:-52px; left:50%; transform:translateX(-50%); }
+.right  { right:-20px;  top:50%;  transform:translate(100%,-50%); align-items:flex-start; }
+.left   { left:-20px;   top:50%;  transform:translate(-100%,-50%); align-items:flex-end; }
+@media (max-width:600px) {
+  .right { right:-10px; } .left { left:-10px; }
+  .side .dir { font-size:.9rem !important; }
+}
+
+/* ── Seletor de direções ── */
+.picker { width:100%; display:flex; flex-direction:column; gap:10px; }
+.picker-label { font-family:var(--f-cap); color:var(--muted); text-align:center; }
+[data-style="classico"] .picker-label { font-size:.5rem; letter-spacing:.26em; text-transform:uppercase; }
+[data-style="caravela"] .picker-label { font-size:.8rem; letter-spacing:.24em; }
+[data-style="viking"] .picker-label, [data-style="grego"] .picker-label { font-size:.76rem; letter-spacing:.22em; }
+[data-style="orca"] .picker-label { font-size:.58rem; letter-spacing:.26em; text-transform:uppercase; }
+[data-style="sonar"] .picker-label { font-size:.56rem; letter-spacing:.3em; text-transform:uppercase; }
+.chips { display:grid; grid-template-columns:repeat(8,1fr); gap:6px; }
+@media (max-width:480px) { .chips { grid-template-columns:repeat(4,1fr); } }
+.chip {
+  padding:9px 4px; background:transparent;
+  border:1px solid var(--line2); color:var(--muted);
+  font-family:var(--f-label); font-size:.68rem; letter-spacing:.1em;
+  cursor:pointer; transition:all .22s var(--ease);
+}
+[data-style="classico"] .chip { font-family:var(--f-cap); font-size:.62rem; letter-spacing:.14em; }
+[data-style="caravela"] .chip, [data-style="grego"] .chip { font-weight:600; }
+[data-style="orca"] .chip { border-radius:999px; font-weight:500; }
+[data-style="sonar"] .chip { font-size:.62rem; letter-spacing:.18em; }
+.chip:hover { border-color:var(--accent); color:var(--accent); background:var(--accent-soft); }
+.chip.active { border-color:var(--accent); background:var(--accent-soft); color:var(--accent); box-shadow:inset 0 0 0 1px var(--accent); }
+.chip:focus-visible { outline:1.5px solid var(--accent-glow); outline-offset:2px; }
+
+/* ── Ações ── */
+.actions { display:flex; gap:10px; width:100%; justify-content:center; }
+.btn {
+  padding:11px 26px; background:transparent;
+  border:1px solid var(--line2);
+  outline:3px double transparent; outline-offset:3px;
+  color:var(--ink); font-family:var(--f-cap);
+  cursor:pointer; transition:all .25s var(--ease);
+  font-size:.8rem; letter-spacing:.22em;
+}
+[data-style="classico"] .btn { font-size:.55rem; letter-spacing:.28em; text-transform:uppercase; }
+[data-style="orca"] .btn { border-radius:999px; font-size:.62rem; letter-spacing:.24em; text-transform:uppercase; }
+[data-style="sonar"] .btn { font-size:.6rem; letter-spacing:.26em; text-transform:uppercase; }
+[data-style="sonar"] .btn:hover { box-shadow:0 0 14px -4px var(--accent-glow); }
+.btn:hover { border-color:var(--accent); background:var(--accent-soft); color:var(--accent); }
+[data-style="caravela"] .btn:hover, [data-style="viking"] .btn:hover, [data-style="grego"] .btn:hover { outline-color:var(--line2); }
+.btn:focus-visible { outline-color:var(--accent); }
+
+/* ── Rodapé ── */
+.footer { display:flex; justify-content:space-between; align-items:center; width:100%; gap:12px; flex-wrap:wrap; }
+.status { font-family:var(--f-cap); color:var(--muted); }
+[data-style="classico"] .status { font-size:.52rem; letter-spacing:.14em; text-transform:uppercase; }
+[data-style="caravela"] .status { font-size:.78rem; letter-spacing:.1em; }
+[data-style="viking"] .status, [data-style="grego"] .status { font-size:.74rem; letter-spacing:.1em; }
+[data-style="orca"] .status { font-size:.58rem; letter-spacing:.2em; text-transform:uppercase; }
+[data-style="sonar"] .status { font-size:.56rem; letter-spacing:.18em; text-transform:uppercase; }
+.status strong { color:var(--accent); font-weight:400; }
+.kbd-hint { font-family:var(--f-body); color:var(--muted); font-size:.75rem; }
+[data-style="classico"] .kbd-hint { font-family:var(--f-cap); font-size:.48rem; letter-spacing:.12em; text-transform:uppercase; opacity:.8; }
+[data-style="caravela"] .kbd-hint { font-style:italic; }
+[data-style="orca"] .kbd-hint { font-size:.62rem; }
+[data-style="sonar"] .kbd-hint { font-size:.56rem; letter-spacing:.1em; text-transform:uppercase; }
+.kbd-hint kbd { font-family:var(--f-cap); font-style:normal; font-size:.85em; border:1px solid var(--line2); padding:1px 5px; margin:0 1px; }
+
+/* Toast */
+#toast {
+  position:fixed; bottom:30px; left:50%;
+  transform:translate(-50%,16px);
+  background:var(--surface-2);
+  border:1px solid var(--accent);
+  outline:3px double var(--line2); outline-offset:3px;
+  color:var(--accent);
+  font-family:var(--f-cap); font-size:.8rem; letter-spacing:.18em;
+  padding:10px 26px; opacity:0; pointer-events:none;
+  transition:opacity .3s var(--ease), transform .3s var(--ease);
+  z-index:20;
+}
+[data-style="classico"] #toast { font-size:.55rem; letter-spacing:.22em; text-transform:uppercase; outline:none; }
+[data-style="orca"] #toast { border-radius:999px; outline:none; font-size:.62rem; text-transform:uppercase; }
+[data-style="sonar"] #toast { font-size:.6rem; letter-spacing:.24em; text-transform:uppercase; outline:none; box-shadow:0 0 18px -4px var(--accent-glow); }
+#toast.on { opacity:1; transform:translate(-50%,0); }
+
+/* Dia / noite */
+.theme-btn {
+  position:fixed; top:20px; right:20px; z-index:10;
+  background:var(--surface); border:1px solid var(--line2);
+  color:var(--muted); width:38px; height:38px; border-radius:50%;
+  cursor:pointer; display:grid; place-items:center;
+  font-size:.95rem; line-height:1;
+  transition:border-color .2s, color .2s, background .3s, transform .5s var(--ease);
+}
+.theme-btn:hover { border-color:var(--accent); color:var(--accent); transform:rotate(120deg); }
+
+/* Entrada */
+@keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+.app > * { animation:fadeUp .6s var(--ease) both; }
+.app > *:nth-child(1) { animation-delay:.02s; }
+.app > *:nth-child(2) { animation-delay:.1s; }
+.app > *:nth-child(3) { animation-delay:.18s; }
+.app > *:nth-child(4) { animation-delay:.24s; }
+.app > *:nth-child(5) { animation-delay:.3s; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration:.01ms !important; transition-duration:.01ms !important; }
+  #compass-container { transition:none; }
+}
+</style>
+</head>
+<body>
+
+<!-- Fundos temáticos -->
+<svg id="chart-bg" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" viewBox="0 0 1200 800">
+  <defs>
+    <filter id="parch"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 0.3  0 0 0 0 0.24  0 0 0 0 0.14  0 0 0 0.05 0"/>
+    </filter>
+  </defs>
+  <rect class="parch" width="1200" height="800" filter="url(#parch)"/>
+  <g id="rumos" stroke-width="0.6" fill="none" opacity="0.14"></g>
+  <g id="vikingbg" fill="var(--ink)" opacity="0.05" font-family="serif"></g>
+  <g id="orcabg" opacity="0.12"></g>
+  <g id="gregobg" opacity="0.1"></g>
+  <g id="sonarbg" opacity="0.5"></g>
+</svg>
+<canvas id="bg"></canvas>
+
+<button class="theme-btn" onclick="toggleMode()" title="Dia / Noite" aria-label="Alternar modo claro e escuro">
+  <span id="themeIcon">☾</span>
+</button>
+
+<div class="app">
+  <div class="header">
+    <div class="logo-wrap">
+      <img src="https://raw.githubusercontent.com/dancartorio/intuity/main/logo.png"
+           alt="Intuity" onerror="this.style.display='none'">
+    </div>
+    <div class="title">
+      <h1>Orientação Cardeal</h1>
+      <div class="ornament" aria-hidden="true">
+        <span class="line"></span>
+        <!-- CLÁSSICO -->
+        <svg class="orn orn-classico" viewBox="0 0 24 24" style="height:16px">
+          <rect x="8" y="8" width="8" height="8" transform="rotate(45 12 12)"
+                fill="none" stroke="var(--accent)" stroke-width="1.2" opacity=".8"/>
+          <circle cx="12" cy="12" r="1.4" fill="var(--accent)"/>
+        </svg>
+        <!-- CARAVELA -->
+        <svg class="orn orn-caravela" viewBox="0 0 60 42">
+          <path d="M8,30 Q30,38 52,30 L47,36 Q30,41 13,36 Z" fill="var(--accent)" opacity=".85"/>
+          <line x1="22" y1="10" x2="22" y2="31" stroke="var(--ink)" stroke-width="1.1"/>
+          <line x1="38" y1="6"  x2="38" y2="31" stroke="var(--ink)" stroke-width="1.1"/>
+          <path d="M22,10 Q14,20 21,29 L22,29 Z" fill="var(--rose-lite)" stroke="var(--ink)" stroke-width=".6"/>
+          <path d="M38,6 Q28,18 37,29 L38,29 Z" fill="var(--rose-lite)" stroke="var(--ink)" stroke-width=".6"/>
+          <path d="M17.5,18 h5 M20,15.5 v5" stroke="var(--n)" stroke-width=".8"/>
+          <path d="M31.5,16 h6 M34.5,13 v6" stroke="var(--n)" stroke-width=".8"/>
+          <path d="M38,6 L45,4 L38,8 Z" fill="var(--n)"/>
+          <path d="M4,36 q4,-3 8,0 q4,3 8,0 M40,37 q4,-3 8,0 q4,3 8,0" stroke="var(--s)" stroke-width=".9" fill="none" opacity=".7"/>
+        </svg>
+        <!-- VIKING: drakkar -->
+        <svg class="orn orn-viking" viewBox="0 0 84 44">
+          <path d="M8,28 C22,34 62,34 76,26 L72,33 C56,38 26,38 12,34 Z" fill="var(--rose-dark)" stroke="var(--ink)" stroke-width=".7"/>
+          <path d="M8,28 C4,24 3,17 8,12 C6,18 8,22 12,25" fill="none" stroke="var(--ink)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="8.5" cy="12.5" r="1.6" fill="var(--accent)"/>
+          <path d="M76,26 C80,23 81,17 78,13" fill="none" stroke="var(--ink)" stroke-width="1.3" stroke-linecap="round"/>
+          <g stroke="var(--ink)" stroke-width=".5">
+            <circle cx="20" cy="28.5" r="2.7" fill="var(--accent)"/>
+            <circle cx="27" cy="29.5" r="2.7" fill="var(--rose-lite)"/>
+            <circle cx="34" cy="30" r="2.7" fill="var(--accent)"/>
+            <circle cx="41" cy="30.2" r="2.7" fill="var(--rose-lite)"/>
+            <circle cx="48" cy="30" r="2.7" fill="var(--accent)"/>
+            <circle cx="55" cy="29.5" r="2.7" fill="var(--rose-lite)"/>
+            <circle cx="62" cy="28.5" r="2.7" fill="var(--accent)"/>
+          </g>
+          <line x1="42" y1="5" x2="42" y2="27" stroke="var(--ink)" stroke-width="1.2"/>
+          <g stroke="var(--ink)" stroke-width=".5">
+            <rect x="29" y="7" width="3.8" height="14" fill="var(--accent)"/>
+            <rect x="32.8" y="7" width="3.8" height="14" fill="var(--rose-lite)"/>
+            <rect x="36.6" y="7" width="3.8" height="14" fill="var(--accent)"/>
+            <rect x="40.4" y="7" width="3.8" height="14" fill="var(--rose-lite)"/>
+            <rect x="44.2" y="7" width="3.8" height="14" fill="var(--accent)"/>
+            <rect x="48" y="7" width="3.8" height="14" fill="var(--rose-lite)"/>
+            <rect x="51.8" y="7" width="3.4" height="14" fill="var(--accent)"/>
+          </g>
+          <path d="M4,38 q4,-3 8,0 q4,3 8,0 M62,38 q4,-3 8,0 q4,3 8,0" stroke="var(--s)" stroke-width="1" fill="none" opacity=".75"/>
+        </svg>
+        <!-- ORCA -->
+        <svg class="orn orn-orca" viewBox="0 0 84 44">
+          <!-- corpo -->
+          <path d="M10,24 C16,14 36,10 54,12 C64,13 72,17 78,23 C70,30 54,34 38,33 C24,32 14,29 10,24 Z"
+                fill="var(--rose-dark)"/>
+          <!-- barriga branca -->
+          <path d="M22,29 C34,33 52,33 68,27 C58,32 40,34 28,31 Z" fill="var(--rose-lite)" opacity=".95"/>
+          <!-- nadadeira dorsal -->
+          <path d="M40,12 C39,3 44,1 46,6 C44.5,8.5 43.5,10.5 43.5,12.5 Z" fill="var(--rose-dark)"/>
+          <!-- cauda -->
+          <path d="M12,24 C6,20 2,20 4,16 C8,18 11,20 13,22 Z M12,25 C6,28 2,28 4,32 C8,30 11,28 13,26 Z" fill="var(--rose-dark)"/>
+          <!-- mancha ocular -->
+          <ellipse cx="66" cy="17.5" rx="4" ry="1.8" transform="rotate(-14 66 17.5)" fill="var(--rose-lite)"/>
+          <circle cx="70" cy="20.5" r=".9" fill="var(--rose-lite)" opacity=".9"/>
+          <!-- nadadeira peitoral -->
+          <path d="M52,26 C54,31 52,35 48,35 C49,31 50,28 50,26 Z" fill="var(--rose-dark)"/>
+          <!-- respingo -->
+          <path d="M46,4 q1,-3 2,0 M49.5,3 q.8,-2.4 1.6,0" stroke="var(--accent)" stroke-width=".9" fill="none" stroke-linecap="round" opacity=".8"/>
+          <!-- ondas -->
+          <path d="M4,38 q5,-3 10,0 q5,3 10,0 M58,38 q5,-3 10,0 q5,3 10,0" stroke="var(--accent)" stroke-width="1" fill="none" opacity=".6"/>
+        </svg>
+        <!-- GRÉCIA: trirreme -->
+        <svg class="orn orn-grego" viewBox="0 0 90 42">
+          <!-- casco -->
+          <path d="M10,24 Q45,21 76,23 C80,22 83,19 84,14 C83,20 79,25 74,27 L72,30 Q45,34 16,30 Z"
+                fill="var(--rose-dark)" stroke="var(--ink)" stroke-width=".6"/>
+          <!-- esporão de bronze -->
+          <path d="M10,24 L3,26 L11,28 Z" fill="var(--gold)" stroke="var(--ink)" stroke-width=".4"/>
+          <!-- olho apotropaico -->
+          <ellipse cx="17" cy="25.5" rx="2.4" ry="1.4" fill="var(--rose-lite)"/>
+          <circle cx="17.6" cy="25.5" r=".7" fill="var(--rose-dark)"/>
+          <!-- remos -->
+          <g stroke="var(--ink)" stroke-width=".8" opacity=".8">
+            <line x1="24" y1="30" x2="20" y2="37"/><line x1="32" y1="31" x2="28" y2="38"/>
+            <line x1="40" y1="31.5" x2="36" y2="38.5"/><line x1="48" y1="31.5" x2="44" y2="38.5"/>
+            <line x1="56" y1="31" x2="52" y2="38"/><line x1="64" y1="30" x2="60" y2="37"/>
+          </g>
+          <!-- mastro e vela quadrada -->
+          <line x1="45" y1="4" x2="45" y2="24" stroke="var(--ink)" stroke-width="1.1"/>
+          <line x1="31" y1="6.5" x2="59" y2="6.5" stroke="var(--ink)" stroke-width=".8"/>
+          <path d="M31,7 Q45,10 59,7 L59,18 Q45,22 31,18 Z" fill="var(--rose-lite)" stroke="var(--ink)" stroke-width=".5"/>
+          <!-- meandro na vela -->
+          <path d="M34,12.5 h3 v-2 h2 v2 h3 v-2 h2 v2 h3 v-2 h2 v2 h3" stroke="var(--accent)" stroke-width=".6" fill="none"/>
+          <!-- ondas -->
+          <path d="M6,38 q5,-3 10,0 q5,3 10,0 M64,38 q5,-3 10,0 q5,3 10,0" stroke="var(--s)" stroke-width="1" fill="none" opacity=".7"/>
+        </svg>
+        <!-- SONAR: mini-scope -->
+        <svg class="orn orn-sonar" viewBox="0 0 64 40">
+          <circle cx="32" cy="20" r="16" fill="none" stroke="var(--accent)" stroke-width="1"/>
+          <circle cx="32" cy="20" r="10.5" fill="none" stroke="var(--accent)" stroke-width=".5" opacity=".5"/>
+          <circle cx="32" cy="20" r="5.5" fill="none" stroke="var(--accent)" stroke-width=".5" opacity=".4"/>
+          <line x1="32" y1="4" x2="32" y2="36" stroke="var(--accent)" stroke-width=".4" opacity=".4"/>
+          <line x1="16" y1="20" x2="48" y2="20" stroke="var(--accent)" stroke-width=".4" opacity=".4"/>
+          <path d="M32,20 L32,4 A16,16 0 0 1 42,7.5 Z" fill="var(--accent)" opacity=".45">
+            <animateTransform attributeName="transform" type="rotate" from="0 32 20" to="360 32 20" dur="4s" repeatCount="indefinite"/>
+          </path>
+          <circle cx="40" cy="13" r="1.3" fill="var(--n)">
+            <animate attributeName="opacity" values="1;.15;1" dur="2s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="25" cy="27" r="1" fill="var(--gold)">
+            <animate attributeName="opacity" values=".2;1;.2" dur="2.6s" repeatCount="indefinite"/>
+          </circle>
+          <path d="M4,20 h4 M6,16 v8 M56,20 h4 M58,16 v8" stroke="var(--accent)" stroke-width=".9" opacity=".7"/>
+        </svg>
+        <span class="line"></span>
+      </div>
+      <span class="sub" id="subTitle">Rosa dos Ventos · Confrontações</span>
+      <div class="style-picker" role="radiogroup" aria-label="Estilo visual">
+        <button class="style-btn active" data-sty="classico" onclick="setStyle('classico')" role="radio" aria-checked="true">Clássico</button>
+        <button class="style-btn" data-sty="caravela" onclick="setStyle('caravela')" role="radio" aria-checked="false">Caravela</button>
+        <button class="style-btn" data-sty="viking" onclick="setStyle('viking')" role="radio" aria-checked="false">Viking</button>
+        <button class="style-btn" data-sty="orca" onclick="setStyle('orca')" role="radio" aria-checked="false">Orca</button>
+        <button class="style-btn" data-sty="grego" onclick="setStyle('grego')" role="radio" aria-checked="false">Grécia Antiga</button>
+        <button class="style-btn" data-sty="sonar" onclick="setStyle('sonar')" role="radio" aria-checked="false">Sonar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="compass-frame" id="compassFrame" tabindex="0" role="application"
+         aria-label="Rosa dos ventos interativa. Clique numa direção para defini-la como frente, ou use as setas do teclado para girar.">
+      <span class="bracket tl"></span><span class="bracket br"></span>
+      <span class="corner tl"></span><span class="corner tr"></span>
+      <span class="corner bl"></span><span class="corner br2"></span>
+
+      <div id="compass-clip">
+        <div id="compass-container">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <!-- ═══ COMUM ═══ -->
+            <circle cx="50" cy="50" r="47.5" fill="none" stroke="var(--ink)" stroke-width=".4" opacity=".45"/>
+            <circle cx="50" cy="50" r="45.8" fill="none" stroke="var(--ink)" stroke-width=".18" opacity=".3"/>
+            <g id="ticks" stroke="var(--ink)" opacity=".45"></g>
+            <circle cx="50" cy="50" r="41.5" fill="none" stroke="var(--gold)"
+              stroke-width=".7" stroke-dasharray="1.6 1.9" opacity=".3">
+              <animateTransform attributeName="transform" type="rotate"
+                from="0 50 50" to="360 50 50" dur="90s" repeatCount="indefinite"/>
+            </circle>
+
+            <!-- ═══ CLÁSSICO ═══ -->
+            <g class="ly ly-classico">
+              <polygon
+                points="50,8 51.5,19 54,8.5 54.2,19.2 57.5,9.8 56.4,20 60.5,11.8 57.8,21.4
+                        50,8 48.5,19 46,8.5 45.8,19.2 42.5,9.8 43.6,20 39.5,11.8 42.2,21.4"
+                fill="none" stroke="var(--accent)" stroke-width=".2" opacity=".2"/>
+              <circle cx="50" cy="50" r="36" fill="none" stroke="var(--accent)"
+                stroke-width=".35" stroke-dasharray="0.8 3.4" opacity=".15">
+                <animateTransform attributeName="transform" type="rotate"
+                  from="360 50 50" to="0 50 50" dur="40s" repeatCount="indefinite"/>
+              </circle>
+              <g stroke="var(--accent)" opacity=".18" stroke-width=".3">
+                <line x1="50" y1="7" x2="50" y2="43"/><line x1="50" y1="57" x2="50" y2="93"/>
+                <line x1="7" y1="50" x2="43" y2="50"/><line x1="57" y1="50" x2="93" y2="50"/>
+              </g>
+              <g fill="var(--accent)" opacity=".28">
+                <polygon points="50,18 48.8,50 50,46 51.2,50" transform="rotate(45 50 50)"/>
+                <polygon points="50,18 48.8,50 50,46 51.2,50" transform="rotate(135 50 50)"/>
+                <polygon points="50,18 48.8,50 50,46 51.2,50" transform="rotate(225 50 50)"/>
+                <polygon points="50,18 48.8,50 50,46 51.2,50" transform="rotate(315 50 50)"/>
+              </g>
+              <g fill="var(--n)">
+                <polygon points="50,5 47.5,50 50,43 52.5,50" opacity=".95"/>
+                <path d="M50,5 C49,8 47,10 47.5,13 C48.5,11 50,10 50,10 C50,10 51.5,11 52.5,13 C53,10 51,8 50,5Z" opacity=".7"/>
+                <ellipse cx="47" cy="11" rx="1.8" ry="1" transform="rotate(-30 47 11)" opacity=".4"/>
+                <ellipse cx="53" cy="11" rx="1.8" ry="1" transform="rotate(30 53 11)" opacity=".4"/>
+              </g>
+              <polygon points="50,95 52.5,50 50,57 47.5,50" fill="var(--s)" opacity=".75"/>
+              <polygon points="95,50 50,52.5 57,50 50,47.5" fill="var(--e)" opacity=".75"/>
+              <polygon points="5,50 50,47.5 43,50 50,52.5" fill="var(--w)" opacity=".75"/>
+              <g fill="var(--accent)" opacity=".55">
+                <rect x="48.2" y="41" width="3.6" height="18" rx=".3"/>
+                <rect x="41" y="48.2" width="18" height="3.6" rx=".3"/>
+              </g>
+              <g fill="var(--n)" opacity=".45">
+                <rect x="48.8" y="41.5" width="2.4" height="17" rx=".2"/>
+                <rect x="41.5" y="48.8" width="17" height="2.4" rx=".2"/>
+              </g>
+              <circle cx="50" cy="50" r="9" fill="none" stroke="var(--accent)" stroke-width=".4" opacity=".4"/>
+              <circle cx="50" cy="50" r="6.5" fill="none" stroke="var(--accent)" stroke-width=".25" opacity=".3"/>
+            </g>
+
+            <!-- ═══ CARAVELA ═══ -->
+            <g class="ly ly-caravela">
+              <g id="halfwinds"></g>
+              <g id="mainwinds"></g>
+              <g fill="var(--n)" transform="translate(0,-1)">
+                <path d="M50,3.2 C48.8,6 46.8,7.6 47.4,10.6 C48.5,8.6 50,7.8 50,7.8 C50,7.8 51.5,8.6 52.6,10.6 C53.2,7.6 51.2,6 50,3.2Z"/>
+                <ellipse cx="46.6" cy="8.6" rx="2" ry="1.1" transform="rotate(-32 46.6 8.6)" opacity=".8"/>
+                <ellipse cx="53.4" cy="8.6" rx="2" ry="1.1" transform="rotate(32 53.4 8.6)" opacity=".8"/>
+                <rect x="49.2" y="10.2" width="1.6" height="1.4" opacity=".9"/>
+              </g>
+              <g opacity=".9">
+                <path d="M50,40.5 L52.2,43.5 L52.2,47.8 L56.5,47.8 L59.5,50 L56.5,52.2 L52.2,52.2 L52.2,56.5 L50,59.5 L47.8,56.5 L47.8,52.2 L43.5,52.2 L40.5,50 L43.5,47.8 L47.8,47.8 L47.8,43.5 Z"
+                  fill="var(--n)" stroke="var(--ink)" stroke-width=".3"/>
+                <path d="M50,43.4 L51,44.9 L51,49 L55.1,49 L56.6,50 L55.1,51 L51,51 L51,55.1 L50,56.6 L49,55.1 L49,51 L44.9,51 L43.4,50 L44.9,49 L49,49 L49,44.9 Z"
+                  fill="var(--rose-lite)"/>
+              </g>
+            </g>
+
+            <!-- ═══ VIKING ═══ -->
+            <g class="ly ly-viking">
+              <circle cx="50" cy="50" r="38.5" fill="none" stroke="var(--ink)" stroke-width=".5" opacity=".5"/>
+              <g id="staves"></g>
+              <g id="runering"></g>
+              <circle cx="50" cy="50" r="8.6" fill="var(--surface-2)" stroke="var(--ink)" stroke-width=".5"/>
+              <g id="rivets" fill="var(--ink)" opacity=".7"></g>
+              <circle cx="50" cy="50" r="4.6" fill="none" stroke="var(--accent)" stroke-width=".5" opacity=".8"/>
+              <g stroke="var(--accent)" stroke-width=".7" fill="none" stroke-linecap="round">
+                <path d="M50,50 C50,47.2 51.8,46 53.2,47.2" transform="rotate(0 50 50)"/>
+                <path d="M50,50 C50,47.2 51.8,46 53.2,47.2" transform="rotate(120 50 50)"/>
+                <path d="M50,50 C50,47.2 51.8,46 53.2,47.2" transform="rotate(240 50 50)"/>
+              </g>
+            </g>
+
+            <!-- ═══ ORCA ═══ -->
+            <g class="ly ly-orca">
+              <!-- ondas de ecolocalização -->
+              <circle cx="50" cy="50" r="36" fill="none" stroke="var(--accent)" stroke-width=".3" opacity=".2"/>
+              <circle cx="50" cy="50" r="30" fill="none" stroke="var(--accent)" stroke-width=".3" opacity=".26"/>
+              <circle cx="50" cy="50" r="24" fill="none" stroke="var(--accent)" stroke-width=".3" opacity=".32"/>
+              <circle cx="50" cy="50" r="12" fill="none" stroke="var(--accent)" stroke-width=".5" opacity=".5">
+                <animate attributeName="r" values="10;38" dur="5s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" values=".45;0" dur="5s" repeatCount="indefinite"/>
+              </circle>
+              <g id="orcafins"></g>
+              <!-- centro: dorso com mancha ocular -->
+              <circle cx="50" cy="50" r="8.4" fill="var(--rose-dark)" stroke="var(--line2)" stroke-width=".3"/>
+              <ellipse cx="52.6" cy="47.2" rx="3" ry="1.4" transform="rotate(38 52.6 47.2)" fill="var(--rose-lite)"/>
+              <path d="M44,53.5 A8,8 0 0 0 56,53.5 A11,11 0 0 1 44,53.5 Z" fill="var(--rose-lite)" opacity=".9"/>
+            </g>
+
+            <!-- ═══ GRÉCIA ANTIGA ═══ -->
+            <g class="ly ly-grego">
+              <g id="meanderring" stroke="var(--ink)" stroke-width=".45" fill="none" opacity=".6"></g>
+              <circle cx="50" cy="50" r="38" fill="none" stroke="var(--ink)" stroke-width=".4" opacity=".4"/>
+              <g id="columns"></g>
+              <g id="windnames"></g>
+              <g id="laurel" fill="var(--e)" opacity=".7"></g>
+              <g id="sunrays" fill="var(--gold)" opacity=".85"></g>
+              <circle cx="50" cy="50" r="4.4" fill="none" stroke="var(--accent)" stroke-width=".5" opacity=".7"/>
+            </g>
+
+            <!-- ═══ SONAR ═══ -->
+            <g class="ly ly-sonar">
+              <!-- anéis de alcance -->
+              <circle cx="50" cy="50" r="40" fill="none" stroke="var(--accent)" stroke-width=".35" opacity=".55"/>
+              <circle cx="50" cy="50" r="30" fill="none" stroke="var(--accent)" stroke-width=".25" opacity=".4"/>
+              <circle cx="50" cy="50" r="20" fill="none" stroke="var(--accent)" stroke-width=".25" opacity=".35"/>
+              <circle cx="50" cy="50" r="10" fill="none" stroke="var(--accent)" stroke-width=".25" opacity=".3"/>
+              <!-- retículo -->
+              <g stroke="var(--accent)" stroke-width=".2" opacity=".35">
+                <line x1="50" y1="10" x2="50" y2="90"/>
+                <line x1="10" y1="50" x2="90" y2="50"/>
+                <line x1="21.7" y1="21.7" x2="78.3" y2="78.3"/>
+                <line x1="78.3" y1="21.7" x2="21.7" y2="78.3"/>
+              </g>
+              <!-- graduação e azimutes gerados via JS -->
+              <g id="sonardeg"></g>
+              <!-- feixe de varredura -->
+              <g opacity=".85">
+                <g>
+                  <path d="M50,50 L50,10 A40,40 0 0 1 56.3,10.5 Z" fill="var(--accent)" opacity=".5"/>
+                  <path d="M50,50 L56.3,10.5 A40,40 0 0 1 65.5,13.2 Z" fill="var(--accent)" opacity=".3"/>
+                  <path d="M50,50 L65.5,13.2 A40,40 0 0 1 73.5,18.6 Z" fill="var(--accent)" opacity=".15"/>
+                  <path d="M50,50 L73.5,18.6 A40,40 0 0 1 79.2,25.6 Z" fill="var(--accent)" opacity=".07"/>
+                  <line x1="50" y1="50" x2="50" y2="10" stroke="var(--gold)" stroke-width=".5"/>
+                  <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="6s" repeatCount="indefinite"/>
+                </g>
+              </g>
+              <!-- contatos (blips) -->
+              <circle cx="64" cy="33" r="1" fill="var(--gold)">
+                <animate attributeName="opacity" values="1;.1;1" dur="3s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="35" cy="62" r=".8" fill="var(--gold)">
+                <animate attributeName="opacity" values=".15;1;.15" dur="3.8s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="58" cy="70" r=".7" fill="var(--ink)">
+                <animate attributeName="opacity" values=".8;.1;.8" dur="4.6s" repeatCount="indefinite"/>
+              </circle>
+              <!-- pulso de eco -->
+              <circle cx="50" cy="50" r="8" fill="none" stroke="var(--accent)" stroke-width=".4" opacity=".4">
+                <animate attributeName="r" values="6;40" dur="4s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" values=".5;0" dur="4s" repeatCount="indefinite"/>
+              </circle>
+              <!-- centro -->
+              <circle cx="50" cy="50" r="4.4" fill="none" stroke="var(--accent)" stroke-width=".4" opacity=".7"/>
+            </g>
+
+            <!-- ═══ COMUM: cubo + rótulos ═══ -->
+            <circle cx="50" cy="50" r="3" fill="var(--surface)" stroke="var(--ink)" stroke-width=".3"/>
+            <circle cx="50" cy="50" r="1.6" fill="var(--gold)"/>
+            <circle cx="50" cy="50" r=".6" fill="var(--surface)"/>
+
+            <text font-size="4.6" font-weight="600" text-anchor="middle">
+              <tspan x="50" y="16.5" fill="var(--n)">N</tspan>
+              <tspan x="50" y="87.5" fill="var(--s)">S</tspan>
+              <tspan x="86.5" y="51.8" fill="var(--e)">L</tspan>
+              <tspan x="13.5" y="51.8" fill="var(--w)">O</tspan>
+            </text>
+            <text font-size="3.1" font-weight="600" text-anchor="middle" fill="var(--ink)" opacity=".6">
+              <tspan x="73.5" y="28.5">NE</tspan>
+              <tspan x="73.5" y="75.5">SE</tspan>
+              <tspan x="26.5" y="75.5">SO</tspan>
+              <tspan x="26.5" y="28.5">NO</tspan>
+            </text>
+          </svg>
+        </div>
+      </div>
+
+      <div id="hint"></div>
+
+      <div class="side top front" id="side-front"><span class="role">Frente</span><span class="dir">—</span></div>
+      <div class="side right"     id="side-right"><span class="role">Direita</span><span class="dir">—</span></div>
+      <div class="side bottom"    id="side-back"><span class="role">Fundos</span><span class="dir">—</span></div>
+      <div class="side left"      id="side-left"><span class="role">Esquerda</span><span class="dir">—</span></div>
+    </div>
+  </div>
+
+  <div class="picker">
+    <span class="picker-label">Direção da Frente do Imóvel</span>
+    <div class="chips" id="chips" role="radiogroup" aria-label="Direção da frente"></div>
+  </div>
+
+  <div class="actions">
+    <button class="btn" id="copyBtn" onclick="copiarConfrontacoes()">Copiar Confrontações</button>
+  </div>
+
+  <div class="footer">
+    <div class="status">
+      Frente&ensp;<strong id="statusFront">—</strong>&ensp;·&ensp;Azimute&ensp;<strong id="statusDeg">0°</strong>
+    </div>
+    <span class="kbd-hint"><kbd>←</kbd><kbd>→</kbd> girar &nbsp;·&nbsp; clique na rosa para orientar</span>
+  </div>
+</div>
+
+<div id="toast" role="status"></div>
+
+<script>
+/* ══ Modelo de 8 direções ════════════════════════════ */
+const DIRS  = ['N','NE','L','SE','S','SO','O','NO'];
+const NOMES = { N:'Norte', NE:'Nordeste', L:'Leste', SE:'Sudeste', S:'Sul', SO:'Sudoeste', O:'Oeste', NO:'Noroeste' };
+const GRAUS = { N:0, NE:45, L:90, SE:135, S:180, SO:225, O:270, NO:315 };
+
+let frente = 'N';
+let cumDeg = 0;
+
+const STYLE_META = {
+  classico: { icon:'',    sub:'Rosa dos Ventos · Confrontações' },
+  caravela: { icon:'✠ ',  sub:'Carta de Marear · Confrontações' },
+  viking:   { icon:'ᛟ ',  sub:'Vegvísir · Confrontações' },
+  orca:     { icon:'≋ ',  sub:'Mar Profundo · Confrontações' },
+  grego:    { icon:'Ω ',  sub:'Anemoi · Confrontações' },
+  sonar:    { icon:'◉ ',  sub:'Varredura Ativa · Confrontações' },
+};
+
+/* ══ Construção das camadas SVG ══════════════════════ */
+(function buildTicks(){
+  const g = document.getElementById('ticks');
+  let html = '';
+  for (let i = 0; i < 32; i++) {
+    const major = i % 4 === 0;
+    html += `<line x1="50" y1="4.4" x2="50" y2="${major ? 6.6 : 5.6}"
+             stroke-width="${major ? .5 : .25}" transform="rotate(${i*11.25} 50 50)"/>`;
+  }
+  g.innerHTML = html;
+})();
+
+/* Caravela: rosa portulana bicolor */
+(function buildRose(){
+  const main = document.getElementById('mainwinds');
+  const half = document.getElementById('halfwinds');
+  let m = '', h = '';
+  for (let i = 0; i < 8; i++) {
+    const rot = i * 45;
+    const tipY = (i % 2 === 0) ? 12.5 : 17;
+    m += `<g transform="rotate(${rot} 50 50)">
+            <polygon points="50,${tipY} 47.4,50 50,50" fill="var(--rose-dark)" stroke="var(--ink)" stroke-width=".18"/>
+            <polygon points="50,${tipY} 52.6,50 50,50" fill="var(--rose-lite)" stroke="var(--ink)" stroke-width=".18"/>
+          </g>`;
+    h += `<g transform="rotate(${rot + 22.5} 50 50)" opacity=".8">
+            <polygon points="50,27 48.5,50 50,50" fill="var(--gold)"/>
+            <polygon points="50,27 51.5,50 50,50" fill="var(--rose-lite)" stroke="var(--ink)" stroke-width=".14"/>
+          </g>`;
+  }
+  main.innerHTML = m; half.innerHTML = h;
+})();
+
+/* Viking: bastões do vegvísir + anel rúnico + rebites */
+(function buildViking(){
+  const terms = [
+    `<path d="M50,12 L46.8,17 M50,12 L53.2,17"/><line x1="45.5" y1="20" x2="54.5" y2="20"/><line x1="46.5" y1="23" x2="53.5" y2="23"/>`,
+    `<path d="M50,13 L45.5,17.5 M50,13 L54.5,17.5"/><circle cx="45.5" cy="17.5" r="1" fill="var(--ink)" stroke="none"/><circle cx="54.5" cy="17.5" r="1" fill="var(--ink)" stroke="none"/>`,
+    `<line x1="45.5" y1="15" x2="54.5" y2="15"/><path d="M46,12 A4.5,4.5 0 0 1 54,12"/>`,
+    `<line x1="45" y1="14" x2="55" y2="14"/><line x1="46.5" y1="17.5" x2="53.5" y2="17.5"/><line x1="48" y1="21" x2="52" y2="21"/>`,
+    `<path d="M50,11.5 L53,15 L50,18.5 L47,15 Z"/>`,
+    `<line x1="46" y1="18" x2="54" y2="18"/><circle cx="50" cy="13.8" r="2.2"/>`,
+    `<line x1="46.5" y1="12.5" x2="46.5" y2="17"/><line x1="53.5" y1="12.5" x2="53.5" y2="17"/><line x1="46.5" y1="17" x2="53.5" y2="17"/>`,
+    `<path d="M46,16 L50,12.5 L54,16"/><path d="M46.8,19.5 L50,16.5 L53.2,19.5"/>`,
+  ];
+  let s = '';
+  for (let i = 0; i < 8; i++) {
+    const hi = i === 0;
+    s += `<g transform="rotate(${i*45} 50 50)" stroke="${hi ? 'var(--accent)' : 'var(--ink)'}"
+             stroke-width="${hi ? 1 : .8}" fill="none" stroke-linecap="round" opacity="${hi ? .95 : .8}">
+            <line x1="50" y1="12" x2="50" y2="41"/>${terms[i]}
+          </g>`;
+  }
+  document.getElementById('staves').innerHTML = s;
+
+  const runes = ['ᚠ','ᚢ','ᚦ','ᚨ','ᚱ','ᚲ','ᚷ','ᚹ'];
+  let rr = '';
+  for (let i = 0; i < 8; i++) {
+    rr += `<text x="50" y="9.6" font-size="4" text-anchor="middle" fill="var(--gold)" opacity=".75"
+             transform="rotate(${i*45 + 22.5} 50 50)" style="font-family:serif">${runes[i]}</text>`;
+  }
+  document.getElementById('runering').innerHTML = rr;
+
+  let rv = '';
+  for (let i = 0; i < 8; i++) {
+    const a = i * Math.PI / 4;
+    rv += `<circle cx="${(50 + Math.cos(a)*6.6).toFixed(2)}" cy="${(50 + Math.sin(a)*6.6).toFixed(2)}" r=".55"/>`;
+  }
+  document.getElementById('rivets').innerHTML = rv;
+})();
+
+/* Orca: barbatanas dorsais como pontas da rosa */
+(function buildOrca(){
+  let f = '';
+  for (let i = 0; i < 8; i++) {
+    const card = i % 2 === 0;
+    const tip  = card ? 13.5 : 21.5;
+    const fin  = `M50,${tip} C46.8,${tip+14} 47.6,44 50,50 C51.2,42 52.6,${tip+9} 50,${tip} Z`;
+    let fill, stroke;
+    if (i === 0)      { fill = 'var(--accent)';    stroke = 'var(--rose-lite)'; }  /* Norte */
+    else if (card)    { fill = 'var(--rose-dark)'; stroke = 'var(--rose-lite)'; }
+    else              { fill = 'var(--rose-lite)'; stroke = 'var(--line2)'; }
+    f += `<path d="${fin}" transform="rotate(${i*45} 50 50)"
+           fill="${fill}" stroke="${stroke}" stroke-width=".25" opacity="${card ? .95 : .8}"/>`;
+  }
+  document.getElementById('orcafins').innerHTML = f;
+})();
+
+/* Grécia: anel de meandro, colunas, Anemoi, louro, sol */
+(function buildGrego(){
+  /* meandro (chave grega) em 24 unidades */
+  let m = '';
+  for (let i = 0; i < 24; i++) {
+    m += `<g transform="rotate(${i*15} 50 50)">
+            <path d="M46.5,12.6 h7 M53.5,12.6 v-3.4 M53.5,9.2 h-5 M48.5,9.2 v2 M48.5,11.2 h3"/>
+          </g>`;
+  }
+  document.getElementById('meanderring').innerHTML = m;
+
+  /* pontas em forma de coluna dórica */
+  let c = '';
+  for (let i = 0; i < 8; i++) {
+    const card = i % 2 === 0;
+    const tip  = card ? 15.5 : 21.5;
+    const col  = card ? (i === 0 ? 'var(--accent)' : 'var(--rose-dark)') : 'var(--ink)';
+    c += `<g transform="rotate(${i*45} 50 50)" fill="${col}" opacity="${card ? .9 : .55}">
+            <rect x="49.1" y="${tip+3.6}" width="1.8" height="${(50-(tip+3.6)).toFixed(1)}"/>
+            <polygon points="47.7,${tip+3.6} 52.3,${tip+3.6} 51.3,${tip+1.4} 48.7,${tip+1.4}"/>
+            <rect x="47.9" y="${tip}" width="4.2" height="1.4"/>
+          </g>`;
+  }
+  document.getElementById('columns').innerHTML = c;
+
+  /* nomes dos Anemoi, os oito deuses dos ventos */
+  const anemoi = ['ΒΟΡΕΑΣ','ΚΑΙΚΙΑΣ','ΑΠΗΛΙΩΤΗΣ','ΕΥΡΟΣ','ΝΟΤΟΣ','ΛΙΨ','ΖΕΦΥΡΟΣ','ΣΚΙΡΩΝ'];
+  let w = '';
+  for (let i = 0; i < 8; i++) {
+    w += `<text x="50" y="25" font-size="2" letter-spacing=".3" text-anchor="middle"
+            fill="var(--accent)" opacity=".65" transform="rotate(${i*45} 50 50)"
+            style="font-family:serif">${anemoi[i]}</text>`;
+  }
+  document.getElementById('windnames').innerHTML = w;
+
+  /* coroa de louros ao redor do centro (com abertura ao alto) */
+  let l = '';
+  for (let a = 30; a <= 330; a += 15) {
+    const rad = a * Math.PI / 180;
+    const x = 50 + 11 * Math.sin(rad);
+    const y = 50 + 11 * Math.cos(rad);
+    l += `<ellipse cx="${x.toFixed(2)}" cy="${y.toFixed(2)}" rx="2" ry=".85"
+           transform="rotate(${(-a + 90).toFixed(0)} ${x.toFixed(2)} ${y.toFixed(2)})"/>`;
+  }
+  document.getElementById('laurel').innerHTML = l;
+
+  /* sol de oito raios em torno do cubo */
+  let s = '';
+  for (let i = 0; i < 8; i++) {
+    s += `<polygon points="50,42.6 49,47.2 51,47.2" transform="rotate(${i*45} 50 50)"/>`;
+  }
+  document.getElementById('sunrays').innerHTML = s;
+})();
+
+/* Sonar: graduação de azimutes a cada 10°, rótulos a cada 30° */
+(function buildSonar(){
+  const g = document.getElementById('sonardeg');
+  let html = '';
+  for (let a = 0; a < 360; a += 10) {
+    const major = a % 30 === 0;
+    html += `<line x1="50" y1="8.6" x2="50" y2="${major ? 7 : 7.8}"
+             stroke="var(--accent)" stroke-width="${major ? .4 : .2}" opacity=".7"
+             transform="rotate(${a} 50 50)"/>`;
+    if (major) {
+      html += `<text x="50" y="6" font-size="2.2" text-anchor="middle" fill="var(--accent)"
+               opacity=".8" transform="rotate(${a} 50 50)"
+               style="font-family:'Share Tech Mono',monospace">${String(a).padStart(3,'0')}</text>`;
+    }
+  }
+  g.innerHTML = html;
+})();
+
+/* Fundos temáticos */
+(function buildRumos(){
+  const g = document.getElementById('rumos');
+  const nodes = [[180,140],[1020,120],[600,400],[160,660],[1040,680]];
+  const cols = ['var(--n)','var(--s)','var(--e)','var(--ink)'];
+  let html = '';
+  nodes.forEach(([x,y], k) => {
+    for (let i = 0; i < 16; i++) {
+      const a = i * Math.PI / 8;
+      html += `<line x1="${x}" y1="${y}" x2="${(x+Math.cos(a)*1500).toFixed(0)}" y2="${(y+Math.sin(a)*1500).toFixed(0)}"
+               stroke="${cols[(i + k) % 4]}"/>`;
+    }
+  });
+  g.innerHTML = html;
+})();
+(function buildVikingBg(){
+  const g = document.getElementById('vikingbg');
+  const runes = ['ᚠ','ᚢ','ᚦ','ᚨ','ᚱ','ᚲ','ᚷ','ᚹ','ᚺ','ᚾ','ᛁ','ᛃ','ᛋ','ᛏ','ᛒ','ᛗ'];
+  const spots = [[110,150,90],[1080,120,120],[220,640,100],[980,660,80],[600,90,70],[80,420,110],[1130,420,95],[620,720,85],[380,250,60],[840,300,65],[350,560,70],[860,540,60]];
+  let html = '';
+  spots.forEach(([x,y,s], i) => {
+    html += `<text x="${x}" y="${y}" font-size="${s}" transform="rotate(${(i*37)%40 - 20} ${x} ${y})">${runes[i % runes.length]}</text>`;
+  });
+  g.innerHTML = html;
+})();
+(function buildOrcaBg(){
+  const g = document.getElementById('orcabg');
+  let html = '';
+  /* ondas horizontais */
+  [120, 300, 520, 700].forEach((y, i) => {
+    let d = `M-40,${y}`;
+    for (let x = -40; x < 1260; x += 120) d += ` q60,${i % 2 ? -22 : 22} 120,0`;
+    html += `<path d="${d}" stroke="var(--ink)" stroke-width="1.2" fill="none"/>`;
+  });
+  /* bolhas */
+  const bubbles = [[140,220,7],[190,180,4],[920,560,9],[960,510,5],[1090,240,6],[320,600,5],[350,650,8],[640,160,5],[700,690,6],[70,520,4],[1150,640,5],[540,320,3]];
+  bubbles.forEach(([x,y,r]) => {
+    html += `<circle cx="${x}" cy="${y}" r="${r}" fill="none" stroke="var(--ink)" stroke-width="1"/>`;
+  });
+  g.innerHTML = html;
+})();
+(function buildGregoBg(){
+  const g = document.getElementById('gregobg');
+  let html = '';
+  /* frisos de meandro no alto e na base */
+  [46, 758].forEach(y => {
+    let d = '';
+    for (let x = 0; x < 1200; x += 48) {
+      d += `M${x},${y+14} h36 M${x+36},${y+14} v-18 M${x+36},${y-4} h-26 M${x+10},${y-4} v11 M${x+10},${y+7} h16 `;
+    }
+    html += `<path d="${d}" stroke="var(--ink)" stroke-width="2" fill="none"/>`;
+  });
+  /* letras gregas dispersas */
+  const letters = ['Α','Δ','Θ','Λ','Ξ','Π','Σ','Φ','Ψ','Ω'];
+  const spots = [[130,220,80],[1050,190,100],[240,600,90],[950,620,75],[590,150,65],[90,430,95],[1120,440,85],[620,680,70],[400,320,55],[820,350,60]];
+  spots.forEach(([x,y,s], i) => {
+    html += `<text x="${x}" y="${y}" font-size="${s}" fill="var(--ink)" opacity=".5"
+             transform="rotate(${(i*29)%30 - 15} ${x} ${y})" style="font-family:serif">${letters[i % letters.length]}</text>`;
+  });
+  g.innerHTML = html;
+})();
+
+(function buildSonarBg(){
+  const g = document.getElementById('sonarbg');
+  let html = '';
+  /* matriz de pontos, como em telas HUD */
+  html += `<defs><pattern id="dotgrid" width="26" height="26" patternUnits="userSpaceOnUse">
+             <circle cx="2" cy="2" r="1" fill="var(--accent)" opacity=".14"/>
+           </pattern></defs>
+           <rect width="1200" height="800" fill="url(#dotgrid)"/>`;
+  /* painéis HUD (cantos) */
+  const panels = [[36,40,150,3],[36,300,120,2],[1030,40,134,4],[1030,560,134,3],[36,660,150,2]];
+  panels.forEach(([x,y,w,rows]) => {
+    html += `<rect x="${x}" y="${y}" width="${w}" height="${rows*16+14}" fill="none"
+             stroke="var(--accent)" stroke-width="1" opacity=".35"/>`;
+    for (let r = 0; r < rows; r++) {
+      const bw = 30 + ((r*37 + x) % 60);
+      html += `<rect x="${x+9}" y="${y+10+r*16}" width="${bw}" height="5"
+               fill="var(--accent)" opacity=".28"/>`;
+    }
+  });
+  /* marcas de retículo dispersas */
+  const marks = [[300,140],[900,110],[220,540],[980,430],[620,700],[760,240],[420,380]];
+  marks.forEach(([x,y]) => {
+    html += `<path d="M${x-7},${y} h5 M${x+2},${y} h5 M${x},${y-7} v5 M${x},${y+2} v5"
+             stroke="var(--accent)" stroke-width="1" opacity=".4"/>`;
+  });
+  /* linhas de telemetria */
+  html += `<path d="M36,180 h150 M36,196 h108" stroke="var(--accent)" stroke-width="1" opacity=".25"/>
+           <path d="M1030,200 h134 M1056,216 h108" stroke="var(--accent)" stroke-width="1" opacity=".25"/>`;
+  g.innerHTML = html;
+})();
+
+/* Chips */
+(function buildChips(){
+  const wrap = document.getElementById('chips');
+  DIRS.forEach(d => {
+    const b = document.createElement('button');
+    b.className = 'chip';
+    b.textContent = d;
+    b.title = NOMES[d];
+    b.dataset.dir = d;
+    b.setAttribute('role','radio');
+    b.setAttribute('aria-checked','false');
+    b.onclick = () => setFrente(d);
+    wrap.appendChild(b);
+  });
+})();
+
+/* ══ Orientação ══════════════════════════════════════ */
+function setFrente(dir, opts = {}) {
+  frente = dir;
+  const target = GRAUS[dir];
+  const cur   = ((cumDeg % 360) + 360) % 360;
+  const delta = ((target - cur + 540) % 360) - 180;
+  cumDeg += delta;
+  document.getElementById('compass-container').style.transform = `rotate(${-cumDeg}deg)`;
+
+  const i = DIRS.indexOf(dir);
+  const sides = { front:dir, right:DIRS[(i+2)%8], back:DIRS[(i+4)%8], left:DIRS[(i+6)%8] };
+  for (const [role, d] of Object.entries(sides)) {
+    document.querySelector(`#side-${role} .dir`).textContent = NOMES[d];
+  }
+  document.getElementById('statusFront').textContent = NOMES[dir];
+  document.getElementById('statusDeg').textContent   = target + '°';
+  document.querySelectorAll('.chip').forEach(c => {
+    const on = c.dataset.dir === dir;
+    c.classList.toggle('active', on);
+    c.setAttribute('aria-checked', on);
+  });
+  if (!opts.silent) emitBurst();
+}
+
+/* ══ Rosa clicável ═══════════════════════════════════ */
+const frame = document.getElementById('compassFrame');
+const hint  = document.getElementById('hint');
+
+function dirAtPointer(ev) {
+  const r  = frame.getBoundingClientRect();
+  const dx = ev.clientX - (r.left + r.width / 2);
+  const dy = ev.clientY - (r.top  + r.height / 2);
+  if (Math.hypot(dx, dy) < r.width * 0.06) return null;
+  let theta = Math.atan2(dx, -dy) * 180 / Math.PI;
+  theta = ((theta + cumDeg) % 360 + 360) % 360;
+  return DIRS[Math.round(theta / 45) % 8];
+}
+frame.addEventListener('click', ev => { const d = dirAtPointer(ev); if (d) setFrente(d); });
+frame.addEventListener('mousemove', ev => {
+  const d = dirAtPointer(ev);
+  if (!d) { hint.classList.remove('on'); return; }
+  const r = frame.getBoundingClientRect();
+  hint.textContent = NOMES[d] + ' → frente';
+  hint.style.left = (ev.clientX - r.left) + 'px';
+  hint.style.top  = (ev.clientY - r.top)  + 'px';
+  hint.classList.add('on');
+});
+frame.addEventListener('mouseleave', () => hint.classList.remove('on'));
+frame.addEventListener('keydown', ev => {
+  const i = DIRS.indexOf(frente);
+  if (ev.key === 'ArrowRight' || ev.key === 'ArrowDown') { ev.preventDefault(); setFrente(DIRS[(i+1)%8]); }
+  else if (ev.key === 'ArrowLeft' || ev.key === 'ArrowUp') { ev.preventDefault(); setFrente(DIRS[(i+7)%8]); }
+});
+
+/* ══ Copiar confrontações ════════════════════════════ */
+function textoConfrontacoes() {
+  const i = DIRS.indexOf(frente);
+  return `Frente: ${NOMES[frente]}; ` +
+         `Lado direito: ${NOMES[DIRS[(i+2)%8]]}; ` +
+         `Fundos: ${NOMES[DIRS[(i+4)%8]]}; ` +
+         `Lado esquerdo: ${NOMES[DIRS[(i+6)%8]]}.`;
+}
+async function copiarConfrontacoes() {
+  const txt = textoConfrontacoes();
+  const icon = STYLE_META[curStyle].icon;
+  try {
+    await navigator.clipboard.writeText(txt);
+    toast(icon + 'Confrontações copiadas');
+  } catch {
+    const ta = document.createElement('textarea');
+    ta.value = txt; document.body.appendChild(ta);
+    ta.select(); document.execCommand('copy'); ta.remove();
+    toast(icon + 'Confrontações copiadas');
+  }
+}
+let toastTimer;
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('on');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('on'), 2200);
+}
+
+/* ══ Estilo e modo ═══════════════════════════════════ */
+let curStyle = 'classico';
+function setStyle(sty) {
+  curStyle = sty;
+  document.documentElement.setAttribute('data-style', sty);
+  document.getElementById('subTitle').textContent = STYLE_META[sty].sub;
+  document.getElementById('copyBtn').textContent =
+    (STYLE_META[sty].icon ? STYLE_META[sty].icon : '') + 'Copiar Confrontações';
+  document.querySelectorAll('.style-btn').forEach(b => {
+    const on = b.dataset.sty === sty;
+    b.classList.toggle('active', on);
+    b.setAttribute('aria-checked', on);
+  });
+  updatePalette();
+  assignColors();
+}
+function toggleMode() {
+  const html = document.documentElement;
+  const dark = html.getAttribute('data-mode') === 'dark';
+  html.setAttribute('data-mode', dark ? 'light' : 'dark');
+  document.getElementById('themeIcon').textContent = dark ? '☀' : '☾';
+  updatePalette();
+  assignColors();
+}
+
+/* ══ Partículas ══════════════════════════════════════ */
+const canvas  = document.getElementById('bg');
+const ctx     = canvas.getContext('2d');
+const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+let W, H, C = {};
+
+const PALETTES = {
+  classico: {
+    dark:  { stars:['201,185,129','224,85,85','85,128,224','85,168,112','212,184,64'],
+             burst:['201,185,129','224,85,85','85,168,112','212,184,64'] },
+    light: { stars:['138,110,42','192,48,48','40,72,192','40,120,72','144,96,16'],
+             burst:['138,110,42','192,48,48','40,120,72'] },
+  },
+  caravela: {
+    light: { stars:['138,100,20','140,28,28','36,64,110','45,92,60'],
+             burst:['125,31,26','138,100,20','59,42,23'] },
+    dark:  { stars:['201,160,78','212,84,74','109,143,208','99,165,119'],
+             burst:['201,160,78','212,84,74','228,209,162'] },
+  },
+  viking: {
+    dark:  { stars:['216,211,196','194,59,42','79,125,140','169,136,74'],
+             burst:['194,59,42','216,211,196','169,136,74'] },
+    light: { stars:['35,40,43','140,35,24','52,94,110','122,98,48'],
+             burst:['140,35,24','35,40,43','122,98,48'] },
+  },
+  orca: {
+    dark:  { stars:['142,203,216','232,242,245','74,155,168','58,125,148'],
+             burst:['110,198,216','232,242,245','74,155,168'] },
+    light: { stars:['23,112,138','16,34,44','74,155,168','111,163,178'],
+             burst:['23,112,138','58,140,160','16,34,44'] },
+  },
+  grego: {
+    light: { stars:['163,80,46','31,94,140','156,124,60','74,107,79'],
+             burst:['163,80,46','156,124,60','43,38,32'] },
+    dark:  { stars:['216,160,94','207,122,60','126,160,190','143,168,120'],
+             burst:['207,122,60','216,160,94','230,194,144'] },
+  },
+  sonar: {
+    dark:  { stars:['61,255,160','125,255,192','42,168,118','184,255,208'],
+             burst:['61,255,160','184,255,208','125,255,192'] },
+    light: { stars:['11,122,78','8,56,37','47,154,104','74,122,96'],
+             burst:['11,122,78','47,154,104','8,56,37'] },
+  },
+};
+function updatePalette() {
+  const mode = document.documentElement.getAttribute('data-mode');
+  C = PALETTES[curStyle][mode];
+}
+function resize() { W = canvas.width = innerWidth; H = canvas.height = innerHeight; }
+addEventListener('resize', resize);
+
+const STAR_COUNT = 70, ORBIT_COUNT = 12;
+const stars = [], orbs = [];
+let bursts = [];
+
+function makeStar(init) {
+  return {
+    x: Math.random() * innerWidth,
+    y: init ? Math.random() * innerHeight : -4,
+    r: .3 + Math.random() * 1.2,
+    vx: (Math.random() - .5) * .1,
+    vy: .03 + Math.random() * .1,
+    life: init ? Math.random() * 500 : 0,
+    max: 280 + Math.random() * 440,
+    col: null,
+    ph: Math.random() * Math.PI * 2,
+    pulse: Math.random() < .4,
+    ps: .015 + Math.random() * .02,
+  };
+}
+function makeOrb(i) {
+  return {
+    angle: (i / ORBIT_COUNT) * Math.PI * 2,
+    rad: 158 + (i % 4) * 15,
+    speed: (.0012 + Math.random() * .0018) * (i % 2 ? -1 : 1),
+    r: .5 + Math.random(),
+    a: .1 + Math.random() * .18,
+    col: null,
+  };
+}
+function assignColors() {
+  stars.forEach(s => s.col = C.stars[Math.floor(Math.random() * C.stars.length)]);
+  orbs.forEach((o,i) => o.col = C.stars[i % C.stars.length]);
+}
+function emitBurst() {
+  if (REDUCED) return;
+  const r  = frame.getBoundingClientRect();
+  const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+  for (let i = 0; i < 24; i++) {
+    const a = Math.random() * Math.PI * 2, spd = .8 + Math.random() * 2.8;
+    bursts.push({
+      x: cx, y: cy,
+      vx: Math.cos(a) * spd, vy: Math.sin(a) * spd,
+      r: .8 + Math.random() * 2,
+      col: C.burst[Math.floor(Math.random() * C.burst.length)],
+      life: 0, max: 45 + Math.random() * 40,
+    });
+  }
+}
+function tick() {
+  ctx.clearRect(0, 0, W, H);
+  /* No tema Orca, as "estrelas" sobem como bolhas */
+  const rising = curStyle === 'orca';
+  for (const s of stars) {
+    s.x += s.vx;
+    s.y += rising ? -s.vy : s.vy;
+    s.life++;
+    const off = rising ? (s.y < -6) : (s.y > H + 6);
+    if (off || s.x < -6 || s.x > W + 6 || s.life > s.max) {
+      Object.assign(s, makeStar(false));
+      if (rising) s.y = H + 4;
+      s.col = C.stars[Math.floor(Math.random() * C.stars.length)];
+    }
+    const p = s.life / s.max;
+    const fade = p < .1 ? p / .1 : p > .85 ? (1 - p) / .15 : 1;
+    const pulse = s.pulse ? .5 + .5 * Math.sin(s.life * s.ps + s.ph) : 1;
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(${s.col},${.4 * fade * pulse})`;
+    ctx.fill();
+  }
+  const r  = frame.getBoundingClientRect();
+  const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+  for (const o of orbs) {
+    o.angle += o.speed;
+    ctx.beginPath();
+    ctx.arc(cx + Math.cos(o.angle) * o.rad, cy + Math.sin(o.angle) * o.rad, o.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(${o.col},${o.a})`;
+    ctx.fill();
+  }
+  bursts = bursts.filter(b => b.life < b.max);
+  for (const b of bursts) {
+    b.x += b.vx; b.y += b.vy; b.vy += .05; b.vx *= .97; b.life++;
+    const a = (1 - b.life / b.max) * .85;
+    ctx.beginPath();
+    ctx.arc(b.x, b.y, Math.max(b.r * (1 - b.life / b.max * .4), .1), 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(${b.col},${a})`;
+    ctx.fill();
+  }
+  requestAnimationFrame(tick);
+}
+
+/* ══ Init ════════════════════════════════════════════ */
+addEventListener('load', () => {
+  updatePalette(); resize();
+  for (let i = 0; i < STAR_COUNT; i++) stars.push(makeStar(true));
+  for (let i = 0; i < ORBIT_COUNT; i++) orbs.push(makeOrb(i));
+  assignColors();
+  if (!REDUCED) requestAnimationFrame(tick);
+  setFrente('N', { silent: true });
+});
+</script>
+</body>
+</html>
