@@ -20,7 +20,7 @@
 <title>Orientação Cardeal · Intuity</title>
 
 <!-- restante do código -->
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=DM+Mono:wght@300;400&family=UnifrakturMaguntia&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Cinzel:wght@400;600&family=Metamorphous&family=MedievalSharp&family=Comfortaa:wght@400;600&family=Quicksand:wght@400;500&family=Marcellus&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=DM+Mono:wght@300;400&family=UnifrakturMaguntia&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Cinzel:wght@400;600&family=Metamorphous&family=MedievalSharp&family=Comfortaa:wght@400;600&family=Quicksand:wght@400;500&family=Marcellus&family=Share+Tech+Mono&family=Bebas+Neue&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
   --ease:   cubic-bezier(0.4, 0, 0.2, 1);
@@ -131,6 +131,10 @@
   --logo-filter:brightness(0) invert(1) opacity(.9);
   --shadow:0 26px 70px -28px rgba(0,0,0,.8);
   --vignette:radial-gradient(ellipse at center, transparent 50%, rgba(0,10,18,.55) 100%);
+  --orca-black:#07090c; --orca-black-mid:#11161b; --orca-black-hi:#2c3640;
+  --orca-white:#f4f8f9; --orca-white-lo:#aebdc4; --orca-saddle:#7d8890;
+  --orca-rim:rgba(150,210,226,.35); --orca-north-lo:#2f8ea3;
+  --orca-ray:rgba(150,215,235,.07); --orca-pod:.5;
 }
 [data-style="orca"][data-mode="light"] {
   --bg:#e2edf1; --bg-deep:#d3e2e8; --surface:#eef5f7; --surface-2:#e0ebef;
@@ -143,6 +147,48 @@
   --logo-filter:brightness(0) saturate(1) opacity(.85);
   --shadow:0 26px 60px -32px rgba(16,50,66,.4);
   --vignette:radial-gradient(ellipse at center, transparent 58%, rgba(60,110,130,.16) 100%);
+  --orca-black:#06080a; --orca-black-mid:#12171c; --orca-black-hi:#34404a;
+  --orca-white:#ffffff; --orca-white-lo:#c2cdd2; --orca-saddle:#97a1a7;
+  --orca-rim:rgba(255,255,255,0); --orca-north-lo:#0e4f62;
+  --orca-ray:rgba(255,255,255,.4); --orca-pod:.2;
+}
+
+/* ═══════════════ TEMA TUBARÃO ═══════════════ */
+[data-style="tubarao"] {
+  --f-display:'Bebas Neue',sans-serif;      --f-body:'Barlow',sans-serif;
+  --f-label:'Barlow Condensed',sans-serif;  --f-cap:'Barlow Condensed',sans-serif;
+}
+[data-style="tubarao"][data-mode="dark"] {
+  --bg:#071119; --bg-deep:#03080d; --surface:#0c1a23; --surface-2:#12232e;
+  --ink:#dfe6e9; --muted:rgba(223,230,233,.45);
+  --line:rgba(223,230,233,.09); --line2:rgba(223,230,233,.2);
+  --accent:#ef7b52; --gold:#c9b28a;
+  --accent-soft:rgba(239,123,82,.1); --accent-glow:rgba(239,123,82,.3);
+  --n:#ef7b52; --s:#7d97a8; --e:#9fb3bf; --w:#6f8796;
+  --rose-dark:#03080d; --rose-lite:#eef2f3;
+  --logo-filter:brightness(0) invert(1) opacity(.9);
+  --shadow:0 26px 70px -28px rgba(0,0,0,.85);
+  --vignette:radial-gradient(ellipse at center, transparent 45%, rgba(0,6,12,.65) 100%);
+  --shark-dark:#2b353d; --shark-mid:#4a5862; --shark-hi:#7a8a94;
+  --shark-belly:#f2f4f3; --shark-belly-lo:#aab5ba; --shark-rim:rgba(170,205,220,.3);
+  --shark-enamel:#f6f3ea; --shark-enamel-lo:#cfc8b6; --shark-north-lo:#a8462a;
+  --shark-ray:rgba(150,200,220,.06); --shark-pod:.55;
+}
+[data-style="tubarao"][data-mode="light"] {
+  --bg:#dbe5e8; --bg-deep:#c9d7dc; --surface:#eaf0f2; --surface-2:#dde6e9;
+  --ink:#14212a; --muted:rgba(20,33,42,.5);
+  --line:rgba(20,33,42,.1); --line2:rgba(20,33,42,.22);
+  --accent:#b9472a; --gold:#8a7350;
+  --accent-soft:rgba(185,71,42,.08); --accent-glow:rgba(185,71,42,.26);
+  --n:#b9472a; --s:#3e5a6b; --e:#557282; --w:#6d8592;
+  --rose-dark:#14212a; --rose-lite:#f7fafb;
+  --logo-filter:brightness(0) saturate(1) opacity(.85);
+  --shadow:0 26px 60px -32px rgba(20,40,52,.45);
+  --vignette:radial-gradient(ellipse at center, transparent 55%, rgba(40,70,85,.18) 100%);
+  --shark-dark:#2f3a42; --shark-mid:#56656f; --shark-hi:#8796a0;
+  --shark-belly:#ffffff; --shark-belly-lo:#c0c9cd; --shark-rim:rgba(255,255,255,0);
+  --shark-enamel:#fffdf6; --shark-enamel-lo:#d6cfbd; --shark-north-lo:#7a2a16;
+  --shark-ray:rgba(255,255,255,.4); --shark-pod:.24;
 }
 
 /* ═══════════════ TEMA GRÉCIA ANTIGA ═══════════════ */
@@ -227,6 +273,20 @@ body {
 [data-style="caravela"] #chart-bg .parch, [data-style="caravela"] #rumos   { display:block; }
 [data-style="viking"]   #chart-bg .parch, [data-style="viking"]   #vikingbg{ display:block; }
 [data-style="orca"]     #orcabg  { display:block; }
+[data-style="tubarao"]  #tubaraobg { display:block; }
+.orca-defs { position:absolute; width:0; height:0; overflow:hidden; pointer-events:none; }
+#orcabg .pod { opacity:var(--orca-pod); }
+#tubaraobg .pod { opacity:var(--shark-pod); }
+.shark-tail { transform-box:view-box; transform-origin:44px 45.5px; animation:sharkTail 2.8s ease-in-out infinite alternate; }
+@keyframes sharkTail { from { transform:scaleX(1); } to { transform:scaleX(.8); } }
+.orca-swim  { animation:orcaSwim linear infinite; }
+.orca-bob   { transform-box:fill-box; transform-origin:center; animation:orcaBob 7s ease-in-out infinite alternate; }
+.orca-fluke { transform-box:view-box; transform-origin:37px 48.5px; animation:orcaFluke 1.9s ease-in-out infinite alternate; }
+.orca-rays  { animation:orcaRays 9s ease-in-out infinite alternate; }
+@keyframes orcaSwim  { from { transform:translateX(var(--from)); } to { transform:translateX(var(--to)); } }
+@keyframes orcaBob   { from { transform:translateY(-7px) rotate(-1.4deg); } to { transform:translateY(7px) rotate(1.4deg); } }
+@keyframes orcaFluke { from { transform:rotate(-4deg); } to { transform:rotate(4deg); } }
+@keyframes orcaRays  { from { opacity:.5; } to { opacity:1; } }
 [data-style="grego"]    #chart-bg .parch, [data-style="grego"]    #gregobg { display:block; }
 [data-style="sonar"]    #sonarbg { display:block; }
 canvas#bg { position:fixed; inset:0; width:100%; height:100%; pointer-events:none; z-index:0; }
@@ -245,6 +305,7 @@ canvas#bg { position:fixed; inset:0; width:100%; height:100%; pointer-events:non
 [data-style="caravela"] .title h1 { font-size:clamp(1.9rem,6vw,2.6rem); letter-spacing:.02em; }
 [data-style="viking"]   .title h1 { font-size:clamp(1.5rem,5vw,2rem); letter-spacing:.06em; }
 [data-style="orca"]     .title h1 { font-size:clamp(1.3rem,4.5vw,1.7rem); letter-spacing:.2em; text-transform:uppercase; font-weight:600; }
+[data-style="tubarao"]  .title h1 { font-size:clamp(2rem,6.5vw,2.7rem); letter-spacing:.16em; line-height:1; }
 [data-style="grego"]    .title h1 { font-size:clamp(1.5rem,5vw,2rem); letter-spacing:.16em; text-transform:uppercase; font-weight:600; }
 [data-style="sonar"]    .title h1 { font-size:clamp(1.2rem,4.5vw,1.6rem); letter-spacing:.3em; text-transform:uppercase; text-shadow:0 0 12px var(--accent-glow); }
 .title .sub { font-family:var(--f-cap); color:var(--muted); }
@@ -252,6 +313,7 @@ canvas#bg { position:fixed; inset:0; width:100%; height:100%; pointer-events:non
 [data-style="caravela"] .sub { font-size:.82rem; letter-spacing:.3em; }
 [data-style="viking"] .sub, [data-style="orca"] .sub, [data-style="grego"] .sub { font-size:.76rem; letter-spacing:.28em; }
 [data-style="orca"] .sub { text-transform:uppercase; font-size:.6rem; }
+[data-style="tubarao"] .sub { text-transform:uppercase; font-size:.72rem; letter-spacing:.32em; }
 [data-style="sonar"] .sub { text-transform:uppercase; font-size:.58rem; letter-spacing:.34em; }
 
 /* Ornamento do cabeçalho */
@@ -264,11 +326,14 @@ canvas#bg { position:fixed; inset:0; width:100%; height:100%; pointer-events:non
 [data-style="caravela"] .orn-caravela { display:block; }
 [data-style="viking"]   .orn-viking   { display:block; }
 [data-style="orca"]     .orn-orca     { display:block; }
+[data-style="tubarao"]  .orn-tubarao  { display:block; }
+.ornament svg.orn-orca { height:40px; }
+.ornament svg.orn-tubarao { height:42px; }
 [data-style="grego"]    .orn-grego    { display:block; }
 [data-style="sonar"]    .orn-sonar    { display:block; }
 
 /* Seletor de tema */
-.style-picker { display:flex; gap:6px; margin-top:4px; flex-wrap:wrap; justify-content:center; }
+.style-picker { display:flex; gap:6px; margin-top:4px; flex-wrap:wrap; justify-content:center; width:min(760px, calc(100vw - 48px)); }
 .style-btn {
   padding:7px 14px; background:transparent;
   border:1px solid var(--line2); color:var(--muted);
@@ -297,6 +362,17 @@ canvas#bg { position:fixed; inset:0; width:100%; height:100%; pointer-events:non
 [data-style="viking"]   .compass-frame,
 [data-style="grego"]    .compass-frame { outline-color:var(--line2); }
 [data-style="orca"]     .compass-frame { border-radius:32px; }
+/* Tubarão: escotilha circular com parafusos */
+[data-style="tubarao"]  .compass-frame {
+  border-radius:50%; outline-color:var(--line2);
+  box-shadow:var(--shadow), inset 0 0 0 6px var(--surface-2), inset 0 0 0 7px var(--line2), inset 0 0 46px rgba(0,0,0,.32);
+}
+[data-style="tubarao"] .compass-frame::before {
+  content:''; position:absolute; inset:0; border-radius:50%; pointer-events:none; z-index:4;
+  background:repeating-conic-gradient(from -2deg, var(--line2) 0 4deg, transparent 4deg 30deg);
+  -webkit-mask:radial-gradient(circle, transparent calc(50% - 6px), #000 calc(50% - 6px) calc(50% - 1px), transparent calc(50% - 1px));
+          mask:radial-gradient(circle, transparent calc(50% - 6px), #000 calc(50% - 6px) calc(50% - 1px), transparent calc(50% - 1px));
+}
 [data-style="sonar"]    .compass-frame { border-color:var(--accent); outline-color:var(--line2); }
 [data-style="sonar"][data-mode="dark"] .compass-frame::after {
   content:''; position:absolute; inset:0; pointer-events:none; z-index:4;
@@ -346,8 +422,10 @@ svg .ly { display:none; }
 [data-style="caravela"] svg .ly-caravela { display:inline; }
 [data-style="viking"]   svg .ly-viking   { display:inline; }
 [data-style="orca"]     svg .ly-orca     { display:inline; }
+[data-style="tubarao"]  svg .ly-tubarao  { display:inline; }
 [data-style="grego"]    svg .ly-grego    { display:inline; }
 [data-style="sonar"]    svg .ly-sonar    { display:inline; }
+[data-style="orca"] svg .hub, [data-style="tubarao"] svg .hub { display:none; }   /* o animal central faz o papel do cubo */
 svg text { font-family: var(--f-label); }
 
 /* Rótulo sob o cursor */
@@ -363,6 +441,7 @@ svg text { font-family: var(--f-label); }
 }
 [data-style="classico"] #hint { font-size:.55rem; letter-spacing:.18em; text-transform:uppercase; }
 [data-style="orca"] #hint { border-radius:999px; }
+[data-style="tubarao"] #hint { border-radius:2px; font-size:.68rem; letter-spacing:.2em; text-transform:uppercase; }
 [data-style="sonar"] #hint { font-size:.58rem; letter-spacing:.2em; text-transform:uppercase; border-color:var(--accent); box-shadow:0 0 10px -2px var(--accent-glow); }
 #hint.on { opacity:1; }
 
@@ -373,12 +452,14 @@ svg text { font-family: var(--f-label); }
 [data-style="caravela"] .side .role { font-family:var(--f-body); font-style:italic; font-size:.72rem; letter-spacing:.08em; }
 [data-style="viking"] .side .role, [data-style="grego"] .side .role { font-size:.68rem; letter-spacing:.14em; }
 [data-style="orca"] .side .role { font-size:.55rem; letter-spacing:.24em; text-transform:uppercase; }
+[data-style="tubarao"] .side .role { font-size:.66rem; letter-spacing:.28em; text-transform:uppercase; }
 [data-style="sonar"] .side .role { font-size:.52rem; letter-spacing:.26em; text-transform:uppercase; }
 .side .dir { font-family:var(--f-label); text-transform:uppercase; line-height:1.15; color:var(--ink); transition:color .3s var(--ease); }
 [data-style="classico"] .side .dir { font-size:1.2rem; font-weight:600; letter-spacing:.08em; }
 [data-style="caravela"] .side .dir { font-size:1.02rem; font-weight:600; letter-spacing:.14em; }
 [data-style="viking"] .side .dir  { font-size:1.05rem; letter-spacing:.1em; }
 [data-style="orca"] .side .dir    { font-size:.95rem; font-weight:500; letter-spacing:.18em; }
+[data-style="tubarao"] .side .dir { font-size:1.1rem; font-weight:600; letter-spacing:.16em; }
 [data-style="grego"] .side .dir   { font-size:1rem; letter-spacing:.14em; }
 [data-style="sonar"] .side .dir   { font-size:.95rem; letter-spacing:.2em; }
 .side.front .dir { color:var(--accent); }
@@ -398,6 +479,7 @@ svg text { font-family: var(--f-label); }
 [data-style="caravela"] .picker-label { font-size:.8rem; letter-spacing:.24em; }
 [data-style="viking"] .picker-label, [data-style="grego"] .picker-label { font-size:.76rem; letter-spacing:.22em; }
 [data-style="orca"] .picker-label { font-size:.58rem; letter-spacing:.26em; text-transform:uppercase; }
+[data-style="tubarao"] .picker-label { font-size:.7rem; letter-spacing:.3em; text-transform:uppercase; }
 [data-style="sonar"] .picker-label { font-size:.56rem; letter-spacing:.3em; text-transform:uppercase; }
 .chips { display:grid; grid-template-columns:repeat(8,1fr); gap:6px; }
 @media (max-width:480px) { .chips { grid-template-columns:repeat(4,1fr); } }
@@ -410,6 +492,7 @@ svg text { font-family: var(--f-label); }
 [data-style="classico"] .chip { font-family:var(--f-cap); font-size:.62rem; letter-spacing:.14em; }
 [data-style="caravela"] .chip, [data-style="grego"] .chip { font-weight:600; }
 [data-style="orca"] .chip { border-radius:999px; font-weight:500; }
+[data-style="tubarao"] .chip { border-radius:2px; font-size:.8rem; font-weight:600; letter-spacing:.14em; }
 [data-style="sonar"] .chip { font-size:.62rem; letter-spacing:.18em; }
 .chip:hover { border-color:var(--accent); color:var(--accent); background:var(--accent-soft); }
 .chip.active { border-color:var(--accent); background:var(--accent-soft); color:var(--accent); box-shadow:inset 0 0 0 1px var(--accent); }
@@ -427,6 +510,7 @@ svg text { font-family: var(--f-label); }
 }
 [data-style="classico"] .btn { font-size:.55rem; letter-spacing:.28em; text-transform:uppercase; }
 [data-style="orca"] .btn { border-radius:999px; font-size:.62rem; letter-spacing:.24em; text-transform:uppercase; }
+[data-style="tubarao"] .btn { border-radius:2px; font-size:.78rem; font-weight:600; letter-spacing:.26em; text-transform:uppercase; }
 [data-style="sonar"] .btn { font-size:.6rem; letter-spacing:.26em; text-transform:uppercase; }
 [data-style="sonar"] .btn:hover { box-shadow:0 0 14px -4px var(--accent-glow); }
 .btn:hover { border-color:var(--accent); background:var(--accent-soft); color:var(--accent); }
@@ -440,12 +524,14 @@ svg text { font-family: var(--f-label); }
 [data-style="caravela"] .status { font-size:.78rem; letter-spacing:.1em; }
 [data-style="viking"] .status, [data-style="grego"] .status { font-size:.74rem; letter-spacing:.1em; }
 [data-style="orca"] .status { font-size:.58rem; letter-spacing:.2em; text-transform:uppercase; }
+[data-style="tubarao"] .status { font-size:.72rem; letter-spacing:.22em; text-transform:uppercase; }
 [data-style="sonar"] .status { font-size:.56rem; letter-spacing:.18em; text-transform:uppercase; }
 .status strong { color:var(--accent); font-weight:400; }
 .kbd-hint { font-family:var(--f-body); color:var(--muted); font-size:.75rem; }
 [data-style="classico"] .kbd-hint { font-family:var(--f-cap); font-size:.48rem; letter-spacing:.12em; text-transform:uppercase; opacity:.8; }
 [data-style="caravela"] .kbd-hint { font-style:italic; }
 [data-style="orca"] .kbd-hint { font-size:.62rem; }
+[data-style="tubarao"] .kbd-hint { font-size:.72rem; }
 [data-style="sonar"] .kbd-hint { font-size:.56rem; letter-spacing:.1em; text-transform:uppercase; }
 .kbd-hint kbd { font-family:var(--f-cap); font-style:normal; font-size:.85em; border:1px solid var(--line2); padding:1px 5px; margin:0 1px; }
 
@@ -464,6 +550,7 @@ svg text { font-family: var(--f-label); }
 }
 [data-style="classico"] #toast { font-size:.55rem; letter-spacing:.22em; text-transform:uppercase; outline:none; }
 [data-style="orca"] #toast { border-radius:999px; outline:none; font-size:.62rem; text-transform:uppercase; }
+[data-style="tubarao"] #toast { border-radius:2px; outline:none; font-size:.74rem; font-weight:600; text-transform:uppercase; }
 [data-style="sonar"] #toast { font-size:.6rem; letter-spacing:.24em; text-transform:uppercase; outline:none; box-shadow:0 0 18px -4px var(--accent-glow); }
 #toast.on { opacity:1; transform:translate(-50%,0); }
 
@@ -490,10 +577,254 @@ svg text { font-family: var(--f-label); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration:.01ms !important; transition-duration:.01ms !important; }
   #compass-container { transition:none; }
+  .orca-swim, .orca-bob, .orca-fluke, .orca-rays, .shark-tail { animation:none !important; }
 }
 </style>
 </head>
 <body>
+
+<!-- Orca e tubarão-branco anatômicos (perfil e vista dorsal), reutilizados pelos temas -->
+<svg class="orca-defs" width="0" height="0" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- sombreamento: luz vinda da superfície -->
+    <linearGradient id="orcaSkin" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="84">
+      <stop offset="0"   style="stop-color:var(--orca-black-hi)"/>
+      <stop offset=".42" style="stop-color:var(--orca-black-mid)"/>
+      <stop offset="1"   style="stop-color:var(--orca-black)"/>
+    </linearGradient>
+    <linearGradient id="orcaPatch" gradientUnits="userSpaceOnUse" x1="0" y1="38" x2="0" y2="72">
+      <stop offset="0" style="stop-color:var(--orca-white)"/>
+      <stop offset="1" style="stop-color:var(--orca-white-lo)"/>
+    </linearGradient>
+    <linearGradient id="orcaSkinTop" gradientUnits="userSpaceOnUse" x1="-14" y1="0" x2="14" y2="0">
+      <stop offset="0"   style="stop-color:var(--orca-black)"/>
+      <stop offset=".5"  style="stop-color:var(--orca-black-hi)"/>
+      <stop offset="1"   style="stop-color:var(--orca-black)"/>
+    </linearGradient>
+    <linearGradient id="orcaFinDark" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0"   style="stop-color:var(--orca-black-hi)"/>
+      <stop offset=".55" style="stop-color:var(--orca-black-mid)"/>
+      <stop offset="1"   style="stop-color:var(--orca-black)"/>
+    </linearGradient>
+    <linearGradient id="orcaFinLite" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" style="stop-color:var(--orca-white)"/>
+      <stop offset="1" style="stop-color:var(--orca-white-lo)"/>
+    </linearGradient>
+    <linearGradient id="orcaFinNorth" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" style="stop-color:var(--accent)"/>
+      <stop offset="1" style="stop-color:var(--orca-north-lo)"/>
+    </linearGradient>
+    <filter id="orcaSoft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="1.1"/>
+    </filter>
+    <filter id="orcaSoftSm" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation=".45"/>
+    </filter>
+
+    <!-- ── Orca de perfil (voltada para a direita) ── -->
+    <path id="orcaBodyPath" d="M193,50 C193,45 189,40 182,37 C172,33 160,31 146,30.5 C138,30 130,30 124,30.5
+        C121,22 114,9 106.5,2 C105.2,0.8 103.8,1.2 104,2.8 C104,12 101,22 96,31
+        C88,32.5 76,34 64,36.5 C52,39 41,42 32,44.5 L31,45 L31,52.5 L32,52.5
+        C42,55.5 56,60 72,63.5 C88,67 106,69 124,69 C142,69 158,66.5 170,62
+        C180,58.5 188,55 191.5,52.5 C192.6,51.8 193,51 193,50 Z"/>
+    <clipPath id="orcaBodyClip"><use href="#orcaBodyPath"/></clipPath>
+    <symbol id="orca-side" viewBox="0 0 196 84" overflow="visible">
+      <!-- lobo caudal do lado oposto, em perspectiva -->
+      <g class="orca-fluke">
+        <path d="M37,50.4 C29,51.4 21,52.8 13,54.8 C9.6,55.6 8.4,54.2 10.4,52.8 C15,50.2 24,48.6 37,48 Z" fill="var(--orca-black)"/>
+      </g>
+      <!-- corpo -->
+      <use href="#orcaBodyPath" fill="url(#orcaSkin)"/>
+      <g clip-path="url(#orcaBodyClip)">
+        <!-- sela cinzenta atrás da dorsal -->
+        <path d="M98,30 C95,35.6 88,38.6 80,39 C73,39.4 67,38.6 62,37.4 L61,29 Z" fill="var(--orca-saddle)" opacity=".8" filter="url(#orcaSoft)"/>
+        <!-- mandíbula, garganta, ventre e lobo do flanco brancos -->
+        <path d="M200,51.4 L192.6,51.2 C188,52 182,52.8 176,53 C172.4,53.1 170.4,54 168.8,56
+                 C165.4,60 158,62.6 150,63.8 C138,65.2 120,65.4 106,64.9 C99,64.6 95,63 91.6,59.6
+                 C86.4,53 78.6,47.4 66,44.2 C63.2,43.6 62.4,45 64.8,46.2 C72.4,50.2 77.8,56 80.2,62
+                 C80.9,64 82.2,65.8 84.4,66.4 L84,90 L200,90 Z" fill="url(#orcaPatch)"/>
+        <!-- mancha ocular -->
+        <path d="M165.4,47.8 C161.6,48.5 154,48.4 148.4,46.6 C144.8,45.4 144.2,43 147.2,42 C152.4,40.8 159.8,42.6 163.8,45 C165.8,46.2 166.5,47.5 165.4,47.8 Z" fill="url(#orcaPatch)"/>
+        <!-- brilho úmido no dorso -->
+        <path d="M184,39.5 C172,35 158,33.4 144,33 C130,32.8 112,33.8 100,35"
+              fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" opacity=".16" filter="url(#orcaSoftSm)"/>
+        <path d="M58,39.2 C52,40.6 46,42.4 40,44.4" fill="none" stroke="#fff" stroke-width="1.2" stroke-linecap="round" opacity=".1" filter="url(#orcaSoftSm)"/>
+        <path d="M121.5,28 C117,18 111,9 106,3.6" fill="none" stroke="#fff" stroke-width="1.1" stroke-linecap="round" opacity=".18" filter="url(#orcaSoftSm)"/>
+      </g>
+      <!-- linha da boca -->
+      <path d="M192.4,51.3 C188,52.1 182,52.9 176,53.1 C173,53.2 171,52.8 169.6,52.2" fill="none" stroke="var(--orca-black)" stroke-width=".7" stroke-linecap="round" opacity=".9"/>
+      <!-- olho -->
+      <circle cx="168.2" cy="50.2" r="1.05" fill="#000"/>
+      <circle cx="168.5" cy="49.9" r=".32" fill="#fff" opacity=".7"/>
+      <!-- contorno de luz -->
+      <use href="#orcaBodyPath" fill="none" stroke="var(--orca-rim)" stroke-width=".6"/>
+      <!-- nadadeira peitoral larga, em forma de remo -->
+      <path d="M158.8,58.6 C159,67.4 155.4,75.6 148.2,80.4 C143,83.8 136.4,82.6 137.6,76.8 C139,71 143.2,64.8 147.4,61 Z" fill="url(#orcaSkin)"/>
+      <path d="M158.6,64 C158,70.6 154.6,76.6 148.2,80.4 C143,83.8 136.4,82.6 137.6,76.8 C138.4,73.4 140.2,70 142.6,67" fill="none" stroke="var(--orca-rim)" stroke-width=".4"/>
+      <path d="M156.6,62.6 C155.8,68.8 152.2,75 146.6,79" fill="none" stroke="#fff" stroke-width=".7" stroke-linecap="round" opacity=".14"/>
+      <!-- lobo caudal próximo (cobre a junção do pedúnculo) -->
+      <g class="orca-fluke">
+        <path d="M40,43.4 C31,43.8 21,43 11.4,40.4 C7.8,39.5 6,41 7.4,42.9 C10.6,46.8 17.6,49.6 25.4,51.4 C30.6,52.6 35.6,53.6 40,53.6 Z" fill="url(#orcaSkin)"/>
+        <path d="M34,44.6 C26,44.4 18,43 11.6,41.2" fill="none" stroke="var(--orca-rim)" stroke-width=".5" stroke-linecap="round"/>
+      </g>
+    </symbol>
+
+    <!-- ── Orca vista de cima (cabeça para o Norte) ── -->
+    <path id="orcaTopPath" d="M0,-50 C5.6,-50 9.6,-45 11.4,-38 C13,-31 13.6,-22 13.4,-14 C13,-2 10.6,10 7.4,20 C5.6,26 4,32 3,37.5
+        L-3,37.5 C-4,32 -5.6,26 -7.4,20 C-10.6,10 -13,-2 -13.4,-14 C-13.6,-22 -13,-31 -11.4,-38 C-9.6,-45 -5.6,-50 0,-50 Z"/>
+    <clipPath id="orcaTopClip"><use href="#orcaTopPath"/></clipPath>
+    <symbol id="orca-top" viewBox="-23 -51 46 101" overflow="visible">
+      <!-- caudal -->
+      <path d="M0,35.4 C3.6,37.6 8,40 12.6,43.4 C14.4,44.8 14.2,47 12.2,47.4 C9,48 5.4,47.8 2.4,47.2 C1.2,47 .5,47.8 0,48.8
+               C-.5,47.8 -1.2,47 -2.4,47.2 C-5.4,47.8 -9,48 -12.2,47.4 C-14.2,47 -14.4,44.8 -12.6,43.4 C-8,40 -3.6,37.6 0,35.4 Z" fill="url(#orcaSkinTop)"/>
+      <!-- peitorais -->
+      <path d="M12.6,-24 C17,-21.5 20.6,-16.4 21.8,-11.4 C22.4,-8.8 20.6,-7.8 18.6,-9.6 C16,-12 13.6,-15 12.4,-17.4 Z" fill="var(--orca-black)"/>
+      <path d="M-12.6,-24 C-17,-21.5 -20.6,-16.4 -21.8,-11.4 C-22.4,-8.8 -20.6,-7.8 -18.6,-9.6 C-16,-12 -13.6,-15 -12.4,-17.4 Z" fill="var(--orca-black)"/>
+      <use href="#orcaTopPath" fill="url(#orcaSkinTop)"/>
+      <g clip-path="url(#orcaTopClip)">
+        <!-- manchas oculares, vistas nas laterais da cabeça -->
+        <ellipse cx="12.6" cy="-33" rx="2.8" ry="6" transform="rotate(-6 12.6 -33)" fill="var(--orca-white)"/>
+        <ellipse cx="-12.6" cy="-33" rx="2.8" ry="6" transform="rotate(6 -12.6 -33)" fill="var(--orca-white)"/>
+        <!-- lobos brancos dos flancos -->
+        <ellipse cx="9.8" cy="15" rx="2.2" ry="7" transform="rotate(-14 9.8 15)" fill="var(--orca-white)" opacity=".9"/>
+        <ellipse cx="-9.8" cy="15" rx="2.2" ry="7" transform="rotate(14 -9.8 15)" fill="var(--orca-white)" opacity=".9"/>
+        <!-- sela, atrás da dorsal -->
+        <ellipse cx="0" cy="12" rx="7.4" ry="5" fill="var(--orca-saddle)" opacity=".75" filter="url(#orcaSoft)"/>
+        <!-- brilho na cabeça -->
+        <ellipse cx="0" cy="-38" rx="3.6" ry="7" fill="#fff" opacity=".13" filter="url(#orcaSoft)"/>
+      </g>
+      <!-- dorsal (vista de cima) -->
+      <path d="M0,-10 C1.4,-5 1.6,1.6 .7,7.6 L-.7,7.6 C-1.6,1.6 -1.4,-5 0,-10 Z" fill="var(--orca-black)" stroke="var(--orca-rim)" stroke-width=".3"/>
+      <!-- espiráculo -->
+      <path d="M-1.7,-33 Q0,-31.4 1.7,-33" fill="none" stroke="#000" stroke-width=".6" stroke-linecap="round"/>
+      <use href="#orcaTopPath" fill="none" stroke="var(--orca-rim)" stroke-width=".4"/>
+    </symbol>
+
+    <!-- ═════════ TUBARÃO-BRANCO ═════════ -->
+    <!-- contra-sombreamento: dorso cinza-ardósia iluminado de cima, escurecendo até a linha do ventre -->
+    <linearGradient id="sharkSkin" gradientUnits="userSpaceOnUse" x1="0" y1="4" x2="0" y2="64">
+      <stop offset="0"   style="stop-color:var(--shark-hi)"/>
+      <stop offset=".45" style="stop-color:var(--shark-mid)"/>
+      <stop offset=".85" style="stop-color:var(--shark-dark)"/>
+      <stop offset="1"   style="stop-color:var(--shark-dark)"/>
+    </linearGradient>
+    <linearGradient id="sharkBelly" gradientUnits="userSpaceOnUse" x1="0" y1="46" x2="0" y2="64">
+      <stop offset="0" style="stop-color:var(--shark-belly)"/>
+      <stop offset="1" style="stop-color:var(--shark-belly-lo)"/>
+    </linearGradient>
+    <linearGradient id="sharkSkinTop" gradientUnits="userSpaceOnUse" x1="-12" y1="0" x2="12" y2="0">
+      <stop offset="0"   style="stop-color:var(--shark-dark)"/>
+      <stop offset=".5"  style="stop-color:var(--shark-hi)"/>
+      <stop offset="1"   style="stop-color:var(--shark-dark)"/>
+    </linearGradient>
+    <linearGradient id="sharkEnamel" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0"   style="stop-color:var(--shark-enamel)"/>
+      <stop offset=".6"  style="stop-color:var(--shark-enamel)"/>
+      <stop offset="1"   style="stop-color:var(--shark-enamel-lo)"/>
+    </linearGradient>
+    <linearGradient id="sharkToothNorth" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" style="stop-color:var(--accent)"/>
+      <stop offset="1" style="stop-color:var(--shark-north-lo)"/>
+    </linearGradient>
+    <filter id="sharkSoft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation=".5"/>
+    </filter>
+
+    <!-- ── Tubarão-branco de perfil (voltado para a direita) ── -->
+    <path id="sharkBodyPath" d="M197,47.5 C196.2,43.2 191,38.2 181,35.2 C170,32.2 152,29.6 136,29.2
+      C132,22 126.5,12 120.6,6.2 C119.4,5 118,5.4 118,7 C117.6,15 114.8,22.4 110.2,27.4 C109.6,28 110.6,29 112.4,29.2
+      C96,30.8 80,33.6 66,37.4 C56,40 46,41 38,41.6 L38,49.4
+      C46,50.6 56,52.8 68,55.8 C84,60.4 104,64.8 124,65.4 C142,65.8 156,63.2 168,58.8
+      C179,55.2 189,52 194.5,49.6 C196.4,49 197.2,48.4 197,47.5 Z"/>
+    <clipPath id="sharkBodyClip"><use href="#sharkBodyPath"/></clipPath>
+    <symbol id="shark-side" viewBox="0 0 200 84" overflow="visible">
+      <!-- segunda dorsal e anal, pequenas -->
+      <path d="M63,38.4 C61,35.6 58.8,33.4 56,32 C55.3,31.7 55,32.4 55.5,33 C56,35 55.8,37.2 54.4,39.8 Z" fill="var(--shark-mid)"/>
+      <path d="M58.4,53 C56.6,55.2 54.4,57.2 51.4,58.6 C50.8,58.9 50.5,58.2 51,57.8 C51.6,56.2 51.4,54.4 50.4,52.2 Z" fill="var(--shark-dark)"/>
+      <!-- corpo -->
+      <use href="#sharkBodyPath" fill="url(#sharkSkin)"/>
+      <g clip-path="url(#sharkBodyClip)">
+        <!-- ventre branco com a divisa irregular típica do tubarão-branco -->
+        <path d="M200,49.2 L194,49.4 C189,49.8 184,50.4 178.6,51 L176.2,51.9 L172.8,51.4 L169.4,53 C165.4,53.8 162,53.9 158.6,54.8
+                 L156.8,54.3 L153.4,55.7 L150.6,55.1 L146.2,56.4 L143.6,55.6 L139,56.9 L135.2,55.4 L132.6,56 L127.6,54.6 L125.4,55.8
+                 L121,55 L117.8,56.6 L113.2,55.3 L109.6,57.2 L106.8,56.5 L102,58.1 L99.4,57.4 L94.6,59 L90.8,58.2 L86,59.6
+                 C80,58.6 74,56.2 68,54.4 L64.6,54 L61,53 C54,51.4 46,50.4 38,49.6 L38,90 L200,90 Z" fill="url(#sharkBelly)"/>
+        <!-- quilha do pedúnculo -->
+        <path d="M64,45.6 C56,45.4 48,45.4 38,45.4" fill="none" stroke="#fff" stroke-width="1" opacity=".18" filter="url(#sharkSoft)"/>
+        <path d="M64,46.8 C56,46.8 48,46.8 38,46.8" fill="none" stroke="#000" stroke-width=".8" opacity=".22" filter="url(#sharkSoft)"/>
+        <!-- brilho no dorso -->
+        <path d="M188,40 C176,36 160,33.6 140,32.6 M106,32.8 C90,34.4 76,37 62,40.6"
+              fill="none" stroke="#fff" stroke-width="1.4" stroke-linecap="round" opacity=".14" filter="url(#sharkSoft)"/>
+        <path d="M133.4,27 C129.6,19.6 125,12.6 120.6,7.8" fill="none" stroke="#fff" stroke-width="1" stroke-linecap="round" opacity=".16" filter="url(#sharkSoft)"/>
+      </g>
+      <!-- ampolas de Lorenzini no focinho -->
+      <g fill="var(--shark-dark)" opacity=".55">
+        <circle cx="191.4" cy="44.8" r=".35"/><circle cx="189" cy="43.6" r=".35"/><circle cx="193.2" cy="46.6" r=".3"/>
+        <circle cx="187.6" cy="45.8" r=".3"/><circle cx="190" cy="47" r=".3"/><circle cx="185.4" cy="44.2" r=".3"/>
+      </g>
+      <!-- narina -->
+      <path d="M192.6,48.4 C191.6,48.6 190.6,48.8 189.6,48.7" fill="none" stroke="var(--shark-dark)" stroke-width=".6" stroke-linecap="round"/>
+      <!-- boca inferior, com alguns dentes à mostra -->
+      <path d="M190.6,51.4 C186,53.6 180,55.4 173,55.9 C171.2,56 170,55.7 169.2,55.2" fill="none" stroke="#1b2328" stroke-width=".7" stroke-linecap="round"/>
+      <g fill="var(--shark-enamel)" opacity=".9">
+        <path d="M186.6,52.9 l.5,1.3 l.6,-1.6 Z"/><path d="M183.6,54 l.5,1.3 l.6,-1.6 Z"/>
+        <path d="M180.4,54.8 l.5,1.2 l.6,-1.5 Z"/><path d="M177.2,55.3 l.45,1.1 l.55,-1.35 Z"/>
+      </g>
+      <!-- olho negro -->
+      <circle cx="179" cy="42.8" r="1.6" fill="#05080a"/>
+      <circle cx="179" cy="42.8" r="1.6" fill="none" stroke="var(--shark-hi)" stroke-width=".35" opacity=".6"/>
+      <circle cx="179.5" cy="42.3" r=".4" fill="#fff" opacity=".75"/>
+      <!-- cinco fendas branquiais -->
+      <g fill="none" stroke-linecap="round">
+        <g stroke="#0d1317" stroke-width=".55" opacity=".7"><path d="M163.2,41.4 C161.6,45.2 161.4,49.6 162.4,53.6"/><path d="M159.4,40.6 C157.8,44.6 157.6,49.6 158.8,54.4"/><path d="M155.6,40.4 C154,44.6 153.8,49.8 155,55.2"/><path d="M151.8,40.8 C150.2,45 150,50 151.2,55.6"/><path d="M148,41.8 C146.6,45.6 146.4,50 147.4,54.8"/></g>
+        <g stroke="#fff" stroke-width=".45" opacity=".16" transform="translate(.6,0)"><path d="M163.2,41.4 C161.6,45.2 161.4,49.6 162.4,53.6"/><path d="M159.4,40.6 C157.8,44.6 157.6,49.6 158.8,54.4"/><path d="M155.6,40.4 C154,44.6 153.8,49.8 155,55.2"/><path d="M151.8,40.8 C150.2,45 150,50 151.2,55.6"/><path d="M148,41.8 C146.6,45.6 146.4,50 147.4,54.8"/></g>
+      </g>
+      <!-- contorno de luz -->
+      <use href="#sharkBodyPath" fill="none" stroke="var(--shark-rim)" stroke-width=".5"/>
+      <!-- nadadeira caudal semilunar (bate de um lado ao outro) -->
+      <g class="shark-tail">
+        <path d="M44,41.2 C40,40.6 35,38 31,34.6 C24,27.6 16.6,18 9.4,7.6 C8.4,6.4 6.8,6.8 7.2,8.6 C9.4,20 13.6,32 21,43.2
+                 C21.8,44.4 21.8,45.6 21,46.8 C14.4,56 10.6,65 8.8,74.6 C8.6,76.2 10,76.8 11,75.6
+                 C19,66 28,57 37,51 C39.6,50.2 42,49.8 44,49.8 Z" fill="url(#sharkSkin)"/>
+        <path d="M38,42.2 C29,35 19.6,23 10.4,9.6" fill="none" stroke="#fff" stroke-width=".8" stroke-linecap="round" opacity=".14"/>
+      </g>
+      <!-- nadadeira pélvica -->
+      <path d="M89,60.2 C85,62.6 79.8,65.2 74,66.8 C73.2,67 73,66.3 73.6,65.9 C76.2,63.8 77.8,61.6 78.4,59 Z" fill="var(--shark-mid)"/>
+      <!-- peitoral longa e falcada -->
+      <path d="M148,54.4 C143,61.6 133,71 117.4,79.2 C115.8,80 115,78.9 116,77.9 C122.4,72 128.4,64.8 133.6,56.6 Z" fill="url(#sharkSkin)"/>
+      <path d="M146.4,56.2 C141,63 132.4,71 119.4,78" fill="none" stroke="#fff" stroke-width=".6" stroke-linecap="round" opacity=".18"/>
+      <path d="M126,71 C123,73.6 120,76 117.4,77.6" fill="none" stroke="#0a0e11" stroke-width="1.2" stroke-linecap="round" opacity=".5"/>
+    </symbol>
+
+    <!-- ── Tubarão-branco visto de cima (focinho para o Norte) ── -->
+    <path id="sharkTopPath" d="M0,-50 C3.4,-50 6,-46 7.6,-40 C9.6,-32 10.6,-22 10.6,-14 C10.6,-2 8.6,10 6,20 C4.4,26 3,31 2.2,36
+      L-2.2,36 C-3,31 -4.4,26 -6,20 C-8.6,10 -10.6,-2 -10.6,-14 C-10.6,-22 -9.6,-32 -7.6,-40 C-6,-46 -3.4,-50 0,-50 Z"/>
+    <clipPath id="sharkTopClip"><use href="#sharkTopPath"/></clipPath>
+    <symbol id="shark-top" viewBox="-24 -51 48 102" overflow="visible">
+      <!-- caudal vertical, vista de cima como uma lâmina -->
+      <path d="M2,33 C2.3,39 1.8,45 .9,49.6 L0,51 L-.9,49.6 C-1.8,45 -2.3,39 -2,33 Z" fill="var(--shark-mid)"/>
+      <!-- quilhas do pedúnculo -->
+      <path d="M2.4,29 C3.4,31.4 3.6,33.4 2.2,36.6 Z M-2.4,29 C-3.4,31.4 -3.6,33.4 -2.2,36.6 Z" fill="var(--shark-dark)"/>
+      <!-- peitorais longas, varridas para trás -->
+      <path d="M9.6,-26 C15,-21 20,-13 22.8,-3.6 C23.2,-2 22,-1.4 21,-2.6 C17.6,-7.6 13.6,-12.6 10,-15.6 Z" fill="var(--shark-mid)"/>
+      <path d="M-9.6,-26 C-15,-21 -20,-13 -22.8,-3.6 C-23.2,-2 -22,-1.4 -21,-2.6 C-17.6,-7.6 -13.6,-12.6 -10,-15.6 Z" fill="var(--shark-mid)"/>
+      <!-- pélvicas -->
+      <path d="M7.2,12 C9.6,15 10.8,18.4 11,21.6 C9.6,20.6 8,18.8 6.4,17.2 Z M-7.2,12 C-9.6,15 -10.8,18.4 -11,21.6 C-9.6,20.6 -8,18.8 -6.4,17.2 Z" fill="var(--shark-mid)"/>
+      <use href="#sharkTopPath" fill="url(#sharkSkinTop)"/>
+      <g clip-path="url(#sharkTopClip)">
+        <!-- borda branca do ventre aparecendo nas laterais -->
+        <path d="M11.4,-34 C10.8,-20 10.2,-6 8.4,6 M-11.4,-34 C-10.8,-20 -10.2,-6 -8.4,6" fill="none" stroke="var(--shark-belly)" stroke-width="1" opacity=".25" filter="url(#sharkSoft)"/>
+        <ellipse cx="0" cy="-36" rx="3.2" ry="8" fill="#fff" opacity=".12" filter="url(#sharkSoft)"/>
+      </g>
+      <!-- olhos laterais -->
+      <circle cx="6.6" cy="-38.6" r="1" fill="#05080a"/><circle cx="-6.6" cy="-38.6" r="1" fill="#05080a"/>
+      <!-- primeira e segunda dorsais, vistas de cima -->
+      <path d="M0,-16 C1.3,-10 1.3,-3 .5,3 L-.5,3 C-1.3,-3 -1.3,-10 0,-16 Z" fill="var(--shark-dark)" stroke="var(--shark-rim)" stroke-width=".3"/>
+      <path d="M0,23 L.6,28 L-.6,28 Z" fill="var(--shark-dark)"/>
+      <use href="#sharkTopPath" fill="none" stroke="var(--shark-rim)" stroke-width=".4"/>
+    </symbol>
+  </defs>
+</svg>
 
 <!-- Fundos temáticos -->
 <svg id="chart-bg" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" viewBox="0 0 1200 800">
@@ -505,7 +836,8 @@ svg text { font-family: var(--f-label); }
   <rect class="parch" width="1200" height="800" filter="url(#parch)"/>
   <g id="rumos" stroke-width="0.6" fill="none" opacity="0.14"></g>
   <g id="vikingbg" fill="var(--ink)" opacity="0.05" font-family="serif"></g>
-  <g id="orcabg" opacity="0.12"></g>
+  <g id="orcabg"></g>
+  <g id="tubaraobg"></g>
   <g id="gregobg" opacity="0.1"></g>
   <g id="sonarbg" opacity="0.5"></g>
 </svg>
@@ -571,25 +903,14 @@ svg text { font-family: var(--f-label); }
           <path d="M4,38 q4,-3 8,0 q4,3 8,0 M62,38 q4,-3 8,0 q4,3 8,0" stroke="var(--s)" stroke-width="1" fill="none" opacity=".75"/>
         </svg>
         <!-- ORCA -->
-        <svg class="orn orn-orca" viewBox="0 0 84 44">
-          <!-- corpo -->
-          <path d="M10,24 C16,14 36,10 54,12 C64,13 72,17 78,23 C70,30 54,34 38,33 C24,32 14,29 10,24 Z"
-                fill="var(--rose-dark)"/>
-          <!-- barriga branca -->
-          <path d="M22,29 C34,33 52,33 68,27 C58,32 40,34 28,31 Z" fill="var(--rose-lite)" opacity=".95"/>
-          <!-- nadadeira dorsal -->
-          <path d="M40,12 C39,3 44,1 46,6 C44.5,8.5 43.5,10.5 43.5,12.5 Z" fill="var(--rose-dark)"/>
-          <!-- cauda -->
-          <path d="M12,24 C6,20 2,20 4,16 C8,18 11,20 13,22 Z M12,25 C6,28 2,28 4,32 C8,30 11,28 13,26 Z" fill="var(--rose-dark)"/>
-          <!-- mancha ocular -->
-          <ellipse cx="66" cy="17.5" rx="4" ry="1.8" transform="rotate(-14 66 17.5)" fill="var(--rose-lite)"/>
-          <circle cx="70" cy="20.5" r=".9" fill="var(--rose-lite)" opacity=".9"/>
-          <!-- nadadeira peitoral -->
-          <path d="M52,26 C54,31 52,35 48,35 C49,31 50,28 50,26 Z" fill="var(--rose-dark)"/>
-          <!-- respingo -->
-          <path d="M46,4 q1,-3 2,0 M49.5,3 q.8,-2.4 1.6,0" stroke="var(--accent)" stroke-width=".9" fill="none" stroke-linecap="round" opacity=".8"/>
-          <!-- ondas -->
-          <path d="M4,38 q5,-3 10,0 q5,3 10,0 M58,38 q5,-3 10,0 q5,3 10,0" stroke="var(--accent)" stroke-width="1" fill="none" opacity=".6"/>
+        <svg class="orn orn-orca" viewBox="0 0 120 52">
+          <use href="#orca-side" x="8" y="2" width="104" height="44.6"/>
+          <path d="M2,49 q6,-3 12,0 q6,3 12,0 M94,49 q6,-3 12,0 q6,3 12,0" stroke="var(--accent)" stroke-width="1" fill="none" opacity=".55"/>
+        </svg>
+        <!-- TUBARÃO -->
+        <svg class="orn orn-tubarao" viewBox="0 0 120 54">
+          <use href="#shark-side" x="8" y="2" width="104" height="43.7"/>
+          <path d="M2,51 q6,-3 12,0 q6,3 12,0 M94,51 q6,-3 12,0 q6,3 12,0" stroke="var(--accent)" stroke-width="1" fill="none" opacity=".55"/>
         </svg>
         <!-- GRÉCIA: trirreme -->
         <svg class="orn orn-grego" viewBox="0 0 90 42">
@@ -642,6 +963,7 @@ svg text { font-family: var(--f-label); }
         <button class="style-btn" data-sty="caravela" onclick="setStyle('caravela')" role="radio" aria-checked="false">Caravela</button>
         <button class="style-btn" data-sty="viking" onclick="setStyle('viking')" role="radio" aria-checked="false">Viking</button>
         <button class="style-btn" data-sty="orca" onclick="setStyle('orca')" role="radio" aria-checked="false">Orca</button>
+        <button class="style-btn" data-sty="tubarao" onclick="setStyle('tubarao')" role="radio" aria-checked="false">Tubarão</button>
         <button class="style-btn" data-sty="grego" onclick="setStyle('grego')" role="radio" aria-checked="false">Grécia Antiga</button>
         <button class="style-btn" data-sty="sonar" onclick="setStyle('sonar')" role="radio" aria-checked="false">Sonar</button>
       </div>
@@ -754,10 +1076,20 @@ svg text { font-family: var(--f-label); }
                 <animate attributeName="opacity" values=".45;0" dur="5s" repeatCount="indefinite"/>
               </circle>
               <g id="orcafins"></g>
-              <!-- centro: dorso com mancha ocular -->
-              <circle cx="50" cy="50" r="8.4" fill="var(--rose-dark)" stroke="var(--line2)" stroke-width=".3"/>
-              <ellipse cx="52.6" cy="47.2" rx="3" ry="1.4" transform="rotate(38 52.6 47.2)" fill="var(--rose-lite)"/>
-              <path d="M44,53.5 A8,8 0 0 0 56,53.5 A11,11 0 0 1 44,53.5 Z" fill="var(--rose-lite)" opacity=".9"/>
+              <!-- centro: orca vista de cima, a cabeça aponta o Norte -->
+              <circle cx="50" cy="50" r="12" fill="var(--surface-2)" stroke="var(--line2)" stroke-width=".3"/>
+              <use href="#orca-top" x="42.26" y="33" width="15.49" height="34"/>
+            </g>
+
+            <!-- ═══ TUBARÃO ═══ -->
+            <g class="ly ly-tubarao">
+              <circle cx="50" cy="50" r="33" fill="none" stroke="var(--ink)" stroke-width=".25" opacity=".18"/>
+              <circle cx="50" cy="50" r="25" fill="none" stroke="var(--ink)" stroke-width=".25" opacity=".14"/>
+              <g id="sharkjaw" fill="var(--ink)" opacity=".3"></g>
+              <g id="sharkteeth"></g>
+              <!-- centro: tubarão visto de cima, o focinho aponta o Norte -->
+              <circle cx="50" cy="50" r="13" fill="var(--surface-2)" stroke="var(--line2)" stroke-width=".3"/>
+              <use href="#shark-top" x="42.24" y="33.5" width="15.53" height="33"/>
             </g>
 
             <!-- ═══ GRÉCIA ANTIGA ═══ -->
@@ -818,9 +1150,11 @@ svg text { font-family: var(--f-label); }
             </g>
 
             <!-- ═══ COMUM: cubo + rótulos ═══ -->
-            <circle cx="50" cy="50" r="3" fill="var(--surface)" stroke="var(--ink)" stroke-width=".3"/>
-            <circle cx="50" cy="50" r="1.6" fill="var(--gold)"/>
-            <circle cx="50" cy="50" r=".6" fill="var(--surface)"/>
+            <g class="hub">
+              <circle cx="50" cy="50" r="3" fill="var(--surface)" stroke="var(--ink)" stroke-width=".3"/>
+              <circle cx="50" cy="50" r="1.6" fill="var(--gold)"/>
+              <circle cx="50" cy="50" r=".6" fill="var(--surface)"/>
+            </g>
 
             <text font-size="4.6" font-weight="600" text-anchor="middle">
               <tspan x="50" y="16.5" fill="var(--n)">N</tspan>
@@ -880,6 +1214,7 @@ const STYLE_META = {
   caravela: { icon:'✠ ',  sub:'Carta de Marear · Confrontações' },
   viking:   { icon:'ᛟ ',  sub:'Vegvísir · Confrontações' },
   orca:     { icon:'≋ ',  sub:'Mar Profundo · Confrontações' },
+  tubarao:  { icon:'▲ ',  sub:'Grande Branco · Confrontações' },
   grego:    { icon:'Ω ',  sub:'Anemoi · Confrontações' },
   sonar:    { icon:'◉ ',  sub:'Varredura Ativa · Confrontações' },
 };
@@ -954,21 +1289,63 @@ const STYLE_META = {
   document.getElementById('rivets').innerHTML = rv;
 })();
 
-/* Orca: barbatanas dorsais como pontas da rosa */
+/* Orca: barbatanas dorsais como pontas da rosa —
+   cardeais altas e retas (macho), colaterais falcadas (fêmea) */
 (function buildOrca(){
   let f = '';
   for (let i = 0; i < 8; i++) {
     const card = i % 2 === 0;
-    const tip  = card ? 13.5 : 21.5;
-    const fin  = `M50,${tip} C46.8,${tip+14} 47.6,44 50,50 C51.2,42 52.6,${tip+9} 50,${tip} Z`;
+    const t = card ? 13.5 : 21.5;
+    const fin = card
+      ? `M46.2,47 C46.6,36 48.2,${t+8} 49.6,${t} C50.3,${t-.4} 50.9,${t+.6} 50.8,${t+2.4}
+         C50.7,${t+12} 51.6,40 54,47 Z`
+      : `M46.8,47 C46.4,38 47.4,${t+7} 51.2,${t} C51.8,${t-.2} 52.1,${t+.6} 51.7,${t+1.6}
+         C50.2,${t+6} 50.4,40 53.4,47 Z`;
     let fill, stroke;
-    if (i === 0)      { fill = 'var(--accent)';    stroke = 'var(--rose-lite)'; }  /* Norte */
-    else if (card)    { fill = 'var(--rose-dark)'; stroke = 'var(--rose-lite)'; }
-    else              { fill = 'var(--rose-lite)'; stroke = 'var(--line2)'; }
+    if (i === 0)   { fill = 'url(#orcaFinNorth)'; stroke = 'var(--orca-rim)'; }  /* Norte */
+    else if (card) { fill = 'url(#orcaFinDark)';  stroke = 'var(--orca-rim)'; }
+    else           { fill = 'url(#orcaFinLite)';  stroke = 'var(--line2)'; }
     f += `<path d="${fin}" transform="rotate(${i*45} 50 50)"
-           fill="${fill}" stroke="${stroke}" stroke-width=".25" opacity="${card ? .95 : .8}"/>`;
+           fill="${fill}" stroke="${stroke}" stroke-width=".25" opacity="${card ? 1 : .9}"/>`;
   }
   document.getElementById('orcafins').innerHTML = f;
+})();
+
+/* Tubarão: dentes serrilhados (coroa de esmalte) de tubarão-branco como pontas da rosa,
+   com um anel de dentículos em volta, como uma mandíbula */
+(function buildTubarao(){
+  function tooth(tip, base, half, fill, rot) {
+    const n = Math.max(6, Math.round((base - tip) / 1.05));
+    const edge = side => {
+      const pts = [];
+      for (let k = 0; k <= n; k++) {
+        const t = k / n;                          /* 0 = base, 1 = ponta */
+        const w = half * Math.pow(1 - t, .82);    /* bordas levemente convexas */
+        const saw = (k % 2) * .3 * (1 - t * .7);  /* serrilha */
+        pts.push(`${(50 + side * (w + saw)).toFixed(2)},${(base - (base - tip) * t).toFixed(2)}`);
+      }
+      return pts;
+    };
+    const crown = [...edge(-1), ...edge(1).reverse()].join(' ');
+    const r = base;
+    return `<g transform="rotate(${rot} 50 50)">
+              <polygon points="${crown}" fill="${fill}" stroke="var(--line2)" stroke-width=".18" stroke-linejoin="round"/>
+              <path d="M${50-half*.35},${r-2} L50,${tip+2.4}" stroke="#fff" stroke-width=".35" opacity=".35" stroke-linecap="round"/>
+            </g>`;
+  }
+  let t = '';
+  for (let i = 0; i < 8; i++) {
+    const card = i % 2 === 0;
+    const fill = i === 0 ? 'url(#sharkToothNorth)' : 'url(#sharkEnamel)';
+    t += card ? tooth(13.5, 37.5, 4.4, fill, i * 45) : tooth(21.5, 37.5, 3, fill, i * 45);
+  }
+  document.getElementById('sharkteeth').innerHTML = t;
+
+  let j = '';
+  for (let i = 0; i < 40; i++) {
+    j += `<polygon points="49.3,11.5 50.7,11.5 50,13.6" transform="rotate(${i * 9 + 4.5} 50 50)"/>`;
+  }
+  document.getElementById('sharkjaw').innerHTML = j;
 })();
 
 /* Grécia: anel de meandro, colunas, Anemoi, louro, sol */
@@ -1070,18 +1447,93 @@ const STYLE_META = {
 })();
 (function buildOrcaBg(){
   const g = document.getElementById('orcabg');
-  let html = '';
-  /* ondas horizontais */
-  [120, 300, 520, 700].forEach((y, i) => {
+  let html = `<defs><linearGradient id="orcaRay" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" style="stop-color:var(--orca-ray)"/>
+                <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+              </linearGradient></defs>`;
+  /* feixes de luz vindos da superfície */
+  html += '<g class="orca-rays">';
+  [[160,90,-120],[420,60,-40],[640,110,30],[880,70,110],[1080,90,170]].forEach(([x,w,dx]) => {
+    html += `<polygon points="${x},-10 ${x+w},-10 ${x+w+dx+w},820 ${x+dx-w},820" fill="url(#orcaRay)"/>`;
+  });
+  html += '</g>';
+  /* ondulação da superfície */
+  [24, 52].forEach((y, i) => {
     let d = `M-40,${y}`;
-    for (let x = -40; x < 1260; x += 120) d += ` q60,${i % 2 ? -22 : 22} 120,0`;
-    html += `<path d="${d}" stroke="var(--ink)" stroke-width="1.2" fill="none"/>`;
+    for (let x = -40; x < 1260; x += 120) d += ` q60,${i % 2 ? -10 : 10} 120,0`;
+    html += `<path d="${d}" stroke="var(--ink)" stroke-width="1.2" fill="none" opacity=".1"/>`;
   });
   /* bolhas */
   const bubbles = [[140,220,7],[190,180,4],[920,560,9],[960,510,5],[1090,240,6],[320,600,5],[350,650,8],[640,160,5],[700,690,6],[70,520,4],[1150,640,5],[540,320,3]];
   bubbles.forEach(([x,y,r]) => {
-    html += `<circle cx="${x}" cy="${y}" r="${r}" fill="none" stroke="var(--ink)" stroke-width="1"/>`;
+    html += `<circle cx="${x}" cy="${y}" r="${r}" fill="none" stroke="var(--ink)" stroke-width="1" opacity=".12"/>`;
   });
+  /* grupo familiar de orcas; as mais distantes, menores e esmaecidas */
+  const pod = [
+    /* x, y, escala, sentido, duração(s), atraso(s), opacidade */
+    [ 760, 470, 1.25,  1,  70, -22, 1  ],
+    [ 900, 560, .78,   1,  70, -22, .8 ],
+    [ 260, 200, .55,  -1,  95, -60, .55],
+  ];
+  html += '<g class="pod">';
+  pod.forEach(([x, y, k, dir, dur, delay, op]) => {
+    const from = dir > 0 ? -x - 320 : 1520 - x;
+    const to   = dir > 0 ? 1520 - x : -x - 320;
+    html += `<g class="orca-swim" style="--from:${from}px; --to:${to}px; animation-duration:${dur}s; animation-delay:${delay}s" opacity="${op}">
+               <g class="orca-bob" style="animation-delay:${delay/7}s">
+                 <use href="#orca-side" width="196" height="84"
+                      transform="translate(${x},${y}) scale(${k * dir},${k}) translate(-98,-42)"/>
+               </g>
+             </g>`;
+  });
+  html += '</g>';
+  g.innerHTML = html;
+})();
+(function buildTubaraoBg(){
+  const g = document.getElementById('tubaraobg');
+  let html = `<defs><linearGradient id="sharkRay" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" style="stop-color:var(--shark-ray)"/>
+                <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+              </linearGradient></defs>`;
+  /* feixes de luz da superfície */
+  html += '<g class="orca-rays">';
+  [[120,70,-60],[360,110,10],[620,60,80],[840,100,140],[1060,70,200]].forEach(([x,w,dx]) => {
+    html += `<polygon points="${x},-10 ${x+w},-10 ${x+w+dx+w},820 ${x+dx-w},820" fill="url(#sharkRay)"/>`;
+  });
+  html += '</g>';
+  /* fundo de areia e rochas, bem ao longe */
+  html += `<path d="M-20,800 L-20,742 C80,728 160,748 260,736 C340,726 380,700 440,706 C500,712 520,736 620,738
+             C720,740 780,716 860,722 C940,728 980,748 1080,738 C1140,732 1180,726 1220,730 L1220,800 Z"
+             fill="var(--ink)" opacity=".05"/>`;
+  html += '<g class="pod">';
+  /* cardume de peixes-isca, na direção oposta */
+  let school = '';
+  const fish = [[0,0],[22,-8],[18,10],[40,2],[44,-14],[60,8],[36,-24],[64,-4],[82,-10],[78,14],[100,0],[56,22],[96,-22],[118,6]];
+  fish.forEach(([fx, fy], i) => {
+    const k = .8 + (i % 3) * .15;
+    school += `<g transform="translate(${fx},${fy}) scale(${k})">
+                 <path d="M0,0 C3,-2.6 9,-2.6 12,0 C9,2.6 3,2.6 0,0 Z M12,0 L16,-2.6 L15,0 L16,2.6 Z" fill="var(--ink)"/>
+               </g>`;
+  });
+  html += `<g class="orca-swim" style="--from:1300px; --to:-500px; animation-duration:48s; animation-delay:-14s" opacity=".35">
+             <g class="orca-bob" style="animation-duration:5s"><g transform="translate(120,250) scale(1.4)">${school}</g></g>
+           </g>`;
+  /* tubarões: um próximo e um distante */
+  [
+    /* x, y, escala, sentido, duração(s), atraso(s), opacidade */
+    [ 760, 500, 1.35,  1,  64, -20, 1  ],
+    [ 300,  70, .45,  -1, 100, -48, .5 ],
+  ].forEach(([x, y, k, dir, dur, delay, op]) => {
+    const from = dir > 0 ? -x - 340 : 1540 - x;
+    const to   = dir > 0 ? 1540 - x : -x - 340;
+    html += `<g class="orca-swim" style="--from:${from}px; --to:${to}px; animation-duration:${dur}s; animation-delay:${delay}s" opacity="${op}">
+               <g class="orca-bob" style="animation-duration:9s; animation-delay:${delay/9}s">
+                 <use href="#shark-side" width="200" height="84"
+                      transform="translate(${x},${y}) scale(${k * dir},${k}) translate(-100,-42)"/>
+               </g>
+             </g>`;
+  });
+  html += '</g>';
   g.innerHTML = html;
 })();
 (function buildGregoBg(){
@@ -1292,6 +1744,12 @@ const PALETTES = {
     light: { stars:['23,112,138','16,34,44','74,155,168','111,163,178'],
              burst:['23,112,138','58,140,160','16,34,44'] },
   },
+  tubarao: {
+    dark:  { stars:['223,230,233','159,179,191','125,151,168','201,178,138'],
+             burst:['239,123,82','223,230,233','159,179,191'] },
+    light: { stars:['20,33,42','62,90,107','109,133,146','138,115,80'],
+             burst:['185,71,42','62,90,107','20,33,42'] },
+  },
   grego: {
     light: { stars:['163,80,46','31,94,140','156,124,60','74,107,79'],
              burst:['163,80,46','156,124,60','43,38,32'] },
@@ -1365,8 +1823,8 @@ function tick() {
   /* No tema Orca, as "estrelas" sobem como bolhas */
   const rising = curStyle === 'orca';
   for (const s of stars) {
-    s.x += s.vx;
-    s.y += rising ? -s.vy : s.vy;
+    s.x += rising || curStyle === 'tubarao' ? s.vx + Math.sin(s.life * .03 + s.ph) * .15 : s.vx;
+    s.y += rising ? -s.vy * 2.2 : s.vy;
     s.life++;
     const off = rising ? (s.y < -6) : (s.y > H + 6);
     if (off || s.x < -6 || s.x > W + 6 || s.life > s.max) {
@@ -1377,6 +1835,20 @@ function tick() {
     const p = s.life / s.max;
     const fade = p < .1 ? p / .1 : p > .85 ? (1 - p) / .15 : 1;
     const pulse = s.pulse ? .5 + .5 * Math.sin(s.life * s.ps + s.ph) : 1;
+    if (rising) {
+      /* bolha: película fina com um ponto de reflexo */
+      const br = 1 + s.r * 1.8;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, br, 0, Math.PI * 2);
+      ctx.strokeStyle = `rgba(${s.col},${.45 * fade})`;
+      ctx.lineWidth = .7;
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(s.x - br * .35, s.y - br * .35, br * .28, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${s.col},${.5 * fade})`;
+      ctx.fill();
+      continue;
+    }
     ctx.beginPath();
     ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
     ctx.fillStyle = `rgba(${s.col},${.4 * fade * pulse})`;
