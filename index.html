@@ -171,7 +171,7 @@
   --vignette:radial-gradient(ellipse at center, transparent 45%, rgba(0,6,12,.65) 100%);
   --shark-dark:#2b353d; --shark-mid:#4a5862; --shark-hi:#7a8a94;
   --shark-belly:#f2f4f3; --shark-belly-lo:#aab5ba; --shark-rim:rgba(170,205,220,.3);
-  --shark-enamel:#f6f3ea; --shark-enamel-lo:#cfc8b6; --shark-north-lo:#a8462a;
+  --shark-enamel:#f6f3ea; --shark-enamel-lo:#cfc8b6; --shark-north-lo:#a8462a; --shark-gum:#8e4048;
   --shark-ray:rgba(150,200,220,.06); --shark-pod:.55;
 }
 [data-style="tubarao"][data-mode="light"] {
@@ -187,7 +187,7 @@
   --vignette:radial-gradient(ellipse at center, transparent 55%, rgba(40,70,85,.18) 100%);
   --shark-dark:#2f3a42; --shark-mid:#56656f; --shark-hi:#8796a0;
   --shark-belly:#ffffff; --shark-belly-lo:#c0c9cd; --shark-rim:rgba(255,255,255,0);
-  --shark-enamel:#fffdf6; --shark-enamel-lo:#d6cfbd; --shark-north-lo:#7a2a16;
+  --shark-enamel:#fffdf6; --shark-enamel-lo:#d6cfbd; --shark-north-lo:#7a2a16; --shark-gum:#b25c63;
   --shark-ray:rgba(255,255,255,.4); --shark-pod:.24;
 }
 
@@ -277,15 +277,11 @@ body {
 .orca-defs { position:absolute; width:0; height:0; overflow:hidden; pointer-events:none; }
 #orcabg .pod { opacity:var(--orca-pod); }
 #tubaraobg .pod { opacity:var(--shark-pod); }
-.shark-tail { transform-box:view-box; transform-origin:44px 45.5px; animation:sharkTail 2.8s ease-in-out infinite alternate; }
-@keyframes sharkTail { from { transform:scaleX(1); } to { transform:scaleX(.8); } }
 .orca-swim  { animation:orcaSwim linear infinite; }
-.orca-bob   { transform-box:fill-box; transform-origin:center; animation:orcaBob 7s ease-in-out infinite alternate; }
-.orca-fluke { transform-box:view-box; transform-origin:37px 48.5px; animation:orcaFluke 1.9s ease-in-out infinite alternate; }
+.orca-bob   { transform-box:fill-box; transform-origin:center; animation:orcaBob 11s ease-in-out infinite alternate; }
 .orca-rays  { animation:orcaRays 9s ease-in-out infinite alternate; }
 @keyframes orcaSwim  { from { transform:translateX(var(--from)); } to { transform:translateX(var(--to)); } }
-@keyframes orcaBob   { from { transform:translateY(-7px) rotate(-1.4deg); } to { transform:translateY(7px) rotate(1.4deg); } }
-@keyframes orcaFluke { from { transform:rotate(-4deg); } to { transform:rotate(4deg); } }
+@keyframes orcaBob   { from { transform:translateY(-6px) rotate(-.5deg); } to { transform:translateY(6px) rotate(.5deg); } }
 @keyframes orcaRays  { from { opacity:.5; } to { opacity:1; } }
 [data-style="grego"]    #chart-bg .parch, [data-style="grego"]    #gregobg { display:block; }
 [data-style="sonar"]    #sonarbg { display:block; }
@@ -329,6 +325,7 @@ canvas#bg { position:fixed; inset:0; width:100%; height:100%; pointer-events:non
 [data-style="tubarao"]  .orn-tubarao  { display:block; }
 .ornament svg.orn-orca { height:40px; }
 .ornament svg.orn-tubarao { height:42px; }
+.ornament svg.orn-orca, .ornament svg.orn-tubarao { overflow:visible; }
 [data-style="grego"]    .orn-grego    { display:block; }
 [data-style="sonar"]    .orn-sonar    { display:block; }
 
@@ -577,13 +574,13 @@ svg text { font-family: var(--f-label); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration:.01ms !important; transition-duration:.01ms !important; }
   #compass-container { transition:none; }
-  .orca-swim, .orca-bob, .orca-fluke, .orca-rays, .shark-tail { animation:none !important; }
+  .orca-swim, .orca-bob, .orca-rays { animation:none !important; }
 }
 </style>
 </head>
 <body>
 
-<!-- Orca e tubarão-branco anatômicos (perfil e vista dorsal), reutilizados pelos temas -->
+<!-- Gradientes e filtros dos animais (os corpos são gerados e animados por JS) -->
 <svg class="orca-defs" width="0" height="0" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <!-- sombreamento: luz vinda da superfície -->
@@ -621,85 +618,6 @@ svg text { font-family: var(--f-label); }
       <feGaussianBlur stdDeviation=".45"/>
     </filter>
 
-    <!-- ── Orca de perfil (voltada para a direita) ── -->
-    <path id="orcaBodyPath" d="M193,50 C193,45 189,40 182,37 C172,33 160,31 146,30.5 C138,30 130,30 124,30.5
-        C121,22 114,9 106.5,2 C105.2,0.8 103.8,1.2 104,2.8 C104,12 101,22 96,31
-        C88,32.5 76,34 64,36.5 C52,39 41,42 32,44.5 L31,45 L31,52.5 L32,52.5
-        C42,55.5 56,60 72,63.5 C88,67 106,69 124,69 C142,69 158,66.5 170,62
-        C180,58.5 188,55 191.5,52.5 C192.6,51.8 193,51 193,50 Z"/>
-    <clipPath id="orcaBodyClip"><use href="#orcaBodyPath"/></clipPath>
-    <symbol id="orca-side" viewBox="0 0 196 84" overflow="visible">
-      <!-- lobo caudal do lado oposto, em perspectiva -->
-      <g class="orca-fluke">
-        <path d="M37,50.4 C29,51.4 21,52.8 13,54.8 C9.6,55.6 8.4,54.2 10.4,52.8 C15,50.2 24,48.6 37,48 Z" fill="var(--orca-black)"/>
-      </g>
-      <!-- corpo -->
-      <use href="#orcaBodyPath" fill="url(#orcaSkin)"/>
-      <g clip-path="url(#orcaBodyClip)">
-        <!-- sela cinzenta atrás da dorsal -->
-        <path d="M98,30 C95,35.6 88,38.6 80,39 C73,39.4 67,38.6 62,37.4 L61,29 Z" fill="var(--orca-saddle)" opacity=".8" filter="url(#orcaSoft)"/>
-        <!-- mandíbula, garganta, ventre e lobo do flanco brancos -->
-        <path d="M200,51.4 L192.6,51.2 C188,52 182,52.8 176,53 C172.4,53.1 170.4,54 168.8,56
-                 C165.4,60 158,62.6 150,63.8 C138,65.2 120,65.4 106,64.9 C99,64.6 95,63 91.6,59.6
-                 C86.4,53 78.6,47.4 66,44.2 C63.2,43.6 62.4,45 64.8,46.2 C72.4,50.2 77.8,56 80.2,62
-                 C80.9,64 82.2,65.8 84.4,66.4 L84,90 L200,90 Z" fill="url(#orcaPatch)"/>
-        <!-- mancha ocular -->
-        <path d="M165.4,47.8 C161.6,48.5 154,48.4 148.4,46.6 C144.8,45.4 144.2,43 147.2,42 C152.4,40.8 159.8,42.6 163.8,45 C165.8,46.2 166.5,47.5 165.4,47.8 Z" fill="url(#orcaPatch)"/>
-        <!-- brilho úmido no dorso -->
-        <path d="M184,39.5 C172,35 158,33.4 144,33 C130,32.8 112,33.8 100,35"
-              fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" opacity=".16" filter="url(#orcaSoftSm)"/>
-        <path d="M58,39.2 C52,40.6 46,42.4 40,44.4" fill="none" stroke="#fff" stroke-width="1.2" stroke-linecap="round" opacity=".1" filter="url(#orcaSoftSm)"/>
-        <path d="M121.5,28 C117,18 111,9 106,3.6" fill="none" stroke="#fff" stroke-width="1.1" stroke-linecap="round" opacity=".18" filter="url(#orcaSoftSm)"/>
-      </g>
-      <!-- linha da boca -->
-      <path d="M192.4,51.3 C188,52.1 182,52.9 176,53.1 C173,53.2 171,52.8 169.6,52.2" fill="none" stroke="var(--orca-black)" stroke-width=".7" stroke-linecap="round" opacity=".9"/>
-      <!-- olho -->
-      <circle cx="168.2" cy="50.2" r="1.05" fill="#000"/>
-      <circle cx="168.5" cy="49.9" r=".32" fill="#fff" opacity=".7"/>
-      <!-- contorno de luz -->
-      <use href="#orcaBodyPath" fill="none" stroke="var(--orca-rim)" stroke-width=".6"/>
-      <!-- nadadeira peitoral larga, em forma de remo -->
-      <path d="M158.8,58.6 C159,67.4 155.4,75.6 148.2,80.4 C143,83.8 136.4,82.6 137.6,76.8 C139,71 143.2,64.8 147.4,61 Z" fill="url(#orcaSkin)"/>
-      <path d="M158.6,64 C158,70.6 154.6,76.6 148.2,80.4 C143,83.8 136.4,82.6 137.6,76.8 C138.4,73.4 140.2,70 142.6,67" fill="none" stroke="var(--orca-rim)" stroke-width=".4"/>
-      <path d="M156.6,62.6 C155.8,68.8 152.2,75 146.6,79" fill="none" stroke="#fff" stroke-width=".7" stroke-linecap="round" opacity=".14"/>
-      <!-- lobo caudal próximo (cobre a junção do pedúnculo) -->
-      <g class="orca-fluke">
-        <path d="M40,43.4 C31,43.8 21,43 11.4,40.4 C7.8,39.5 6,41 7.4,42.9 C10.6,46.8 17.6,49.6 25.4,51.4 C30.6,52.6 35.6,53.6 40,53.6 Z" fill="url(#orcaSkin)"/>
-        <path d="M34,44.6 C26,44.4 18,43 11.6,41.2" fill="none" stroke="var(--orca-rim)" stroke-width=".5" stroke-linecap="round"/>
-      </g>
-    </symbol>
-
-    <!-- ── Orca vista de cima (cabeça para o Norte) ── -->
-    <path id="orcaTopPath" d="M0,-50 C5.6,-50 9.6,-45 11.4,-38 C13,-31 13.6,-22 13.4,-14 C13,-2 10.6,10 7.4,20 C5.6,26 4,32 3,37.5
-        L-3,37.5 C-4,32 -5.6,26 -7.4,20 C-10.6,10 -13,-2 -13.4,-14 C-13.6,-22 -13,-31 -11.4,-38 C-9.6,-45 -5.6,-50 0,-50 Z"/>
-    <clipPath id="orcaTopClip"><use href="#orcaTopPath"/></clipPath>
-    <symbol id="orca-top" viewBox="-23 -51 46 101" overflow="visible">
-      <!-- caudal -->
-      <path d="M0,35.4 C3.6,37.6 8,40 12.6,43.4 C14.4,44.8 14.2,47 12.2,47.4 C9,48 5.4,47.8 2.4,47.2 C1.2,47 .5,47.8 0,48.8
-               C-.5,47.8 -1.2,47 -2.4,47.2 C-5.4,47.8 -9,48 -12.2,47.4 C-14.2,47 -14.4,44.8 -12.6,43.4 C-8,40 -3.6,37.6 0,35.4 Z" fill="url(#orcaSkinTop)"/>
-      <!-- peitorais -->
-      <path d="M12.6,-24 C17,-21.5 20.6,-16.4 21.8,-11.4 C22.4,-8.8 20.6,-7.8 18.6,-9.6 C16,-12 13.6,-15 12.4,-17.4 Z" fill="var(--orca-black)"/>
-      <path d="M-12.6,-24 C-17,-21.5 -20.6,-16.4 -21.8,-11.4 C-22.4,-8.8 -20.6,-7.8 -18.6,-9.6 C-16,-12 -13.6,-15 -12.4,-17.4 Z" fill="var(--orca-black)"/>
-      <use href="#orcaTopPath" fill="url(#orcaSkinTop)"/>
-      <g clip-path="url(#orcaTopClip)">
-        <!-- manchas oculares, vistas nas laterais da cabeça -->
-        <ellipse cx="12.6" cy="-33" rx="2.8" ry="6" transform="rotate(-6 12.6 -33)" fill="var(--orca-white)"/>
-        <ellipse cx="-12.6" cy="-33" rx="2.8" ry="6" transform="rotate(6 -12.6 -33)" fill="var(--orca-white)"/>
-        <!-- lobos brancos dos flancos -->
-        <ellipse cx="9.8" cy="15" rx="2.2" ry="7" transform="rotate(-14 9.8 15)" fill="var(--orca-white)" opacity=".9"/>
-        <ellipse cx="-9.8" cy="15" rx="2.2" ry="7" transform="rotate(14 -9.8 15)" fill="var(--orca-white)" opacity=".9"/>
-        <!-- sela, atrás da dorsal -->
-        <ellipse cx="0" cy="12" rx="7.4" ry="5" fill="var(--orca-saddle)" opacity=".75" filter="url(#orcaSoft)"/>
-        <!-- brilho na cabeça -->
-        <ellipse cx="0" cy="-38" rx="3.6" ry="7" fill="#fff" opacity=".13" filter="url(#orcaSoft)"/>
-      </g>
-      <!-- dorsal (vista de cima) -->
-      <path d="M0,-10 C1.4,-5 1.6,1.6 .7,7.6 L-.7,7.6 C-1.6,1.6 -1.4,-5 0,-10 Z" fill="var(--orca-black)" stroke="var(--orca-rim)" stroke-width=".3"/>
-      <!-- espiráculo -->
-      <path d="M-1.7,-33 Q0,-31.4 1.7,-33" fill="none" stroke="#000" stroke-width=".6" stroke-linecap="round"/>
-      <use href="#orcaTopPath" fill="none" stroke="var(--orca-rim)" stroke-width=".4"/>
-    </symbol>
-
     <!-- ═════════ TUBARÃO-BRANCO ═════════ -->
     <!-- contra-sombreamento: dorso cinza-ardósia iluminado de cima, escurecendo até a linha do ventre -->
     <linearGradient id="sharkSkin" gradientUnits="userSpaceOnUse" x1="0" y1="4" x2="0" y2="64">
@@ -729,100 +647,11 @@ svg text { font-family: var(--f-label); }
     <filter id="sharkSoft" x="-20%" y="-20%" width="140%" height="140%">
       <feGaussianBlur stdDeviation=".5"/>
     </filter>
+    <linearGradient id="sharkMouth" gradientUnits="userSpaceOnUse" x1="0" y1="50" x2="0" y2="58">
+      <stop offset="0" stop-color="#3b1316"/>
+      <stop offset="1" stop-color="#100406"/>
+    </linearGradient>
 
-    <!-- ── Tubarão-branco de perfil (voltado para a direita) ── -->
-    <path id="sharkBodyPath" d="M197,47.5 C196.2,43.2 191,38.2 181,35.2 C170,32.2 152,29.6 136,29.2
-      C132,22 126.5,12 120.6,6.2 C119.4,5 118,5.4 118,7 C117.6,15 114.8,22.4 110.2,27.4 C109.6,28 110.6,29 112.4,29.2
-      C96,30.8 80,33.6 66,37.4 C56,40 46,41 38,41.6 L38,49.4
-      C46,50.6 56,52.8 68,55.8 C84,60.4 104,64.8 124,65.4 C142,65.8 156,63.2 168,58.8
-      C179,55.2 189,52 194.5,49.6 C196.4,49 197.2,48.4 197,47.5 Z"/>
-    <clipPath id="sharkBodyClip"><use href="#sharkBodyPath"/></clipPath>
-    <symbol id="shark-side" viewBox="0 0 200 84" overflow="visible">
-      <!-- segunda dorsal e anal, pequenas -->
-      <path d="M63,38.4 C61,35.6 58.8,33.4 56,32 C55.3,31.7 55,32.4 55.5,33 C56,35 55.8,37.2 54.4,39.8 Z" fill="var(--shark-mid)"/>
-      <path d="M58.4,53 C56.6,55.2 54.4,57.2 51.4,58.6 C50.8,58.9 50.5,58.2 51,57.8 C51.6,56.2 51.4,54.4 50.4,52.2 Z" fill="var(--shark-dark)"/>
-      <!-- corpo -->
-      <use href="#sharkBodyPath" fill="url(#sharkSkin)"/>
-      <g clip-path="url(#sharkBodyClip)">
-        <!-- ventre branco com a divisa irregular típica do tubarão-branco -->
-        <path d="M200,49.2 L194,49.4 C189,49.8 184,50.4 178.6,51 L176.2,51.9 L172.8,51.4 L169.4,53 C165.4,53.8 162,53.9 158.6,54.8
-                 L156.8,54.3 L153.4,55.7 L150.6,55.1 L146.2,56.4 L143.6,55.6 L139,56.9 L135.2,55.4 L132.6,56 L127.6,54.6 L125.4,55.8
-                 L121,55 L117.8,56.6 L113.2,55.3 L109.6,57.2 L106.8,56.5 L102,58.1 L99.4,57.4 L94.6,59 L90.8,58.2 L86,59.6
-                 C80,58.6 74,56.2 68,54.4 L64.6,54 L61,53 C54,51.4 46,50.4 38,49.6 L38,90 L200,90 Z" fill="url(#sharkBelly)"/>
-        <!-- quilha do pedúnculo -->
-        <path d="M64,45.6 C56,45.4 48,45.4 38,45.4" fill="none" stroke="#fff" stroke-width="1" opacity=".18" filter="url(#sharkSoft)"/>
-        <path d="M64,46.8 C56,46.8 48,46.8 38,46.8" fill="none" stroke="#000" stroke-width=".8" opacity=".22" filter="url(#sharkSoft)"/>
-        <!-- brilho no dorso -->
-        <path d="M188,40 C176,36 160,33.6 140,32.6 M106,32.8 C90,34.4 76,37 62,40.6"
-              fill="none" stroke="#fff" stroke-width="1.4" stroke-linecap="round" opacity=".14" filter="url(#sharkSoft)"/>
-        <path d="M133.4,27 C129.6,19.6 125,12.6 120.6,7.8" fill="none" stroke="#fff" stroke-width="1" stroke-linecap="round" opacity=".16" filter="url(#sharkSoft)"/>
-      </g>
-      <!-- ampolas de Lorenzini no focinho -->
-      <g fill="var(--shark-dark)" opacity=".55">
-        <circle cx="191.4" cy="44.8" r=".35"/><circle cx="189" cy="43.6" r=".35"/><circle cx="193.2" cy="46.6" r=".3"/>
-        <circle cx="187.6" cy="45.8" r=".3"/><circle cx="190" cy="47" r=".3"/><circle cx="185.4" cy="44.2" r=".3"/>
-      </g>
-      <!-- narina -->
-      <path d="M192.6,48.4 C191.6,48.6 190.6,48.8 189.6,48.7" fill="none" stroke="var(--shark-dark)" stroke-width=".6" stroke-linecap="round"/>
-      <!-- boca inferior, com alguns dentes à mostra -->
-      <path d="M190.6,51.4 C186,53.6 180,55.4 173,55.9 C171.2,56 170,55.7 169.2,55.2" fill="none" stroke="#1b2328" stroke-width=".7" stroke-linecap="round"/>
-      <g fill="var(--shark-enamel)" opacity=".9">
-        <path d="M186.6,52.9 l.5,1.3 l.6,-1.6 Z"/><path d="M183.6,54 l.5,1.3 l.6,-1.6 Z"/>
-        <path d="M180.4,54.8 l.5,1.2 l.6,-1.5 Z"/><path d="M177.2,55.3 l.45,1.1 l.55,-1.35 Z"/>
-      </g>
-      <!-- olho negro -->
-      <circle cx="179" cy="42.8" r="1.6" fill="#05080a"/>
-      <circle cx="179" cy="42.8" r="1.6" fill="none" stroke="var(--shark-hi)" stroke-width=".35" opacity=".6"/>
-      <circle cx="179.5" cy="42.3" r=".4" fill="#fff" opacity=".75"/>
-      <!-- cinco fendas branquiais -->
-      <g fill="none" stroke-linecap="round">
-        <g stroke="#0d1317" stroke-width=".55" opacity=".7"><path d="M163.2,41.4 C161.6,45.2 161.4,49.6 162.4,53.6"/><path d="M159.4,40.6 C157.8,44.6 157.6,49.6 158.8,54.4"/><path d="M155.6,40.4 C154,44.6 153.8,49.8 155,55.2"/><path d="M151.8,40.8 C150.2,45 150,50 151.2,55.6"/><path d="M148,41.8 C146.6,45.6 146.4,50 147.4,54.8"/></g>
-        <g stroke="#fff" stroke-width=".45" opacity=".16" transform="translate(.6,0)"><path d="M163.2,41.4 C161.6,45.2 161.4,49.6 162.4,53.6"/><path d="M159.4,40.6 C157.8,44.6 157.6,49.6 158.8,54.4"/><path d="M155.6,40.4 C154,44.6 153.8,49.8 155,55.2"/><path d="M151.8,40.8 C150.2,45 150,50 151.2,55.6"/><path d="M148,41.8 C146.6,45.6 146.4,50 147.4,54.8"/></g>
-      </g>
-      <!-- contorno de luz -->
-      <use href="#sharkBodyPath" fill="none" stroke="var(--shark-rim)" stroke-width=".5"/>
-      <!-- nadadeira caudal semilunar (bate de um lado ao outro) -->
-      <g class="shark-tail">
-        <path d="M44,41.2 C40,40.6 35,38 31,34.6 C24,27.6 16.6,18 9.4,7.6 C8.4,6.4 6.8,6.8 7.2,8.6 C9.4,20 13.6,32 21,43.2
-                 C21.8,44.4 21.8,45.6 21,46.8 C14.4,56 10.6,65 8.8,74.6 C8.6,76.2 10,76.8 11,75.6
-                 C19,66 28,57 37,51 C39.6,50.2 42,49.8 44,49.8 Z" fill="url(#sharkSkin)"/>
-        <path d="M38,42.2 C29,35 19.6,23 10.4,9.6" fill="none" stroke="#fff" stroke-width=".8" stroke-linecap="round" opacity=".14"/>
-      </g>
-      <!-- nadadeira pélvica -->
-      <path d="M89,60.2 C85,62.6 79.8,65.2 74,66.8 C73.2,67 73,66.3 73.6,65.9 C76.2,63.8 77.8,61.6 78.4,59 Z" fill="var(--shark-mid)"/>
-      <!-- peitoral longa e falcada -->
-      <path d="M148,54.4 C143,61.6 133,71 117.4,79.2 C115.8,80 115,78.9 116,77.9 C122.4,72 128.4,64.8 133.6,56.6 Z" fill="url(#sharkSkin)"/>
-      <path d="M146.4,56.2 C141,63 132.4,71 119.4,78" fill="none" stroke="#fff" stroke-width=".6" stroke-linecap="round" opacity=".18"/>
-      <path d="M126,71 C123,73.6 120,76 117.4,77.6" fill="none" stroke="#0a0e11" stroke-width="1.2" stroke-linecap="round" opacity=".5"/>
-    </symbol>
-
-    <!-- ── Tubarão-branco visto de cima (focinho para o Norte) ── -->
-    <path id="sharkTopPath" d="M0,-50 C3.4,-50 6,-46 7.6,-40 C9.6,-32 10.6,-22 10.6,-14 C10.6,-2 8.6,10 6,20 C4.4,26 3,31 2.2,36
-      L-2.2,36 C-3,31 -4.4,26 -6,20 C-8.6,10 -10.6,-2 -10.6,-14 C-10.6,-22 -9.6,-32 -7.6,-40 C-6,-46 -3.4,-50 0,-50 Z"/>
-    <clipPath id="sharkTopClip"><use href="#sharkTopPath"/></clipPath>
-    <symbol id="shark-top" viewBox="-24 -51 48 102" overflow="visible">
-      <!-- caudal vertical, vista de cima como uma lâmina -->
-      <path d="M2,33 C2.3,39 1.8,45 .9,49.6 L0,51 L-.9,49.6 C-1.8,45 -2.3,39 -2,33 Z" fill="var(--shark-mid)"/>
-      <!-- quilhas do pedúnculo -->
-      <path d="M2.4,29 C3.4,31.4 3.6,33.4 2.2,36.6 Z M-2.4,29 C-3.4,31.4 -3.6,33.4 -2.2,36.6 Z" fill="var(--shark-dark)"/>
-      <!-- peitorais longas, varridas para trás -->
-      <path d="M9.6,-26 C15,-21 20,-13 22.8,-3.6 C23.2,-2 22,-1.4 21,-2.6 C17.6,-7.6 13.6,-12.6 10,-15.6 Z" fill="var(--shark-mid)"/>
-      <path d="M-9.6,-26 C-15,-21 -20,-13 -22.8,-3.6 C-23.2,-2 -22,-1.4 -21,-2.6 C-17.6,-7.6 -13.6,-12.6 -10,-15.6 Z" fill="var(--shark-mid)"/>
-      <!-- pélvicas -->
-      <path d="M7.2,12 C9.6,15 10.8,18.4 11,21.6 C9.6,20.6 8,18.8 6.4,17.2 Z M-7.2,12 C-9.6,15 -10.8,18.4 -11,21.6 C-9.6,20.6 -8,18.8 -6.4,17.2 Z" fill="var(--shark-mid)"/>
-      <use href="#sharkTopPath" fill="url(#sharkSkinTop)"/>
-      <g clip-path="url(#sharkTopClip)">
-        <!-- borda branca do ventre aparecendo nas laterais -->
-        <path d="M11.4,-34 C10.8,-20 10.2,-6 8.4,6 M-11.4,-34 C-10.8,-20 -10.2,-6 -8.4,6" fill="none" stroke="var(--shark-belly)" stroke-width="1" opacity=".25" filter="url(#sharkSoft)"/>
-        <ellipse cx="0" cy="-36" rx="3.2" ry="8" fill="#fff" opacity=".12" filter="url(#sharkSoft)"/>
-      </g>
-      <!-- olhos laterais -->
-      <circle cx="6.6" cy="-38.6" r="1" fill="#05080a"/><circle cx="-6.6" cy="-38.6" r="1" fill="#05080a"/>
-      <!-- primeira e segunda dorsais, vistas de cima -->
-      <path d="M0,-16 C1.3,-10 1.3,-3 .5,3 L-.5,3 C-1.3,-3 -1.3,-10 0,-16 Z" fill="var(--shark-dark)" stroke="var(--shark-rim)" stroke-width=".3"/>
-      <path d="M0,23 L.6,28 L-.6,28 Z" fill="var(--shark-dark)"/>
-      <use href="#sharkTopPath" fill="none" stroke="var(--shark-rim)" stroke-width=".4"/>
-    </symbol>
   </defs>
 </svg>
 
@@ -904,12 +733,12 @@ svg text { font-family: var(--f-label); }
         </svg>
         <!-- ORCA -->
         <svg class="orn orn-orca" viewBox="0 0 120 52">
-          <use href="#orca-side" x="8" y="2" width="104" height="44.6"/>
+          <g data-animal="orca-side" data-amp=".8" data-period="3.2" transform="translate(8,2) scale(.5306)"></g>
           <path d="M2,49 q6,-3 12,0 q6,3 12,0 M94,49 q6,-3 12,0 q6,3 12,0" stroke="var(--accent)" stroke-width="1" fill="none" opacity=".55"/>
         </svg>
         <!-- TUBARÃO -->
         <svg class="orn orn-tubarao" viewBox="0 0 120 54">
-          <use href="#shark-side" x="8" y="2" width="104" height="43.7"/>
+          <g data-animal="shark-side" data-amp=".8" data-period="3" transform="translate(8,2) scale(.52)"></g>
           <path d="M2,51 q6,-3 12,0 q6,3 12,0 M94,51 q6,-3 12,0 q6,3 12,0" stroke="var(--accent)" stroke-width="1" fill="none" opacity=".55"/>
         </svg>
         <!-- GRÉCIA: trirreme -->
@@ -1078,7 +907,7 @@ svg text { font-family: var(--f-label); }
               <g id="orcafins"></g>
               <!-- centro: orca vista de cima, a cabeça aponta o Norte -->
               <circle cx="50" cy="50" r="12" fill="var(--surface-2)" stroke="var(--line2)" stroke-width=".3"/>
-              <use href="#orca-top" x="42.26" y="33" width="15.49" height="34"/>
+              <g data-animal="orca-top" data-amp=".9" data-period="3.4" transform="translate(50,50.17) scale(.3366)"></g>
             </g>
 
             <!-- ═══ TUBARÃO ═══ -->
@@ -1089,7 +918,7 @@ svg text { font-family: var(--f-label); }
               <g id="sharkteeth"></g>
               <!-- centro: tubarão visto de cima, o focinho aponta o Norte -->
               <circle cx="50" cy="50" r="13" fill="var(--surface-2)" stroke="var(--line2)" stroke-width=".3"/>
-              <use href="#shark-top" x="42.24" y="33.5" width="15.53" height="33"/>
+              <g data-animal="shark-top" data-period="3" transform="translate(50,50) scale(.3235)"></g>
             </g>
 
             <!-- ═══ GRÉCIA ANTIGA ═══ -->
@@ -1470,19 +1299,20 @@ const STYLE_META = {
   });
   /* grupo familiar de orcas; as mais distantes, menores e esmaecidas */
   const pod = [
-    /* x, y, escala, sentido, duração(s), atraso(s), opacidade */
-    [ 760, 470, 1.25,  1,  70, -22, 1  ],
-    [ 900, 560, .78,   1,  70, -22, .8 ],
-    [ 260, 200, .55,  -1,  95, -60, .55],
+    /* x, y, escala, sentido, duração(s), atraso(s), opacidade, batida(s) —
+       o filhote bate a cauda mais rápido para acompanhar o adulto */
+    [ 760, 470, 1.25,  1,  40, -12, 1,   3.0 ],
+    [ 900, 560, .78,   1,  40, -12, .8,  2.3 ],
+    [ 260, 200, .55,  -1,  85, -60, .55, 3.4 ],
   ];
   html += '<g class="pod">';
-  pod.forEach(([x, y, k, dir, dur, delay, op]) => {
+  pod.forEach(([x, y, k, dir, dur, delay, op, beat]) => {
     const from = dir > 0 ? -x - 320 : 1520 - x;
     const to   = dir > 0 ? 1520 - x : -x - 320;
     html += `<g class="orca-swim" style="--from:${from}px; --to:${to}px; animation-duration:${dur}s; animation-delay:${delay}s" opacity="${op}">
                <g class="orca-bob" style="animation-delay:${delay/7}s">
-                 <use href="#orca-side" width="196" height="84"
-                      transform="translate(${x},${y}) scale(${k * dir},${k}) translate(-98,-42)"/>
+                 <g data-animal="orca-side" data-period="${beat}"
+                    transform="translate(${x},${y}) scale(${k * dir},${k}) translate(-98,-42)"></g>
                </g>
              </g>`;
   });
@@ -1520,16 +1350,16 @@ const STYLE_META = {
            </g>`;
   /* tubarões: um próximo e um distante */
   [
-    /* x, y, escala, sentido, duração(s), atraso(s), opacidade */
-    [ 760, 500, 1.35,  1,  64, -20, 1  ],
-    [ 300,  70, .45,  -1, 100, -48, .5 ],
-  ].forEach(([x, y, k, dir, dur, delay, op]) => {
+    /* x, y, escala, sentido, duração(s), atraso(s), opacidade, batida(s) */
+    [ 760, 500, 1.35,  1,  34, -10, 1,  2.8 ],
+    [ 300,  70, .45,  -1,  90, -48, .5, 3.2 ],
+  ].forEach(([x, y, k, dir, dur, delay, op, beat]) => {
     const from = dir > 0 ? -x - 340 : 1540 - x;
     const to   = dir > 0 ? 1540 - x : -x - 340;
     html += `<g class="orca-swim" style="--from:${from}px; --to:${to}px; animation-duration:${dur}s; animation-delay:${delay}s" opacity="${op}">
                <g class="orca-bob" style="animation-duration:9s; animation-delay:${delay/9}s">
-                 <use href="#shark-side" width="200" height="84"
-                      transform="translate(${x},${y}) scale(${k * dir},${k}) translate(-100,-42)"/>
+                 <g data-animal="shark-side" data-period="${beat}"
+                    transform="translate(${x},${y}) scale(${k * dir},${k}) translate(-100,-42)"></g>
                </g>
              </g>`;
   });
@@ -1875,6 +1705,365 @@ function tick() {
   requestAnimationFrame(tick);
 }
 
+/* ══ Animais: modelos anatômicos ═════════════════════
+   Desenhados em SVG nas coordenadas locais de cada vista. Cada instância
+   recebe ids próprios (u), pois o corpo é deformado quadro a quadro. */
+const ANIMAL_TPL = {
+  /* Orca de perfil, voltada para a direita (0..196 × 0..84) */
+  'orca-side': u => `
+    <defs>
+      <path id="ob${u}" d="M193,50 C193,45 189,40 182,37 C172,33 160,31 146,30.5 C138,30 130,30 124,30.5
+        C121,22 114,9 106.5,2 C105.2,0.8 103.8,1.2 104,2.8 C104,12 101,22 96,31
+        C88,32.5 76,34 64,36.5 C52,39 41,42 32,44.5 L31,45 L31,52.5 L32,52.5
+        C42,55.5 56,60 72,63.5 C88,67 106,69 124,69 C142,69 158,66.5 170,62
+        C180,58.5 188,55 191.5,52.5 C192.6,51.8 193,51 193,50 Z"/>
+      <clipPath id="oc${u}"><use href="#ob${u}"/></clipPath>
+    </defs>
+    <!-- lobo caudal do lado oposto, em perspectiva -->
+    <path d="M37,50.4 C29,51.4 21,52.8 13,54.8 C9.6,55.6 8.4,54.2 10.4,52.8 C15,50.2 24,48.6 37,48 Z" fill="var(--orca-black)"/>
+    <!-- peitoral do lado oposto, quase escondida -->
+    <path data-pivot="152,62,5,2.4" d="M154,62 C154.6,68 152,73.6 147,77 C144,79 140.6,78.4 141.4,75 C142.6,70.6 145.6,66 149,63 Z" fill="var(--orca-black)"/>
+    <use href="#ob${u}" fill="url(#orcaSkin)"/>
+    <g clip-path="url(#oc${u})">
+      <!-- sela cinzenta atrás da dorsal -->
+      <path d="M98,30 C95,35.6 88,38.6 80,39 C73,39.4 67,38.6 62,37.4 L61,29 Z" fill="var(--orca-saddle)" opacity=".8" filter="url(#orcaSoft)"/>
+      <!-- mandíbula, garganta, ventre e lobo do flanco brancos -->
+      <path d="M200,51.4 L192.6,51.2 C188,52 182,52.8 176,53 C172.4,53.1 170.4,54 168.8,56
+               C165.4,60 158,62.6 150,63.8 C138,65.2 120,65.4 106,64.9 C99,64.6 95,63 91.6,59.6
+               C86.4,53 78.6,47.4 66,44.2 C63.2,43.6 62.4,45 64.8,46.2 C72.4,50.2 77.8,56 80.2,62
+               C80.9,64 82.2,65.8 84.4,66.4 L84,90 L200,90 Z" fill="url(#orcaPatch)"/>
+      <!-- mancha ocular -->
+      <path d="M165.4,47.8 C161.6,48.5 154,48.4 148.4,46.6 C144.8,45.4 144.2,43 147.2,42 C152.4,40.8 159.8,42.6 163.8,45 C165.8,46.2 166.5,47.5 165.4,47.8 Z" fill="url(#orcaPatch)"/>
+      <!-- cicatrizes de dentes de outras orcas (rake marks) -->
+      <path d="M127,34.6 l7.4,4.4 M129.6,34 l7.2,4.4 M132.2,33.6 l6.8,4.2 M83,40.6 l5.6,3.4 M85.2,40 l5.4,3.4 M150.6,35 l4,2.2"
+            fill="none" stroke="#fff" stroke-width=".35" stroke-linecap="round" opacity=".14"/>
+      <!-- brilho úmido no dorso -->
+      <path d="M184,39.5 C172,35 158,33.4 144,33 C130,32.8 112,33.8 100,35"
+            fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" opacity=".16" filter="url(#orcaSoftSm)"/>
+      <path d="M58,39.2 C52,40.6 46,42.4 40,44.4" fill="none" stroke="#fff" stroke-width="1.2" stroke-linecap="round" opacity=".1" filter="url(#orcaSoftSm)"/>
+      <path d="M121.5,28 C117,18 111,9 106,3.6" fill="none" stroke="#fff" stroke-width="1.1" stroke-linecap="round" opacity=".18" filter="url(#orcaSoftSm)"/>
+      <!-- volume: bordas do corpo mais escuras -->
+      <use href="#ob${u}" fill="none" stroke="#000" stroke-width="7" opacity=".26" filter="url(#orcaSoft)"/>
+    </g>
+    <!-- linha da boca -->
+    <path d="M192.4,51.3 C188,52.1 182,52.9 176,53.1 C173,53.2 171,52.8 169.6,52.2" fill="none" stroke="var(--orca-black)" stroke-width=".7" stroke-linecap="round" opacity=".9"/>
+    <!-- olho -->
+    <circle cx="168.2" cy="50.2" r="1.05" fill="#000"/>
+    <circle cx="168.5" cy="49.9" r=".32" fill="#fff" opacity=".7"/>
+    <!-- contorno de luz -->
+    <use href="#ob${u}" fill="none" stroke="var(--orca-rim)" stroke-width=".6"/>
+    <!-- nadadeira peitoral larga, em forma de remo -->
+    <path data-pivot="153,60.5,6,1.6" d="M158.8,58.6 C159,67.4 155.4,75.6 148.2,80.4 C143,83.8 136.4,82.6 137.6,76.8 C139,71 143.2,64.8 147.4,61 Z" fill="url(#orcaSkin)"/>
+    <path data-pivot="153,60.5,6,1.6" d="M158.6,64 C158,70.6 154.6,76.6 148.2,80.4 C143,83.8 136.4,82.6 137.6,76.8 C138.4,73.4 140.2,70 142.6,67" fill="none" stroke="var(--orca-rim)" stroke-width=".4"/>
+    <path data-pivot="153,60.5,6,1.6" d="M156.6,62.6 C155.8,68.8 152.2,75 146.6,79" fill="none" stroke="#fff" stroke-width=".7" stroke-linecap="round" opacity=".14"/>
+    <!-- lobo caudal próximo (cobre a junção do pedúnculo) -->
+    <path d="M40,43.4 C31,43.8 21,43 11.4,40.4 C7.8,39.5 6,41 7.4,42.9 C10.6,46.8 17.6,49.6 25.4,51.4 C30.6,52.6 35.6,53.6 40,53.6 Z" fill="url(#orcaSkin)"/>
+    <path d="M34,44.6 C26,44.4 18,43 11.6,41.2" fill="none" stroke="var(--orca-rim)" stroke-width=".5" stroke-linecap="round"/>
+    <path d="M7.4,42.9 C10.6,46.8 17.6,49.6 25.4,51.4" fill="none" stroke="#000" stroke-width=".8" opacity=".35"/>`,
+
+  /* Orca vista de cima, cabeça para o Norte (x −23..23, y −50..49) */
+  'orca-top': u => `
+    <defs>
+      <path id="ob${u}" d="M0,-50 C5.6,-50 9.6,-45 11.4,-38 C13,-31 13.6,-22 13.4,-14 C13,-2 10.6,10 7.4,20 C5.6,26 4,32 3,37.5
+        L-3,37.5 C-4,32 -5.6,26 -7.4,20 C-10.6,10 -13,-2 -13.4,-14 C-13.6,-22 -13,-31 -11.4,-38 C-9.6,-45 -5.6,-50 0,-50 Z"/>
+      <clipPath id="oc${u}"><use href="#ob${u}"/></clipPath>
+    </defs>
+    <path d="M0,35.4 C3.6,37.6 8,40 12.6,43.4 C14.4,44.8 14.2,47 12.2,47.4 C9,48 5.4,47.8 2.4,47.2 C1.2,47 .5,47.8 0,48.8
+             C-.5,47.8 -1.2,47 -2.4,47.2 C-5.4,47.8 -9,48 -12.2,47.4 C-14.2,47 -14.4,44.8 -12.6,43.4 C-8,40 -3.6,37.6 0,35.4 Z" fill="url(#orcaSkinTop)"/>
+    <path data-pivot="12.6,-21,7,1.6" d="M12.6,-24 C17,-21.5 20.6,-16.4 21.8,-11.4 C22.4,-8.8 20.6,-7.8 18.6,-9.6 C16,-12 13.6,-15 12.4,-17.4 Z" fill="var(--orca-black)"/>
+    <path data-pivot="-12.6,-21,-7,1.6" d="M-12.6,-24 C-17,-21.5 -20.6,-16.4 -21.8,-11.4 C-22.4,-8.8 -20.6,-7.8 -18.6,-9.6 C-16,-12 -13.6,-15 -12.4,-17.4 Z" fill="var(--orca-black)"/>
+    <use href="#ob${u}" fill="url(#orcaSkinTop)"/>
+    <g clip-path="url(#oc${u})">
+      <ellipse cx="12.6" cy="-33" rx="2.8" ry="6" fill="var(--orca-white)"/>
+      <ellipse cx="-12.6" cy="-33" rx="2.8" ry="6" fill="var(--orca-white)"/>
+      <ellipse cx="9.8" cy="15" rx="2.2" ry="7" fill="var(--orca-white)" opacity=".9"/>
+      <ellipse cx="-9.8" cy="15" rx="2.2" ry="7" fill="var(--orca-white)" opacity=".9"/>
+      <ellipse cx="0" cy="12" rx="7.4" ry="5" fill="var(--orca-saddle)" opacity=".75" filter="url(#orcaSoft)"/>
+      <ellipse cx="0" cy="-38" rx="3.6" ry="7" fill="#fff" opacity=".13" filter="url(#orcaSoft)"/>
+      <use href="#ob${u}" fill="none" stroke="#000" stroke-width="5" opacity=".3" filter="url(#orcaSoft)"/>
+    </g>
+    <path d="M0,-10 C1.4,-5 1.6,1.6 .7,7.6 L-.7,7.6 C-1.6,1.6 -1.4,-5 0,-10 Z" fill="var(--orca-black)" stroke="var(--orca-rim)" stroke-width=".3"/>
+    <path d="M-1.7,-33 Q0,-31.4 1.7,-33" fill="none" stroke="#000" stroke-width=".6" stroke-linecap="round"/>
+    <use href="#ob${u}" fill="none" stroke="var(--orca-rim)" stroke-width=".4"/>`,
+
+  /* Tubarão-branco de perfil, voltado para a direita (0..200 × 0..84) */
+  'shark-side': u => `
+    <defs>
+      <path id="ob${u}" d="M197,47.5 C196.2,43.2 191,38.2 181,35.2 C170,32.2 152,29.6 136,29.2
+        C132,22 126.5,12 120.6,6.2 C119.4,5 118,5.4 118,7 C117.6,15 114.8,22.4 110.2,27.4 C109.6,28 110.6,29 112.4,29.2
+        C96,30.8 80,33.6 66,37.4 C56,40 46,41 38,41.6 L38,49.4
+        C46,50.6 56,52.8 68,55.8 C84,60.4 104,64.8 124,65.4 C142,65.8 156,63.2 166,59.8
+        C175,60.4 184,59.8 189.4,57.8 C190.8,57.2 191.2,56.4 190.4,55.8 L193.4,50.4
+        C195.4,49.6 197.2,48.6 197,47.5 Z"/>
+      <clipPath id="oc${u}"><use href="#ob${u}"/></clipPath>
+    </defs>
+    <!-- peitoral do lado oposto -->
+    <path data-pivot="142,56,3,2.6" d="M144,56.4 C140,62 133,68.6 122,74.6 C120.8,75.2 120.2,74.4 121,73.6 C126,69 130.4,63.8 134,57.6 Z" fill="var(--shark-dark)"/>
+    <!-- segunda dorsal e anal, pequenas -->
+    <path d="M63,38.4 C61,35.6 58.8,33.4 56,32 C55.3,31.7 55,32.4 55.5,33 C56,35 55.8,37.2 54.4,39.8 Z" fill="var(--shark-mid)"/>
+    <path d="M58.4,53 C56.6,55.2 54.4,57.2 51.4,58.6 C50.8,58.9 50.5,58.2 51,57.8 C51.6,56.2 51.4,54.4 50.4,52.2 Z" fill="var(--shark-dark)"/>
+    <use href="#ob${u}" fill="url(#sharkSkin)"/>
+    <g clip-path="url(#oc${u})">
+      <!-- ventre branco com a divisa irregular típica do tubarão-branco -->
+      <path d="M200,49.2 L194,49.4 C189,49.8 184,50.4 178.6,51 L176.2,51.9 L172.8,51.4 L169.4,53 C165.4,53.8 162,53.9 158.6,54.8
+               L156.8,54.3 L153.4,55.7 L150.6,55.1 L146.2,56.4 L143.6,55.6 L139,56.9 L135.2,55.4 L132.6,56 L127.6,54.6 L125.4,55.8
+               L121,55 L117.8,56.6 L113.2,55.3 L109.6,57.2 L106.8,56.5 L102,58.1 L99.4,57.4 L94.6,59 L90.8,58.2 L86,59.6
+               C80,58.6 74,56.2 68,54.4 L64.6,54 L61,53 C54,51.4 46,50.4 38,49.6 L38,90 L200,90 Z" fill="url(#sharkBelly)"/>
+      <!-- mancha axilar negra atrás da base da peitoral -->
+      <path d="M134.6,57.4 C131.6,57.2 128.8,58 127.4,59.4 C129.6,60.2 132.6,59.8 134.6,58.8 Z" fill="#06090b" opacity=".85" filter="url(#sharkSoft)"/>
+      <!-- linha lateral -->
+      <path d="M146,42.6 C126,43.4 104,44.4 84,45.2 C70,45.8 56,46 42,45.8" fill="none" stroke="#fff" stroke-width=".4" opacity=".1"/>
+      <!-- cicatrizes antigas -->
+      <path d="M104,40.6 C108,41.6 112,42 116.4,41.4 M100.4,43.2 c3,.8 6,1 9,.6 M78,47.6 c2.6,-1 5.4,-1.4 8,-1.2"
+            fill="none" stroke="#fff" stroke-width=".45" stroke-linecap="round" opacity=".2"/>
+      <!-- quilha do pedúnculo -->
+      <path d="M64,45.6 C56,45.4 48,45.4 38,45.4" fill="none" stroke="#fff" stroke-width="1" opacity=".18" filter="url(#sharkSoft)"/>
+      <path d="M64,46.8 C56,46.8 48,46.8 38,46.8" fill="none" stroke="#000" stroke-width=".8" opacity=".22" filter="url(#sharkSoft)"/>
+      <!-- brilho no dorso -->
+      <path d="M188,40 C176,36 160,33.6 140,32.6 M106,32.8 C90,34.4 76,37 62,40.6"
+            fill="none" stroke="#fff" stroke-width="1.4" stroke-linecap="round" opacity=".14" filter="url(#sharkSoft)"/>
+      <path d="M133.4,27 C129.6,19.6 125,12.6 120.6,7.8" fill="none" stroke="#fff" stroke-width="1" stroke-linecap="round" opacity=".16" filter="url(#sharkSoft)"/>
+      <path d="M118,7 C117.6,15 114.8,22.4 110.2,27.4" fill="none" stroke="#000" stroke-width=".9" opacity=".25"/>
+      <!-- volume: bordas do corpo mais escuras -->
+      <use href="#ob${u}" fill="none" stroke="#000" stroke-width="6" opacity=".22" filter="url(#orcaSoft)"/>
+    </g>
+    <!-- ampolas de Lorenzini no focinho -->
+    <g fill="var(--shark-dark)" opacity=".55">
+      <circle cx="191.4" cy="44.8" r=".35"/><circle cx="189" cy="43.6" r=".35"/><circle cx="193.2" cy="46.6" r=".3"/>
+      <circle cx="187.6" cy="45.8" r=".3"/><circle cx="190" cy="47" r=".3"/><circle cx="185.4" cy="44.2" r=".3"/>
+      <circle cx="187" cy="47.6" r=".28"/><circle cx="183.6" cy="45.6" r=".28"/><circle cx="194.6" cy="45.4" r=".28"/>
+    </g>
+    <path d="M192.6,48.4 C191.6,48.6 190.6,48.8 189.6,48.7" fill="none" stroke="var(--shark-dark)" stroke-width=".6" stroke-linecap="round"/>
+    <!-- rugas do focinho, repuxado pela boca entreaberta -->
+    <path d="M190.8,49.6 c-1.2,.9 -2.6,1.4 -4,1.6 M187.6,48.8 c-1.2,1 -2.8,1.6 -4.4,1.8 M184,48.4 c-1,.8 -2.2,1.3 -3.6,1.5"
+          fill="none" stroke="var(--shark-dark)" stroke-width=".45" stroke-linecap="round" opacity=".55"/>
+    <!-- boca entreaberta: cavidade, gengivas e fileiras de dentes serrilhados -->
+    <path d="${SHARK_JAW.upper} C176,57.4 184,57.4 190,56.4 C191.6,55.6 192.6,53.4 193.2,50.6 Z" fill="url(#sharkMouth)"/>
+    <g fill="var(--shark-enamel)" opacity=".5">${SHARK_JAW.back}</g>
+    <path d="${SHARK_JAW.upper}" fill="none" stroke="var(--shark-gum)" stroke-width="1.1" stroke-linecap="round"/>
+    <path d="${SHARK_JAW.lower}" fill="none" stroke="var(--shark-gum)" stroke-width="1" stroke-linecap="round"/>
+    <g fill="var(--shark-enamel)" stroke="var(--shark-enamel-lo)" stroke-width=".12" stroke-linejoin="round">${SHARK_JAW.teeth}</g>
+    <!-- olho negro, sem branco visível, sob a crista que dá o ar carrancudo -->
+    <path d="M174.6,39.4 C178,39.6 181.4,40.6 184.6,42.8" fill="none" stroke="#000" stroke-width="1.8" stroke-linecap="round" opacity=".42" filter="url(#sharkSoft)"/>
+    <circle cx="179" cy="42.8" r="1.55" fill="#020304"/>
+    <path d="M176.4,41.2 C178,41.2 180,41.5 181.8,42.5" fill="none" stroke="var(--shark-dark)" stroke-width="1.1" stroke-linecap="round"/>
+    <circle cx="179.7" cy="42.6" r=".2" fill="#fff" opacity=".3"/>
+    <!-- cinco fendas branquiais -->
+    <g fill="none" stroke-linecap="round">
+      <g stroke="#0d1317" stroke-width=".55" opacity=".7">${SHARK_SLITS}</g>
+      <g stroke="#fff" stroke-width=".45" opacity=".16">${SHARK_SLITS.replace(/M(\d+\.?\d*)/g, (m, x) => 'M' + (+x + .6))}</g>
+    </g>
+    <use href="#ob${u}" fill="none" stroke="var(--shark-rim)" stroke-width=".5"/>
+    <!-- nadadeira caudal semilunar, de borda posterior mais escura -->
+    <path d="M44,41.2 C40,40.6 35,38 31,34.6 C24,27.6 16.6,18 9.4,7.6 C8.4,6.4 6.8,6.8 7.2,8.6 C9.4,20 13.6,32 21,43.2
+             C21.8,44.4 21.8,45.6 21,46.8 C14.4,56 10.6,65 8.8,74.6 C8.6,76.2 10,76.8 11,75.6
+             C19,66 28,57 37,51 C39.6,50.2 42,49.8 44,49.8 Z" fill="url(#sharkSkin)"/>
+    <path d="M38,42.2 C29,35 19.6,23 10.4,9.6" fill="none" stroke="#fff" stroke-width=".8" stroke-linecap="round" opacity=".14"/>
+    <path d="M7.2,8.6 C9.4,20 13.6,32 21,43.2 C21.8,44.4 21.8,45.6 21,46.8 C14.4,56 10.6,65 8.8,74.6" fill="none" stroke="#0a0e11" stroke-width=".9" opacity=".35"/>
+    <!-- nadadeira pélvica -->
+    <path d="M89,60.2 C85,62.6 79.8,65.2 74,66.8 C73.2,67 73,66.3 73.6,65.9 C76.2,63.8 77.8,61.6 78.4,59 Z" fill="var(--shark-mid)"/>
+    <!-- peitoral longa e falcada, de ponta escura -->
+    <path data-pivot="142,56,3,2.6" d="M148,54.4 C143,61.6 133,71 117.4,79.2 C115.8,80 115,78.9 116,77.9 C122.4,72 128.4,64.8 133.6,56.6 Z" fill="url(#sharkSkin)"/>
+    <path data-pivot="142,56,3,2.6" d="M146.4,56.2 C141,63 132.4,71 119.4,78" fill="none" stroke="#fff" stroke-width=".6" stroke-linecap="round" opacity=".18"/>
+    <path data-pivot="142,56,3,2.6" d="M126,71 C123,73.6 120,76 117.4,77.6" fill="none" stroke="#0a0e11" stroke-width="1.2" stroke-linecap="round" opacity=".5"/>`,
+
+  /* Tubarão-branco visto de cima, focinho para o Norte (x −24..24, y −50..51) */
+  'shark-top': u => `
+    <defs>
+      <path id="ob${u}" d="M0,-50 C3.4,-50 6,-46 7.6,-40 C9.6,-32 10.6,-22 10.6,-14 C10.6,-2 8.6,10 6,20 C4.4,26 3,31 2.2,36
+        L-2.2,36 C-3,31 -4.4,26 -6,20 C-8.6,10 -10.6,-2 -10.6,-14 C-10.6,-22 -9.6,-32 -7.6,-40 C-6,-46 -3.4,-50 0,-50 Z"/>
+      <clipPath id="oc${u}"><use href="#ob${u}"/></clipPath>
+    </defs>
+    <path d="M2,33 C2.3,39 1.8,45 .9,49.6 L0,51 L-.9,49.6 C-1.8,45 -2.3,39 -2,33 Z" fill="var(--shark-mid)"/>
+    <path d="M2.4,29 C3.4,31.4 3.6,33.4 2.2,36.6 Z M-2.4,29 C-3.4,31.4 -3.6,33.4 -2.2,36.6 Z" fill="var(--shark-dark)"/>
+    <path data-pivot="9.8,-22,4,2.6" d="M9.6,-26 C15,-21 20,-13 22.8,-3.6 C23.2,-2 22,-1.4 21,-2.6 C17.6,-7.6 13.6,-12.6 10,-15.6 Z" fill="var(--shark-mid)"/>
+    <path data-pivot="-9.8,-22,-4,2.6" d="M-9.6,-26 C-15,-21 -20,-13 -22.8,-3.6 C-23.2,-2 -22,-1.4 -21,-2.6 C-17.6,-7.6 -13.6,-12.6 -10,-15.6 Z" fill="var(--shark-mid)"/>
+    <path d="M7.2,12 C9.6,15 10.8,18.4 11,21.6 C9.6,20.6 8,18.8 6.4,17.2 Z M-7.2,12 C-9.6,15 -10.8,18.4 -11,21.6 C-9.6,20.6 -8,18.8 -6.4,17.2 Z" fill="var(--shark-mid)"/>
+    <use href="#ob${u}" fill="url(#sharkSkinTop)"/>
+    <g clip-path="url(#oc${u})">
+      <path d="M11.4,-34 C10.8,-20 10.2,-6 8.4,6 M-11.4,-34 C-10.8,-20 -10.2,-6 -8.4,6" fill="none" stroke="var(--shark-belly)" stroke-width="1" opacity=".25" filter="url(#sharkSoft)"/>
+      <ellipse cx="0" cy="-36" rx="3.2" ry="8" fill="#fff" opacity=".12" filter="url(#sharkSoft)"/>
+      <use href="#ob${u}" fill="none" stroke="#000" stroke-width="4" opacity=".25" filter="url(#orcaSoft)"/>
+    </g>
+    <circle cx="6.6" cy="-38.6" r="1" fill="#05080a"/><circle cx="-6.6" cy="-38.6" r="1" fill="#05080a"/>
+    <path d="M0,-16 C1.3,-10 1.3,-3 .5,3 L-.5,3 C-1.3,-3 -1.3,-10 0,-16 Z" fill="var(--shark-dark)" stroke="var(--shark-rim)" stroke-width=".3"/>
+    <path d="M0,23 L.6,28 L-.6,28 Z" fill="var(--shark-dark)"/>
+    <use href="#ob${u}" fill="none" stroke="var(--shark-rim)" stroke-width=".4"/>`,
+};
+/* Mandíbula do tubarão-branco: dentes superiores largos e inclinados para trás,
+   inferiores estreitos e eretos, e uma segunda fileira ao fundo */
+const SHARK_JAW = (() => {
+  const UP = [[193.2,50.6],[188,52.4],[180,54.2],[169.6,55.2]];
+  const LO = [[169.6,55.2],[176,57.4],[184,57.4],[190,56.4]];
+  const bez = (P, t) => [0, 1].map(k => {
+    const m = 1 - t;
+    return m*m*m*P[0][k] + 3*m*m*t*P[1][k] + 3*m*t*t*P[2][k] + t*t*t*P[3][k];
+  });
+  const f = v => v.toFixed(2);
+  let teeth = '', back = '';
+  for (let i = 0; i < 9; i++) {
+    const t = .07 + i * .095, [x, y] = bez(UP, t);
+    const h = 3.1 - 1.7 * t, b = .95 - .36 * t;
+    teeth += `<path d="M${f(x - b)},${f(y - .2)} L${f(x - .45)},${f(y + h)} L${f(x + b)},${f(y - .2)} Z"/>`;
+    const [bx, by] = bez(UP, t + .045);
+    back += `<path d="M${f(bx - b * .6)},${f(by + .5)} L${f(bx - .3)},${f(by + .5 + h * .55)} L${f(bx + b * .6)},${f(by + .5)} Z"/>`;
+  }
+  for (let i = 0; i < 8; i++) {
+    const t = .14 + i * .108, [x, y] = bez(LO, t);
+    const h = 1.1 + 1.3 * t, b = .42 + .2 * t;
+    teeth += `<path d="M${f(x - b)},${f(y + .2)} L${f(x + .15)},${f(y - h)} L${f(x + b)},${f(y + .2)} Z"/>`;
+  }
+  return { upper: 'M193.2,50.6 C188,52.4 180,54.2 169.6,55.2', lower: 'M169.6,55.2 C176,57.4 184,57.4 190,56.4', teeth, back };
+})();
+const SHARK_SLITS = ['M163.2,41.4 C161.6,45.2 161.4,49.6 162.4,53.6', 'M159.4,40.6 C157.8,44.6 157.6,49.6 158.8,54.4',
+  'M155.6,40.4 C154,44.6 153.8,49.8 155,55.2', 'M151.8,40.8 C150.2,45 150,50 151.2,55.6', 'M148,41.8 C146.6,45.6 146.4,50 147.4,54.8']
+  .map(d => `<path d="${d}"/>`).join('');
+
+/* ══ Nado: ondulação procedural do corpo ═════════════
+   A cada quadro, todos os pontos do desenho são reposicionados ao longo
+   de uma coluna vertebral que ondula, com a onda viajando da cabeça para
+   a cauda e amplitude crescendo em direção à caudal.
+   Orca (cetáceo): ondulação vertical, a caudal sobe e desce e arfa.
+   Tubarão: ondulação lateral — de perfil, aparece como o escorço da
+   cauda; visto de cima, como o "S" do corpo.
+   plane 'in'  → a curvatura está no plano da tela;
+   plane 'out' → perpendicular à tela (só o escorço e a perspectiva). */
+const SWIM = (() => {
+  const KINDS = {
+    'orca-side':  { theme:'orca',    plane:'in',  axis:'-x', head:193, mid:48, len:191, amp:.06,  k:2.6, s0:.3,  pitch:.2,  hinge:.8 },
+    'orca-top':   { theme:'orca',    plane:'out', axis:'+y', head:-50, mid:0,  len:99,  amp:.06,  k:2.6, s0:.3,  pitch:.2,  hinge:.86, persp:70 },
+    'shark-side': { theme:'tubarao', plane:'out', axis:'-x', head:197, mid:47, len:194, amp:.08,  k:5.2, s0:.15, persp:150 },
+    'shark-top':  { theme:'tubarao', plane:'in',  axis:'+y', head:-50, mid:0,  len:101, amp:.075, k:5.2, s0:.15 },
+  };
+  const N = 72, S_MAX = 1.15;
+  const NUM = /[MmLlHhVvCcQqZz]|-?(?:\d+\.?\d*|\.\d+)(?:e[-+]?\d+)?/g;
+
+  /* "d" de um path → segmentos absolutos [cmd, x, y, ...] */
+  function parse(d) {
+    const t = d.match(NUM), out = [];
+    let i = 0, cmd = 'M', x = 0, y = 0, sx = 0, sy = 0;
+    const n = () => parseFloat(t[i++]);
+    while (i < t.length) {
+      if (/[a-z]/i.test(t[i])) cmd = t[i++];
+      const C = cmd.toUpperCase(), rel = cmd !== C;
+      if (C === 'Z') { out.push(['Z']); x = sx; y = sy; continue; }
+      if (C === 'M' || C === 'L') {
+        let px = n(), py = n(); if (rel) { px += x; py += y; }
+        out.push([C, px, py]); x = px; y = py;
+        if (C === 'M') { sx = x; sy = y; cmd = rel ? 'l' : 'L'; }
+      } else if (C === 'H') { let px = n(); if (rel) px += x; out.push(['L', px, y]); x = px; }
+      else if (C === 'V') { let py = n(); if (rel) py += y; out.push(['L', x, py]); y = py; }
+      else {
+        const p = C === 'C' ? [n(), n(), n(), n(), n(), n()] : [n(), n(), n(), n()];
+        if (rel) for (let k = 0; k < p.length; k += 2) { p[k] += x; p[k + 1] += y; }
+        out.push([C, ...p]); x = p[p.length - 2]; y = p[p.length - 1];
+      }
+    }
+    return out;
+  }
+
+  const insts = [];
+  let uid = 0;
+  function mount(root = document) {
+    root.querySelectorAll('[data-animal]').forEach(el => {
+      if (el.dataset.mounted) return;
+      const kind = el.dataset.animal, K = KINDS[kind];
+      el.innerHTML = ANIMAL_TPL[kind]('a' + (uid++));
+      el.dataset.mounted = '1';
+      const parts = [];
+      el.querySelectorAll('path, circle, ellipse').forEach(node => {
+        const pv = node.dataset.pivot ? node.dataset.pivot.split(',').map(Number) : null;
+        if (node.tagName === 'path') parts.push({ node, segs: parse(node.getAttribute('d')), pv });
+        else parts.push({ node, cx: +node.getAttribute('cx'), cy: +node.getAttribute('cy'), pv });
+      });
+      insts.push({ el, K, parts,
+        period: +(el.dataset.period || 3), gain: +(el.dataset.amp || 1),
+        phase: Math.random() * Math.PI * 2,
+        U: new Float32Array(N + 1), W: new Float32Array(N + 1), F: new Float32Array(N + 1) });
+    });
+  }
+
+  /* coluna vertebral no instante t: deslocamento W, comprimento projetado U, ângulo F */
+  function spine(I, ph) {
+    const K = I.K, L = K.len, A0 = L * K.amp * I.gain, du = L * S_MAX / N;
+    for (let i = 0; i <= N; i++) {
+      const s = i / N * S_MAX;
+      const env = .08 + .92 * Math.pow(Math.max(0, (s - K.s0) / (1 - K.s0)), 2);
+      let w = A0 * env * Math.sin(ph - K.k * s);
+      /* caudal da orca: arfagem defasada de 90° em relação ao movimento */
+      if (K.pitch && s > K.hinge) w -= (s - K.hinge) * L * K.pitch * I.gain * Math.cos(ph - K.k * K.hinge);
+      I.W[i] = w;
+    }
+    I.U[0] = 0;
+    for (let i = 0; i < N; i++) {
+      const a = Math.atan2(I.W[i + 1] - I.W[i], du);
+      I.F[i] = a; I.U[i + 1] = I.U[i] + du * Math.cos(a);
+    }
+    I.F[N] = I.F[N - 1];
+  }
+
+  function at(I, s) {
+    const f = Math.min(Math.max(s / S_MAX * N, 0), N - 1e-6), i = Math.floor(f), r = f - i, j = Math.min(i + 1, N);
+    let U = I.U[i] + (I.U[j] - I.U[i]) * r, W = I.W[i] + (I.W[j] - I.W[i]) * r;
+    const F = I.F[i] + (I.F[j] - I.F[i]) * r;
+    const L = I.K.len;
+    if (s < 0)     { U += s * L; W += s * L * Math.tan(I.F[0]); }                 /* à frente do focinho */
+    if (s > S_MAX) { const e = (s - S_MAX) * L; U += e * Math.cos(F); W += e * Math.sin(F); }
+    return [U, W, F];
+  }
+
+  function warp(I, x, y) {
+    const K = I.K;
+    const along  = K.axis === '-x' ? K.head - x : y - K.head;
+    const across = K.axis === '-x' ? y - K.mid  : x - K.mid;
+    const [U, W, F] = at(I, along / K.len);
+    let a, c;
+    if (K.plane === 'in') { a = U - across * Math.sin(F); c = W + across * Math.cos(F); }
+    else                  { a = U; c = across * (1 + W / K.persp); }
+    return K.axis === '-x' ? [K.head - a, K.mid + c] : [K.mid + c, K.head + a];
+  }
+
+  function frame(I, t) {
+    const ph = 2 * Math.PI * t / I.period + I.phase;
+    spine(I, ph);
+    for (const p of I.parts) {
+      let rot = null;
+      if (p.pv) {
+        const [px, py, deg, lag] = p.pv, th = deg * Math.PI / 180 * Math.sin(ph - lag) * I.gain;
+        rot = [px, py, Math.cos(th), Math.sin(th)];
+      }
+      const map = (x, y) => {
+        if (rot) { const dx = x - rot[0], dy = y - rot[1]; x = rot[0] + dx * rot[2] - dy * rot[3]; y = rot[1] + dx * rot[3] + dy * rot[2]; }
+        const [nx, ny] = warp(I, x, y);
+        return nx.toFixed(2) + ',' + ny.toFixed(2);
+      };
+      if (p.segs) {
+        let d = '';
+        for (const sg of p.segs) {
+          d += sg[0];
+          for (let k = 1; k < sg.length; k += 2) d += (k > 1 ? ' ' : '') + map(sg[k], sg[k + 1]);
+          d += ' ';
+        }
+        p.node.setAttribute('d', d);
+      } else {
+        const [nx, ny] = map(p.cx, p.cy).split(',');
+        p.node.setAttribute('cx', nx); p.node.setAttribute('cy', ny);
+      }
+    }
+  }
+
+  let last = 0;
+  function loop(now) {
+    if (now - last > 32) {            /* ~30 quadros/s bastam para um nado lento */
+      last = now;
+      const t = now / 1000;
+      for (const I of insts) if (I.K.theme === curStyle) frame(I, t);
+    }
+    requestAnimationFrame(loop);
+  }
+  return { mount, start: () => requestAnimationFrame(loop) };
+})();
+
 /* ══ Init ════════════════════════════════════════════ */
 addEventListener('load', () => {
   updatePalette(); resize();
@@ -1882,6 +2071,8 @@ addEventListener('load', () => {
   for (let i = 0; i < ORBIT_COUNT; i++) orbs.push(makeOrb(i));
   assignColors();
   if (!REDUCED) requestAnimationFrame(tick);
+  SWIM.mount();
+  if (!REDUCED) SWIM.start();
   setFrente('N', { silent: true });
 });
 </script>
